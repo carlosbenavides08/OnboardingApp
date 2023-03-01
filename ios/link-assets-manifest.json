@@ -1,0 +1,29 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/SolanoGothicMVBStdBd.otf",
+      "sha1": "102a747844b64e018dfbf9a0d823bea36a370382"
+    },
+    {
+      "path": "assets/fonts/WhitneyHTF-Bold.otf",
+      "sha1": "df0df5629c46fd126f2d57ee96aeae7ad37bc5d1"
+    },
+    {
+      "path": "assets/fonts/WhitneyHTF-BoldItalic.otf",
+      "sha1": "6422a3ad6c1866b6c528d25ccaaeb07257795c90"
+    },
+    {
+      "path": "assets/fonts/WhitneyHTF-Light.otf",
+      "sha1": "28ddcbe0e725645ea950b39a6ef84a7085cc24ff"
+    },
+    {
+      "path": "assets/fonts/WhitneyHTF-Medium.otf",
+      "sha1": "40a78207484616420118c79e66cc600bd8168900"
+    },
+    {
+      "path": "assets/fonts/WhitneyHTF-SemiBoldSC.otf",
+      "sha1": "6731cf00dd40945add87225040dece3eefa6f654"
+    }
+  ]
+}
