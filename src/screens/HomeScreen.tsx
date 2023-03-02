@@ -1,20 +1,16 @@
 import React from 'react'
-import { Text, View, Image, ScrollView } from 'react-native'
-// import { StackScreenProps } from '@react-navigation/stack'
-// import { RootStackParams } from '../navigator/Navigator'
+import { Text, View, Image, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native';
+import { StackScreenProps } from '@react-navigation/stack'
+import { RootStackParams } from '../navigator/Navigator'
 
 import { stylesHome } from '../styles'
 
-// interface Props extends StackScreenProps<RootStackParams, 'TabsHome'>{}
+interface Props extends StackScreenProps<RootStackParams, 'HomeScreen'>{}
 
-export const HomeScreen = () => {
-
-    // const { name } = route.params
-
+export const HomeScreen = ({ navigation }: Props) => {
     return (
-        <>
-        
-            <ScrollView style={ stylesHome.homeContainer }>
+        <SafeAreaView style={ stylesHome.homeContainer }>
+            <ScrollView>
                 <View style={ stylesHome.header }>
                     <View style={ stylesHome.headerWrapper }>
                         <Text style={ stylesHome.headerText }>MI MUNDO UPC</Text>
@@ -35,7 +31,11 @@ export const HomeScreen = () => {
                         <Text style={ stylesHome.nameApp }> Mi mundo UPC.</Text>
                     </Text>
                     <View style={ stylesHome.listContainer }>
-                        <View style={ stylesHome.missionCard }>
+                        <TouchableOpacity
+                            style={ stylesHome.missionCard }
+                            onPress={ () => navigation.navigate('LevelsScreen') }
+                            activeOpacity={ 1 }
+                        >
                             <View style={ stylesHome.imageBackground }>
                                 <Image
                                     source={ require('../assets/world-begins.png') }
@@ -53,8 +53,11 @@ export const HomeScreen = () => {
                                     <Text style={ stylesHome.starsCount }>0<Text style={ stylesHome.starsTotal }>/9 Medallas</Text></Text>
                                 </View>
                             </View>
-                        </View>
-                        <View style={[ stylesHome.missionCard, stylesHome.missionCardDisabled ]}>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={[ stylesHome.missionCard, stylesHome.missionCardDisabled ]}
+                            activeOpacity={ 1 }
+                        >
                             <View style={[ stylesHome.imageBackground, stylesHome.imageBackgroundDisabled ]}>
                                 <Image
                                     source={ require('../assets/world-grows.png') }
@@ -72,10 +75,10 @@ export const HomeScreen = () => {
                                     <Text style={ stylesHome.levelsCount }>8 Niveles</Text>
                                 </View>
                             </View>
-                        </View>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </ScrollView>
-        </>
+        </SafeAreaView>
     )
 }

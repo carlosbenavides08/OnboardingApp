@@ -56,17 +56,35 @@ export const TabsHome = () => {
                             }
                             {
                                 title === 'Inicio'
-                                ? (
-                                    <Image
-                                        source={ require('../assets/home-icon-selected.png') }
-                                        style={{ width: 22.75, height: 20.09, marginTop: 20 }}
-                                    />
-                                ) : (
-                                    <Image
-                                        source={ require('../assets/profile-icon-unselected.png') }
-                                        style={{ width: 19.25, height: 21, marginTop: 20, marginLeft: 2 }}
-                                    />
-                                )
+                                ? focused
+                                    ? (
+                                        <Image
+                                            source={ require('../assets/home-icon-selected.png') }
+                                            style={{ width: 26, height: 23, marginTop: 20, marginLeft: -1 }}
+                                        />
+                                    ) : (
+                                        <Image
+                                            source={ require('../assets/home-icon-unselected.png') }
+                                            style={{ width: 26, height: 23, marginTop: 20, marginLeft: -1 }}
+                                        />
+                                    )
+                                : null
+                            }
+                            {
+                                title === 'Perfil'
+                                ? focused
+                                    ? (
+                                        <Image
+                                            source={ require('../assets/profile-icon-selected.png') }
+                                            style={{ width: 22, height: 24, marginTop: 20, marginLeft: 1 }}
+                                        />
+                                    ) : (
+                                        <Image
+                                            source={ require('../assets/profile-icon-unselected.png') }
+                                            style={{ width: 22, height: 24, marginTop: 20, marginLeft: 1 }}
+                                        />
+                                    )
+                                : null
                             }
                             <Text style={{ color, fontFamily: 'WhitneyHTF-Bold', fontSize: 10, lineHeight: 16, marginTop: 2 }}>
                                 { title }
