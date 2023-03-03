@@ -6,6 +6,7 @@ import { RootStackParams } from '../navigator/Navigator'
 import { Level } from '../components/Level'
 
 import { stylesLevels } from '../styles'
+import { Header } from '../components/Header'
 
 interface Props extends StackScreenProps<RootStackParams, 'LevelsScreen'>{}
 
@@ -13,17 +14,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
     return (
         <SafeAreaView style={ stylesLevels.levelsContainer }>
             <ScrollView>
-                <View style={ stylesLevels.header }>
-                    <TouchableOpacity
-                        onPress={ () => navigation.goBack() }
-                    >
-                        <Image
-                            source={ require('../assets/back-icon.png') }
-                            style={{ width: 32, height: 32 }}
-                        />
-                    </TouchableOpacity>
-                    <Text style={ stylesLevels.headerText }>MUNDO PREPÁRATE</Text>
-                </View>
+                <Header title='MUNDO PREPÁRATE'/>
                 <View style={ stylesLevels.hero }>
                     <Image
                         source={ require('../assets/hero-world.png') }
@@ -95,6 +86,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelDescription='INICIA TU PRIMER CICLO'
                             completedMissions='0'
                             totalMissions='3'
+                            navigation={ navigation }
                         />
                         <Level
                             levelStyle={ stylesLevels.level2 }
