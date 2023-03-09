@@ -35,7 +35,7 @@ const stylesWorld = StyleSheet.create({
     },
     worldTitle: {
         color: 'black',
-        fontFamily: 'Solano-Bold',
+        fontFamily: 'SolanoGothicMVB-Bd',
         fontSize: 18,
         marginTop: 16,
         marginHorizontal: 16,

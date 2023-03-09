@@ -12,7 +12,7 @@ const stylesHeader = StyleSheet.create({
         color: 'black',
         paddingVertical: 20,
         paddingLeft: 20,
-        fontFamily: 'Solano-Bold',
+        fontFamily: 'SolanoGothicMVB-Bd',
         fontSize: 20,
         lineHeight: 32,
     },

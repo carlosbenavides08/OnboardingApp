@@ -21,6 +21,8 @@
 		B135DC9819644F018BB374AE /* WhitneyHTF-SemiBoldSC.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0D04AE0283ED4A2F9CE1A309 /* WhitneyHTF-SemiBoldSC.otf */; };
 		BD7CF0CB22344CD590A32D20 /* WhitneyHTF-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 05A2E808F5D640BFAA7E84C0 /* WhitneyHTF-Bold.otf */; };
 		DBE09374C5C34AF68BE28893 /* WhitneyHTF-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2D0C38ADFE594F50B692A12F /* WhitneyHTF-Light.otf */; };
+		0E3217DE06094AD4B0CA1309 /* UpcSolano.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01E50C63302A461986AD7C3B /* UpcSolano.ttf */; };
+		CFEA9A21437B4D888C49E1BD /* SolanoGothicMVB-Bd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50DC161FC4A74E6CA6554109 /* SolanoGothicMVB-Bd.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		89C6BE57DB24E9ADA2F236DE /* Pods-OnboardingApp-OnboardingAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnboardingApp-OnboardingAppTests.release.xcconfig"; path = "Target Support Files/Pods-OnboardingApp-OnboardingAppTests/Pods-OnboardingApp-OnboardingAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		BFF3CD79DAA34214BC4E235F /* Solano-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Solano-Bold.otf"; path = "../assets/fonts/Solano-Bold.otf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		01E50C63302A461986AD7C3B /* UpcSolano.ttf */ = {isa = PBXFileReference; name = "UpcSolano.ttf"; path = "../assets/fonts/UpcSolano.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		50DC161FC4A74E6CA6554109 /* SolanoGothicMVB-Bd.ttf */ = {isa = PBXFileReference; name = "SolanoGothicMVB-Bd.ttf"; path = "../assets/fonts/SolanoGothicMVB-Bd.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +166,8 @@
 				0D04AE0283ED4A2F9CE1A309 /* WhitneyHTF-SemiBoldSC.otf */,
 				277F5255420D476383B23BC1 /* WhitneyHTF-Medium.otf */,
 				BFF3CD79DAA34214BC4E235F /* Solano-Bold.otf */,
+				01E50C63302A461986AD7C3B /* UpcSolano.ttf */,
+				50DC161FC4A74E6CA6554109 /* SolanoGothicMVB-Bd.ttf */,
 			);
 			name = Resources;
 			path = "";
@@ -281,6 +287,8 @@
 				B135DC9819644F018BB374AE /* WhitneyHTF-SemiBoldSC.otf in Resources */,
 				02230128876F4DED87751AC3 /* WhitneyHTF-Medium.otf in Resources */,
 				624DA0CBE3C848878A413EB5 /* Solano-Bold.otf in Resources */,
+				0E3217DE06094AD4B0CA1309 /* UpcSolano.ttf in Resources */,
+				CFEA9A21437B4D888C49E1BD /* SolanoGothicMVB-Bd.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

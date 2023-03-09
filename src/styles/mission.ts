@@ -46,7 +46,7 @@ const stylesMission = StyleSheet.create({
     },
     missionTitle: {
         color: '#E50A17',
-        fontFamily: 'Solano-Bold',
+        fontFamily: 'SolanoGothicMVB-Bd',
         fontSize: 28,
         lineHeight: 36,
         marginTop: 16,
@@ -107,7 +107,7 @@ const stylesMission = StyleSheet.create({
     },
     disclaimerTitle: {
         color: 'black',
-        fontFamily: 'Solano-Bold',
+        fontFamily: 'SolanoGothicMVB-Bd',
         fontSize: 16,
         lineHeight: 24,
     },

@@ -6,8 +6,16 @@
       "sha1": "1e2afcec2d84f821b18b310387342134d5f27e55"
     },
     {
+      "path": "assets/fonts/SolanoGothicMVB-Bd.ttf",
+      "sha1": "ff999087d252a52e6810599eb66a76018d5b2312"
+    },
+    {
       "path": "assets/fonts/SolanoGothicMVBStdBd.otf",
       "sha1": "102a747844b64e018dfbf9a0d823bea36a370382"
+    },
+    {
+      "path": "assets/fonts/UpcSolano.ttf",
+      "sha1": "9a07ee8a8b138843af7a308ec17a6d346ce456c2"
     },
     {
       "path": "assets/fonts/WhitneyHTF-Bold.otf",

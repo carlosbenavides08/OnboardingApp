@@ -24,13 +24,13 @@ const stylesLogin = StyleSheet.create({
     welcomeTextOne: {
         color: 'black',
         fontSize: 36,
-        fontFamily: 'Solano-Bold',
+        fontFamily: 'SolanoGothicMVB-Bd',
         lineHeight: 48,
     },
     welcomeTextTwo: {
         color: '#E50A17',
         fontSize: 36,
-        fontFamily: 'Solano-Bold',
+        fontFamily: 'SolanoGothicMVB-Bd',
         lineHeight: 48,
     },
     enterText: {
