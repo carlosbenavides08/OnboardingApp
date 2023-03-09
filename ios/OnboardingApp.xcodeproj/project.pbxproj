@@ -20,6 +20,7 @@
 		886CB19438E04B09AFADBD26 /* WhitneyHTF-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6530C164822847B59140CCB0 /* WhitneyHTF-BoldItalic.otf */; };
 		B135DC9819644F018BB374AE /* WhitneyHTF-SemiBoldSC.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0D04AE0283ED4A2F9CE1A309 /* WhitneyHTF-SemiBoldSC.otf */; };
 		02230128876F4DED87751AC3 /* WhitneyHTF-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 277F5255420D476383B23BC1 /* WhitneyHTF-Medium.otf */; };
+		624DA0CBE3C848878A413EB5 /* Solano-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BFF3CD79DAA34214BC4E235F /* Solano-Bold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		6530C164822847B59140CCB0 /* WhitneyHTF-BoldItalic.otf */ = {isa = PBXFileReference; name = "WhitneyHTF-BoldItalic.otf"; path = "../assets/fonts/WhitneyHTF-BoldItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		0D04AE0283ED4A2F9CE1A309 /* WhitneyHTF-SemiBoldSC.otf */ = {isa = PBXFileReference; name = "WhitneyHTF-SemiBoldSC.otf"; path = "../assets/fonts/WhitneyHTF-SemiBoldSC.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		277F5255420D476383B23BC1 /* WhitneyHTF-Medium.otf */ = {isa = PBXFileReference; name = "WhitneyHTF-Medium.otf"; path = "../assets/fonts/WhitneyHTF-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BFF3CD79DAA34214BC4E235F /* Solano-Bold.otf */ = {isa = PBXFileReference; name = "Solano-Bold.otf"; path = "../assets/fonts/Solano-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 				6530C164822847B59140CCB0 /* WhitneyHTF-BoldItalic.otf */,
 				0D04AE0283ED4A2F9CE1A309 /* WhitneyHTF-SemiBoldSC.otf */,
 				277F5255420D476383B23BC1 /* WhitneyHTF-Medium.otf */,
+				BFF3CD79DAA34214BC4E235F /* Solano-Bold.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				886CB19438E04B09AFADBD26 /* WhitneyHTF-BoldItalic.otf in Resources */,
 				B135DC9819644F018BB374AE /* WhitneyHTF-SemiBoldSC.otf in Resources */,
 				02230128876F4DED87751AC3 /* WhitneyHTF-Medium.otf in Resources */,
+				624DA0CBE3C848878A413EB5 /* Solano-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

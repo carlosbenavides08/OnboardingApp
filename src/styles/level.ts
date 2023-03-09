@@ -18,7 +18,7 @@ const stylesLevel = StyleSheet.create({
     },
     textLevelDescription: {
         color: 'black',
-        fontFamily: 'SolanoGothicMVBStdBd',
+        fontFamily: 'Solano-Bold',
         fontSize: 16,
         lineHeight: 24,
         marginTop: 4,

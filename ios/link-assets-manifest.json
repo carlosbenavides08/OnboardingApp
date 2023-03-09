@@ -2,6 +2,10 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "assets/fonts/Solano-Bold.otf",
+      "sha1": "1e2afcec2d84f821b18b310387342134d5f27e55"
+    },
+    {
       "path": "assets/fonts/SolanoGothicMVBStdBd.otf",
       "sha1": "102a747844b64e018dfbf9a0d823bea36a370382"
     },
