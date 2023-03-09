@@ -50,6 +50,7 @@ const stylesLogin = StyleSheet.create({
         borderColor: '#42526A',
         borderRadius: 8,
         fontWeight: 500,
+        height: 56,
     },
     inputStyles: {
         fontFamily: 'WhitneyHTF-Medium',

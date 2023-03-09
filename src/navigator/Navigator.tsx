@@ -2,9 +2,10 @@ import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { LoginScreen } from '../screens/LoginScreen'
-import { TabsHome } from './TabsHome';
-import { LevelsScreen } from '../screens/LevelsScreen';
-import { MissionsListScreen } from '../screens/MissionsListScreen';
+import { TabsHome } from './TabsHome'
+import { LevelsScreen } from '../screens/LevelsScreen'
+import { MissionsListScreen } from '../screens/MissionsListScreen'
+import { MissionScreen } from '../screens/MissionScreen'
 
 export type RootStackParams = {
     LoginScreen: undefined,
@@ -12,6 +13,7 @@ export type RootStackParams = {
     TabsHome: undefined,
     LevelsScreen: undefined,
     MissionsListScreen: undefined,
+    MissionScreen: undefined,
 }
 
 const Stack = createNativeStackNavigator<RootStackParams>()
@@ -30,6 +32,7 @@ export const Navigator = () => {
             <Stack.Screen name="TabsHome" component={ TabsHome }></Stack.Screen>
             <Stack.Screen name="LevelsScreen" component={ LevelsScreen }></Stack.Screen>
             <Stack.Screen name="MissionsListScreen" component={ MissionsListScreen }></Stack.Screen>
+            <Stack.Screen name="MissionScreen" component={ MissionScreen }></Stack.Screen>
         </Stack.Navigator>
     )
 }
