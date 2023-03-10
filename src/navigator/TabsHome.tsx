@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Text, View } from 'react-native'
+import { Image, Text, View, Platform } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import { HomeScreen } from '../screens/HomeScreen'
@@ -21,12 +21,12 @@ export const TabsHome = () => {
                     backgroundColor: 'white',
                     borderTopWidth: 0,
                     elevation: 0,
-                    // height: 68,
+                    height: Platform.OS === 'android' ? 68 : undefined,
                     padding: 0,
                     margin: 0,
                 },
                 tabBarIconStyle: {
-                    // height: 68,
+                    height: 68,
                     width: 50,
                 },
                 tabBarLabelStyle: {
