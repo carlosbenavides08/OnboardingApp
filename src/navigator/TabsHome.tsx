@@ -37,8 +37,6 @@ export const TabsHome = () => {
                 tabBarIcon: ({ color, focused, size }) => {
                     let title: string = ''
 
-                    console.log(color)
-
                     switch (route.name) {
                         case 'HomeScreen':
                             title = 'Inicio'

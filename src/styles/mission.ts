@@ -5,6 +5,13 @@ const stylesMission = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white',
     },
+    missionContainerLocked: {
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0,0,0,0.8)',
+        zIndex: 90,
+    },
     textHeaderWrapper: {
         flexDirection: 'row',
         gap: 24,
