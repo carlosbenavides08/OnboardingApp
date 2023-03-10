@@ -21,7 +21,7 @@ export const TabsHome = () => {
                     backgroundColor: 'white',
                     borderTopWidth: 0,
                     elevation: 0,
-                    height: Platform.OS === 'android' ? 68 : undefined,
+                    height: 68,
                     padding: 0,
                     margin: 0,
                 },
