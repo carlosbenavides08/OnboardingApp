@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Text, View, Platform } from 'react-native'
+import { Image, Text, View, Platform, SafeAreaView } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import { HomeScreen } from '../screens/HomeScreen'
@@ -49,7 +49,7 @@ export const TabsHome = () => {
                     }
 
                     return (
-                        <View style={{ position: 'absolute', top: 0, alignItems: 'center' }}>
+                        <SafeAreaView style={{ position: 'absolute', top: 0, alignItems: 'center' }}>
                             {
                                 focused
                                 ? (
@@ -99,7 +99,7 @@ export const TabsHome = () => {
                             <Text style={{ position: 'absolute', color, fontFamily: 'WhitneyHTF-Bold', fontSize: 10, lineHeight: 16, top: 40 }}>
                                 { title }
                             </Text>
-                        </View>
+                        </SafeAreaView>
                     )
                 },
             })}
