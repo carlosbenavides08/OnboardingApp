@@ -16,32 +16,28 @@ export const TabsHome = () => {
             screenOptions={ ({ route }) => ({
                 headerShown: false,
                 tabBarActiveTintColor: '#E50A17',
+                tabBarInactiveTintColor: 'black',
                 tabBarStyle: {
-                    borderWidth: 1,
-                    borderColor: 'red',
-                    // alignSelf: 'flex-start',
                     backgroundColor: 'white',
                     borderTopWidth: 0,
                     elevation: 0,
-                    height: 68,
+                    // height: 68,
                     padding: 0,
                     margin: 0,
                 },
                 tabBarIconStyle: {
-                    position: 'absolute',
-                    marginTop: 0,
-                    borderWidth: 1,
-                    borderColor: 'green',
-                    justifyContent: 'flex-start',
-                    height: 68,
-                    width: 60,
+                    // height: 68,
+                    width: 50,
                 },
                 tabBarLabelStyle: {
+                    color: 'black',
                     fontFamily: 'WhitneyHTF-Bold',
                     fontSize: 10,
                 },
                 tabBarIcon: ({ color, focused, size }) => {
                     let title: string = ''
+
+                    console.log(color)
 
                     switch (route.name) {
                         case 'HomeScreen':
@@ -53,13 +49,13 @@ export const TabsHome = () => {
                     }
 
                     return (
-                        <View style={{ position: 'absolute', borderWidth: 1, top: 0 }}>
+                        <View style={{ position: 'absolute', top: 0, alignItems: 'center' }}>
                             {
                                 focused
                                 ? (
                                     <Image
                                         source={ require('../assets/indicator.png') }
-                                        style={{ width: 24, height: 4, top: 0 }}
+                                        style={{ width: 24, height: 4 }}
                                     />
                                 ) : (
                                     <Image
@@ -74,12 +70,12 @@ export const TabsHome = () => {
                                     ? (
                                         <Image
                                             source={ require('../assets/home-icon-selected.png') }
-                                            style={{ position: 'absolute', width: 26, height: 23, marginTop: 20, marginLeft: -1 }}
+                                            style={{ position: 'absolute', width: 28, height: 28, top: 12 }}
                                         />
                                     ) : (
                                         <Image
                                             source={ require('../assets/home-icon-unselected.png') }
-                                            style={{ position: 'absolute', width: 26, height: 23, marginTop: 20, marginLeft: -1 }}
+                                            style={{ position: 'absolute', width: 28, height: 28, top: 12 }}
                                         />
                                     )
                                 : null
@@ -90,17 +86,17 @@ export const TabsHome = () => {
                                     ? (
                                         <Image
                                             source={ require('../assets/profile-icon-selected.png') }
-                                            style={{ width: 22, height: 24, marginTop: 20, marginLeft: 1 }}
+                                            style={{ position: 'absolute', width: 28, height: 28, top: 12 }}
                                         />
                                     ) : (
                                         <Image
                                             source={ require('../assets/profile-icon-unselected.png') }
-                                            style={{ width: 22, height: 24, marginTop: 20, marginLeft: 1 }}
+                                            style={{ position: 'absolute', width: 28, height: 28, top: 12 }}
                                         />
                                     )
                                 : null
                             }
-                            <Text style={{ position: 'absolute', color, fontFamily: 'WhitneyHTF-Bold', fontSize: 10, lineHeight: 16, marginTop: 5 }}>
+                            <Text style={{ position: 'absolute', color, fontFamily: 'WhitneyHTF-Bold', fontSize: 10, lineHeight: 16, top: 40 }}>
                                 { title }
                             </Text>
                         </View>

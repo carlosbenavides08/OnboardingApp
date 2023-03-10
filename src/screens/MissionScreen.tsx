@@ -58,6 +58,7 @@ export const MissionScreen = () => {
                         <Text style={ stylesMission.missionRemember }>Recuerda que a través de estos canales podrás estar al tanto de toda la información que tenemos para ti.</Text>
                     </View>
                     <TouchableOpacity
+                        activeOpacity={ 1 }
                         style={ stylesMission.buttonCode }
                     >
                         <Text style={ stylesMission.buttonCodeText }>Pedir código por Alma WhatsApp</Text>
@@ -77,7 +78,10 @@ export const MissionScreen = () => {
                             </Text>
                         </View>
                     </View>
-                    <TouchableOpacity style={ stylesMission.buttonCompleteMission }>
+                    <TouchableOpacity
+                        activeOpacity={ 1 }
+                        style={ stylesMission.buttonCompleteMission }
+                    >
                         <Text style={ stylesMission.buttonCompleteText }>Ir a completar misión</Text>
                     </TouchableOpacity>
                 </View>

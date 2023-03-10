@@ -38,6 +38,7 @@ export const MissionsListScreen = ({ navigation }: Props) => {
                         <View style={ stylesMissionsList.missionCard }>
                             <View style={ stylesMissionsList.missionCircleEnable }></View>
                             <TouchableOpacity
+                                activeOpacity={ 1 }
                                 onPress={ () => navigation.navigate('MissionScreen') }
                             >
                                 <View style={[
