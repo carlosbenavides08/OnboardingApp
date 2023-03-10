@@ -103,7 +103,7 @@ export const LoginScreen = ({ navigation }: Props) => {
                                 { borderColor: colorCheckbox }
                             ]}
                             textStyle={ stylesLogin.checkboxText }
-                            style={{ marginTop: 24 }}
+                            style={{ marginTop: 24, marginBottom: 30 }}
                             innerIconStyle={{ borderWidth: 0 }}
                             onPress={ changeColorCheckbox }
                         />

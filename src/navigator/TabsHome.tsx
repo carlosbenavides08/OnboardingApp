@@ -17,14 +17,28 @@ export const TabsHome = () => {
                 headerShown: false,
                 tabBarActiveTintColor: '#E50A17',
                 tabBarStyle: {
+                    borderWidth: 1,
+                    borderColor: 'red',
+                    // alignSelf: 'flex-start',
                     backgroundColor: 'white',
                     borderTopWidth: 0,
                     elevation: 0,
                     height: 68,
+                    padding: 0,
+                    margin: 0,
+                },
+                tabBarIconStyle: {
+                    position: 'absolute',
+                    marginTop: 0,
+                    borderWidth: 1,
+                    borderColor: 'green',
+                    justifyContent: 'flex-start',
+                    height: 68,
+                    width: 60,
                 },
                 tabBarLabelStyle: {
                     fontFamily: 'WhitneyHTF-Bold',
-                    fontSize: 10
+                    fontSize: 10,
                 },
                 tabBarIcon: ({ color, focused, size }) => {
                     let title: string = ''
@@ -39,13 +53,13 @@ export const TabsHome = () => {
                     }
 
                     return (
-                        <View style={{ position: 'relative' }}>
+                        <View style={{ position: 'absolute', borderWidth: 1, top: 0 }}>
                             {
                                 focused
                                 ? (
                                     <Image
                                         source={ require('../assets/indicator.png') }
-                                        style={{ position: 'absolute', width: 24, height: 4, top: 2 }}
+                                        style={{ width: 24, height: 4, top: 0 }}
                                     />
                                 ) : (
                                     <Image
@@ -60,12 +74,12 @@ export const TabsHome = () => {
                                     ? (
                                         <Image
                                             source={ require('../assets/home-icon-selected.png') }
-                                            style={{ width: 26, height: 23, marginTop: 20, marginLeft: -1 }}
+                                            style={{ position: 'absolute', width: 26, height: 23, marginTop: 20, marginLeft: -1 }}
                                         />
                                     ) : (
                                         <Image
                                             source={ require('../assets/home-icon-unselected.png') }
-                                            style={{ width: 26, height: 23, marginTop: 20, marginLeft: -1 }}
+                                            style={{ position: 'absolute', width: 26, height: 23, marginTop: 20, marginLeft: -1 }}
                                         />
                                     )
                                 : null
@@ -86,7 +100,7 @@ export const TabsHome = () => {
                                     )
                                 : null
                             }
-                            <Text style={{ color, fontFamily: 'WhitneyHTF-Bold', fontSize: 10, lineHeight: 16, marginTop: 2 }}>
+                            <Text style={{ position: 'absolute', color, fontFamily: 'WhitneyHTF-Bold', fontSize: 10, lineHeight: 16, marginTop: 5 }}>
                                 { title }
                             </Text>
                         </View>
