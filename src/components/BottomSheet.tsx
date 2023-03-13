@@ -5,9 +5,10 @@ import { stylesBottomSheet } from '../styles/bottomSheet'
 
 interface Props {
     activeBottomSheet: boolean
+    children: JSX.Element
 }
 
-export const BottomSheet = ({ activeBottomSheet = false }: Props) => {
+export const BottomSheet = ({ activeBottomSheet = false, children }: Props) => {
     const slideBottomSheet = useRef(new Animated.Value(350)).current
 
     const slide = () => {
@@ -36,7 +37,7 @@ export const BottomSheet = ({ activeBottomSheet = false }: Props) => {
                 }]
             }
         ]}>
-
+            { children }
         </Animated.View>
     )
 }

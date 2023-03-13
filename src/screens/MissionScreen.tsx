@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { SafeAreaView, ScrollView, Text, View, TouchableOpacity, Image } from 'react-native'
+import React, { useRef, useState } from 'react'
+import { SafeAreaView, ScrollView, Text, View, TouchableOpacity, Image, TextInput } from 'react-native'
 import { StackScreenProps } from '@react-navigation/stack'
 
 import { Header } from '../components/Header'
@@ -7,15 +7,29 @@ import { RootStackParams } from '../navigator/Navigator'
 
 import { stylesMission } from '../styles/mission'
 import { BottomSheet } from '../components/BottomSheet'
+import { stylesBottomSheet } from '../styles/bottomSheet'
+import { QualifyMission } from '../components/QualifyMission'
 
 interface Props extends StackScreenProps<RootStackParams, 'MissionScreen'>{}
 
-export const MissionScreen = () => {
+export const MissionScreen = ({ navigation }: Props) => {
 
     const [activeBottomSheet, setActiveBottomSheet] = useState(false)
+    const [qualify, setQualify] = useState(false)
+    const [textOne, setTextOne] = useState('')
+    const [textTwo, setTextTwo] = useState('')
+    const [textThree, setTextThree] = useState('')
+    const [textFour, setTextFour] = useState('')
+    const secondNumberRef: any = useRef()
+    const thirdNumberRef: any = useRef()
+    const fourthNumberRef: any = useRef()
 
     const slide = () => {
         setActiveBottomSheet(!activeBottomSheet)
+    }
+
+    const finishMission = () => {
+        
     }
 
     return (
@@ -96,9 +110,99 @@ export const MissionScreen = () => {
                         </TouchableOpacity>
                     </View>
                 </ScrollView>
-                <BottomSheet
-                    activeBottomSheet={ activeBottomSheet }
-                />
+                <BottomSheet activeBottomSheet={ activeBottomSheet }>
+                    <>
+                        <View style={ stylesBottomSheet.header }>
+                            <Text style={ stylesBottomSheet.headerTitle }>COMPLETAR MISIÓN</Text>
+                            <Image
+                                source={ require('../assets/ic-sm-error.png') }
+                                style={{ width: 24, height: 24 }}
+                            />
+                        </View>
+                        <View style={ stylesBottomSheet.body }>
+                            {
+                                qualify ? (
+                                    <>
+                                        <Text style={ stylesBottomSheet.question }>
+                                            Completa esta misión ingresando el código de verificación que te dió
+                                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> Alma WhatsApp</Text>.
+                                        </Text>
+                                        <View style={ stylesBottomSheet.response }>
+                                            <View style={ stylesBottomSheet.boxNumberContainer }>
+                                                <View style={ stylesBottomSheet.boxNumber }>
+                                                    <TextInput
+                                                        keyboardType='number-pad'
+                                                        selectionColor='black'
+                                                        returnKeyType='next'
+                                                        maxLength={ 1 }
+                                                        onChange={ () => secondNumberRef.current.focus() }
+                                                        onChangeText={ (value) => setTextOne(value) }
+                                                        blurOnSubmit={ false }
+                                                        style={ stylesBottomSheet.textBoxNumber }
+                                                    />
+                                                </View>
+                                                <View style={ stylesBottomSheet.boxNumber }>
+                                                    <TextInput
+                                                        keyboardType='number-pad'
+                                                        returnKeyType='next'
+                                                        selectionColor='black'
+                                                        maxLength={ 1 }
+                                                        ref={ secondNumberRef }
+                                                        onChange={ () => thirdNumberRef.current.focus() }
+                                                        onChangeText={ (value) => setTextTwo(value) }
+                                                        blurOnSubmit={ false }
+                                                        style={ stylesBottomSheet.textBoxNumber }
+                                                    />
+                                                </View>
+                                                <View style={ stylesBottomSheet.boxNumber }>
+                                                    <TextInput
+                                                        keyboardType='number-pad'
+                                                        returnKeyType='next'
+                                                        selectionColor='black'
+                                                        maxLength={ 1 }
+                                                        ref={ thirdNumberRef }
+                                                        onChange={ () => fourthNumberRef.current.focus() }
+                                                        onChangeText={ (value) => setTextThree(value) }
+                                                        blurOnSubmit={ false }
+                                                        style={ stylesBottomSheet.textBoxNumber }
+                                                    />
+                                                </View>
+                                                <View style={ stylesBottomSheet.boxNumber }>
+                                                    <TextInput
+                                                        keyboardType='number-pad'
+                                                        returnKeyType='next'
+                                                        selectionColor='black'
+                                                        maxLength={ 1 }
+                                                        ref={ fourthNumberRef }
+                                                        onChangeText={ (value) => setTextFour(value) }
+                                                        blurOnSubmit={ false }
+                                                        style={ stylesBottomSheet.textBoxNumber }
+                                                    />
+                                                </View>
+                                            </View>
+                                        </View>
+                                        <TouchableOpacity
+                                            activeOpacity={ 1 }
+                                            style={[
+                                                stylesBottomSheet.button,
+                                                textOne === '' || textTwo === '' || textThree === '' || textFour === '' ? stylesBottomSheet.buttonDisabled : null
+                                            ]}
+                                            disabled={ textOne === '' || textTwo === '' || textThree === '' || textFour === '' }
+                                            onPress={ finishMission }
+                                        >
+                                            <Text style={[
+                                                stylesBottomSheet.buttonText,
+                                                textOne === '' || textTwo === '' || textThree === '' || textFour === '' ? stylesBottomSheet.buttonTextDisabled : null
+                                            ]}>Finalizar misión</Text>
+                                        </TouchableOpacity>
+                                    </>
+                                ) : (
+                                    <QualifyMission />
+                                )
+                            }
+                        </View>
+                    </>
+                </BottomSheet>
                 {
                     activeBottomSheet && (
                         <View style={ stylesMission.missionContainerLocked }></View>

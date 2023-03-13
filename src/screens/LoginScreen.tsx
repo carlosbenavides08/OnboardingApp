@@ -108,7 +108,7 @@ export const LoginScreen = ({ navigation }: Props) => {
                             onPress={ changeColorCheckbox }
                         />
                         <TouchableOpacity
-                            activeOpacity={ 0.9 }
+                            activeOpacity={ 1 }
                             style={[
                                 stylesLogin.buttonLogin,
                                 buttonDisabled ? stylesLogin.buttonDisabled : null

@@ -35,12 +35,13 @@ export const MissionsListScreen = ({ navigation }: Props) => {
                         <Text style={ stylesMissionsList.disclaimerText }>Al terminar la primera misión desbloquearás las siguientes de este nivel.</Text>
                     </View>
                     <View style={ stylesMissionsList.missionList }>
-                        <View style={ stylesMissionsList.missionCard }>
+                        <TouchableOpacity
+                            style={ stylesMissionsList.missionCard }
+                            activeOpacity={ 1 }
+                            onPress={ () => navigation.navigate('MissionScreen') }
+                        >
                             <View style={ stylesMissionsList.missionCircleEnable }></View>
-                            <TouchableOpacity
-                                activeOpacity={ 1 }
-                                onPress={ () => navigation.navigate('MissionScreen') }
-                            >
+                            <View>
                                 <View style={[
                                     stylesMissionsList.missionTag,
                                     stylesMissionsList.missionTagPending
@@ -50,8 +51,8 @@ export const MissionsListScreen = ({ navigation }: Props) => {
                                 </View>
                                 <Text style={ stylesMissionsList.missionTitle }>CONÉCTATE CON LA UNIVERSIDAD</Text>
                                 <Text style={ stylesMissionsList.missionNumberText }>Misión 1</Text>
-                            </TouchableOpacity>
-                        </View>
+                            </View>
+                        </TouchableOpacity>
                         <View style={[
                             stylesMissionsList.missionCard,
                             stylesMissionsList.missionCardLocked
