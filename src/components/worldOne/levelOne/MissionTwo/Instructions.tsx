@@ -16,7 +16,7 @@ export const InstructionsLevel1Mission2 = ({ slide }: Props) => {
                 stylesInstructions.missionTagPending
             ]}>
                 <View style={ stylesInstructions.missionCirclePending }></View>
-                <Text style={ stylesInstructions.missionTagText }>EN PROGRESO</Text>
+                <Text style={ stylesInstructions.missionTagTextPending }>EN PROGRESO</Text>
             </View>
             <Text style={ stylesInstructions.missionTitle }>¿CÓMO COMPLETO LA MISIÓN?</Text>
             <View style={ stylesInstructions.missionDescriptionWrapper }>
@@ -123,8 +123,8 @@ const stylesInstructions = StyleSheet.create({
         height: 6,
         borderRadius: 10,
     },
-    missionTagText: {
-        color: '#00405B',
+    missionTagTextPending: {
+        color: '#6D2F00',
         fontFamily: 'WhitneyHTF-Bold',
         fontSize: 10,
         lineHeight: 16,

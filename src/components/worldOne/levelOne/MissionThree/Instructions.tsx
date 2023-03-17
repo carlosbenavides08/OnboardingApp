@@ -18,7 +18,7 @@ export const InstructionsLevel1Mission3 = ({ slide }: Props) => {
                 stylesInstructions.missionTagPending
             ]}>
                 <View style={ stylesInstructions.missionCirclePending }></View>
-                <Text style={ stylesInstructions.missionTagText }>EN PROGRESO</Text>
+                <Text style={ stylesInstructions.missionTagTextPending }>EN PROGRESO</Text>
             </View>
             <Text style={ stylesInstructions.missionTitle }>¿CÓMO COMPLETO LA MISIÓN?</Text>
             <View style={ stylesInstructions.missionDescriptionWrapper }>
@@ -60,7 +60,7 @@ export const InstructionsLevel1Mission3 = ({ slide }: Props) => {
                 activeOpacity={ 1 }
                 style={ stylesInstructions.buttonCode }
                 onPress={ () => {
-                    // Linking.openURL('https://pregrado.upc.edu.pe/landings/guiacachimbos/fechas.html')
+                    Linking.openURL('https://pregrado.upc.edu.pe/landings/guiacachimbos/fechas.html')
                     setViewDates(true)
                 }}
             >
@@ -70,7 +70,7 @@ export const InstructionsLevel1Mission3 = ({ slide }: Props) => {
                 <TouchableOpacity
                     activeOpacity={ 1 }
                     onPress={ () => {
-                        // Linking.openURL('https://www.upc.edu.pe/servicios/contacto-para-alumnos-upc/calendario/documentos/calendario-academico-ac-2023-v-2.pdf')
+                        Linking.openURL('https://www.upc.edu.pe/servicios/contacto-para-alumnos-upc/calendario/documentos/calendario-academico-ac-2023-v-2.pdf')
                         setViewCalendar(true)
                     }}
                 >
@@ -132,8 +132,8 @@ const stylesInstructions = StyleSheet.create({
         height: 6,
         borderRadius: 10,
     },
-    missionTagText: {
-        color: '#00405B',
+    missionTagTextPending: {
+        color: '#6D2F00',
         fontFamily: 'WhitneyHTF-Bold',
         fontSize: 10,
         lineHeight: 16,

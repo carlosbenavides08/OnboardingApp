@@ -11,6 +11,8 @@ import {
     Platform,
 } from 'react-native'
 
+import SplashScreen from 'react-native-splash-screen'
+
 import BouncyCheckbox from 'react-native-bouncy-checkbox'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -33,6 +35,10 @@ export const LoginScreen = ({ navigation }: Props) => {
 
     useEffect(() => {
         checkStudentCode()
+    }, [])
+
+    useEffect(() => {
+        SplashScreen.hide()
     }, [])
 
     const checkStudentCode = async() => {
@@ -80,7 +86,7 @@ export const LoginScreen = ({ navigation }: Props) => {
             await AsyncStorage.setItem('studentCode', studentCode)
         }
 
-        // navigation.replace('TabsHome')
+        navigation.replace('TabsHome')
     }
 
     return (
