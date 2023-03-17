@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 
 import { RootStackParams } from '../navigator/Navigator'
 import { StackNavigationProp } from '@react-navigation/stack'
+import { LevelContext } from '../context/LevelContext'
 
-import { stylesLevel } from '../styles/level'
+import { stylesLevel } from '../styles'
 
 type Position = 'absolute'
 
@@ -15,16 +16,27 @@ interface Props {
         left?: number
         right?: number
     }
+    number: number
     levelTitle: string
     levelDescription: string
     completedMissions?: string | null
-    totalMissions?: string | null
+    totalMissions?: number
     enable?: boolean
     subsequent?: boolean
     navigation?: StackNavigationProp<RootStackParams, 'LevelsScreen'> | undefined
 }
 
-export const Level = ({ levelStyle, levelTitle, levelDescription, completedMissions, totalMissions, enable = true, subsequent = false, navigation }: Props) => {
+export const Level = ({ levelStyle, number, levelTitle, levelDescription, completedMissions, totalMissions = 1, enable = true, subsequent = false, navigation }: Props) => {
+
+    const { saveLevel } = useContext(LevelContext)
+
+    const handleLevel = (level: number, totalMissions: number) => {
+        if (navigation) {
+            navigation.navigate('MissionsListScreen')
+        }
+        saveLevel(level, totalMissions)
+    }
+
     return (
         <TouchableOpacity
             activeOpacity={ 1 }
@@ -32,7 +44,7 @@ export const Level = ({ levelStyle, levelTitle, levelDescription, completedMissi
                 stylesLevel.levelContent,
                 levelStyle
             ]}
-            onPress={ navigation ? () => navigation.navigate('MissionsListScreen') : undefined }
+            onPress={ () => handleLevel(number, totalMissions) }
         >
             {
                 enable

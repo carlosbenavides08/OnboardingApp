@@ -1,7 +1,8 @@
 import React from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { stylesHeader } from '../styles/header'
+
+import { stylesHeader } from '../styles'
 
 interface Props {
     title: string

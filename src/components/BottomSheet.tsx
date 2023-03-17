@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { Animated } from 'react-native'
 
-import { stylesBottomSheet } from '../styles/bottomSheet'
+import { stylesBottomSheet } from '../styles'
 
 interface Props {
     activeBottomSheet: boolean
@@ -16,7 +16,18 @@ export const BottomSheet = ({ activeBottomSheet = false, children }: Props) => {
             slideBottomSheet,
             {
                 toValue: 0,
-                duration: 700,
+                duration: 200,
+                useNativeDriver: true
+            }
+        ).start()
+    }
+
+    const hide = () => {
+        Animated.timing(
+            slideBottomSheet,
+            {
+                toValue: 350,
+                duration: 200,
                 useNativeDriver: true
             }
         ).start()
@@ -25,6 +36,8 @@ export const BottomSheet = ({ activeBottomSheet = false, children }: Props) => {
     useEffect(() => {
         if (activeBottomSheet) {
             slide()
+        } else {
+            hide()
         }
     }, [activeBottomSheet])
 

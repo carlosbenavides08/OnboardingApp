@@ -10,16 +10,12 @@ const stylesQualifyMission = StyleSheet.create({
     container: {
         alignSelf: 'center',
         maxWidth: 320,
-        // borderWidth: 1,
-        // borderColor: 'green',
     },
     starsContainer: {
         flexDirection: 'row',
         justifyContent: 'center',
         gap: 4,
         marginTop: 24,
-        // borderWidth: 1,
-        // borderColor: 'red',
     },
     legendContainer: {
         flexDirection: 'row',
@@ -28,15 +24,36 @@ const stylesQualifyMission = StyleSheet.create({
     },
     legendStartText: {
         color: '#42526A',
+        fontFamily: 'WhitneyHTF-Medium',
         width: 80,
         textAlign: 'center',
         marginLeft: -8,
     },
     legendEndText: {
         color: '#42526A',
+        fontFamily: 'WhitneyHTF-Medium',
         width: 80,
         textAlign: 'center',
         marginRight: -14,
+    },
+    button: {
+        backgroundColor: '#E50A17',
+        paddingVertical: 18,
+        textAlign: 'center',
+        alignItems: 'center',
+        borderRadius: 14,
+        marginTop: 36,
+    },
+    buttonDisabled: {
+        backgroundColor: '#E6EDF3',
+    },
+    buttonText: {
+        color: 'white',
+        fontFamily: 'WhitneyHTF-Bold',
+        fontSize: 16,
+    },
+    buttonTextDisabled: {
+        color: '#A3B4CC',
     },
 })
 

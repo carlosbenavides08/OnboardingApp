@@ -1,12 +1,12 @@
 import React from 'react'
-import { Image, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import { Image, SafeAreaView, ScrollView, Text, View } from 'react-native'
 import { StackScreenProps } from '@react-navigation/stack'
 import { RootStackParams } from '../navigator/Navigator'
 
 import { Level } from '../components/Level'
+import { Header } from '../components/Header'
 
 import { stylesLevels } from '../styles'
-import { Header } from '../components/Header'
 
 interface Props extends StackScreenProps<RootStackParams, 'LevelsScreen'>{}
 
@@ -14,7 +14,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
     return (
         <SafeAreaView style={ stylesLevels.levelsContainer }>
             <ScrollView>
-                <Header title='MUNDO PREPÁRATE'/>
+                <Header title='MUNDO PREPÁRATE' />
                 <View style={ stylesLevels.hero }>
                     <Image
                         source={ require('../assets/hero-world.png') }
@@ -25,14 +25,14 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             source={ require('../assets/star.png') }
                             style={ stylesLevels.imageStar }
                         />
-                        <Text style={ stylesLevels.starsCount }>0<Text style={ stylesLevels.starsTotal }>/11 Medallas</Text></Text>
+                        <Text style={ stylesLevels.starsCount }>0<Text style={ stylesLevels.starsTotal }>/10 Medallas</Text></Text>
                     </View>
                 </View>
                 <View style={ stylesLevels.bodyContainer }>
                     <View style={ stylesLevels.roadMap }>
                         <Image
                             source={ require('../assets/roadmap.png') }
-                            style={{ width: 230, height: 1576 }}
+                            style={{ width: 230, height: 1415 }}
                         />
                         <Image
                             source={ require('../assets/rocket.png') }
@@ -82,29 +82,33 @@ export const LevelsScreen = ({ navigation }: Props) => {
 
                         <Level
                             levelStyle={ stylesLevels.level1 }
+                            number={ 1 }
                             levelTitle='Nivel 1'
                             levelDescription='INICIA TU PRIMER CICLO'
                             completedMissions='0'
-                            totalMissions='3'
+                            totalMissions={ 3 }
                             navigation={ navigation }
                         />
                         <Level
                             levelStyle={ stylesLevels.level2 }
+                            number={ 2 }
                             levelTitle='Nivel 2'
-                            levelDescription='RESUELVE DUDAS DE TUS CLASES Y DE LA UNIVERSIDAD'
+                            levelDescription='CONOCE INFORMACIÓN CLAVE PARA TUS CLASES Y LA UNIVERSIDAD'
                             completedMissions='0'
-                            totalMissions='3'
+                            totalMissions={ 3 }
                             enable={ false }
                         />
                         <Level
                             levelStyle={ stylesLevels.level3 }
+                            number={ 3 }
                             levelTitle='Nivel 3'
-                            levelDescription='ENTRÉGATE A LA CULTURA UPC PARTE 1'
+                            levelDescription='INTÉGRATE A LAS ACTIVIDADES CULTURALES'
                             enable={ false }
                             subsequent
                         />
                         <Level
                             levelStyle={ stylesLevels.level4 }
+                            number={ 4 }
                             levelTitle='Nivel 4'
                             levelDescription='RECIBE APOYO PERSONAL Y ACADÉMICO'
                             enable={ false }
@@ -112,6 +116,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                         />
                         <Level
                             levelStyle={ stylesLevels.level5 }
+                            number={ 5 }
                             levelTitle='Nivel 5'
                             levelDescription='APRENDE CÓMO RESERVAR ESPACIOS EN UPC'
                             enable={ false }
@@ -119,43 +124,41 @@ export const LevelsScreen = ({ navigation }: Props) => {
                         />
                         <Level
                             levelStyle={ stylesLevels.level6 }
+                            number={ 6 }
                             levelTitle='Nivel 6'
-                            levelDescription='CONOCE MÁS TRÁMITES UNIVERSITARIOS'
-                            enable={ false }
-                            subsequent
-                        />
-                        <Level
-                            levelStyle={ stylesLevels.level7 }
-                            levelTitle='Nivel 7'
                             levelDescription='REALIZA TUS EXÁMENES PARCIALES'
                             enable={ false }
                             subsequent
                         />
                         <Level
-                            levelStyle={ stylesLevels.level8 }
-                            levelTitle='Nivel 8'
-                            levelDescription='ENTRÉGATE A LA CULTURA UPC PARTE 2'
+                            levelStyle={ stylesLevels.level7 }
+                            number={ 7 }
+                            levelTitle='Nivel 7'
+                            levelDescription='INTÉGRATE CON LAS ACTIVIDADES DE UPC'
                             enable={ false }
                             subsequent
                         />
                         <Level
-                            levelStyle={ stylesLevels.level9 }
-                            levelTitle='Nivel 9'
+                            levelStyle={ stylesLevels.level8 }
+                            number={ 8 }
+                            levelTitle='Nivel 8'
                             levelDescription='REFUERZA Y POTENCIA TUS CONOCIMIENTOS'
                             enable={ false }
                             subsequent
                         />
                         <Level
-                            levelStyle={ stylesLevels.level10 }
-                            levelTitle='Nivel 10'
+                            levelStyle={ stylesLevels.level9 }
+                            number={ 9 }
+                            levelTitle='Nivel 9'
                             levelDescription='PREPÁRATE PARA CULMINAR TU 1° CICLO'
                             enable={ false }
                             subsequent
                         />
                         <Level
-                            levelStyle={ stylesLevels.level11 }
-                            levelTitle='Nivel 11'
-                            levelDescription='REALIZA TUS EXÁMENES FINALES'
+                            levelStyle={ stylesLevels.level10 }
+                            number={ 10 }
+                            levelTitle='Nivel 10'
+                            levelDescription='REALIZA TUS EVALUACIONES FINALES'
                             enable={ false }
                             subsequent
                         />

@@ -1,12 +1,23 @@
 import 'react-native-gesture-handler'
 import React from 'react'
-import { NavigationContainer } from '@react-navigation/native';
-import { Navigator } from './src/navigator/Navigator';
+import { NavigationContainer } from '@react-navigation/native'
+import { Navigator } from './src/navigator/Navigator'
+import { LevelProvider } from './src/context/LevelContext'
+
+const AppState = ({ children }: any) => {
+  return (
+    <LevelProvider>
+      { children }
+    </LevelProvider>
+  )
+}
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Navigator />
+      <AppState>
+        <Navigator />
+      </AppState>
     </NavigationContainer>
   )
 }

@@ -4,7 +4,7 @@ import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { RootStackParams } from '../navigator/Navigator'
 
-import { stylesWorld } from '../styles/world'
+import { stylesWorld } from '../styles'
 
 type ImageName = 
     | 'world-begins'
