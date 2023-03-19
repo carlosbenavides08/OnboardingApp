@@ -194,6 +194,7 @@ const stylesInstructions = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 32,
+        marginBottom: 30,
     },
     buttonCompleteMissionDisabled: {
         backgroundColor: '#E6EDF3',

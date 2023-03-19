@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 const stylesBottomSheet = StyleSheet.create({
     contaner: {
         width: '100%',
-        height: 330,
+        // height: 330,
         backgroundColor: 'white',
         position: 'absolute',
         bottom: 0,

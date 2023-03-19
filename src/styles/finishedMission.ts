@@ -43,6 +43,7 @@ const stylesFinishedMission = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 14,
         marginTop: 34,
+        marginBottom: 20,
     },
     buttonText: {
         color: 'white',

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Image, SafeAreaView, ScrollView, Text, View } from 'react-native'
 import { StackScreenProps } from '@react-navigation/stack'
 import { RootStackParams } from '../navigator/Navigator'
@@ -8,13 +8,44 @@ import { Header } from '../components/Header'
 
 import { stylesLevels } from '../styles'
 
+import { useAppDispatch, useAppSelector } from '../redux/hooks'
+import { setLevels } from '../redux/slices/user'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { User } from '../interfaces/User'
+import mundoApi from '../api/mundoApi'
+
 interface Props extends StackScreenProps<RootStackParams, 'LevelsScreen'>{}
 
 export const LevelsScreen = ({ navigation }: Props) => {
+    const dispatch = useAppDispatch()
+    const { levels } = useAppSelector((state) => state.userReducer)
+    
+    console.log(levels.find(level => level.numberLevel! === 2)?.completedMissions!)
+    console.log(levels.find(level => level.numberLevel! === 2)?.totalMissions!)
+
+    useEffect(() => {
+        loadLevels()
+    }, [])
+
+    const loadLevels = async() => {
+        try {
+            const user = await AsyncStorage.getItem('studentCode')
+            const { data } = await mundoApi.post<User>('/auth/login', { studentCode: user })
+            const levels = data.data.map(level => level.data)
+            // console.log(levels)
+            dispatch(setLevels(levels))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <SafeAreaView style={ stylesLevels.levelsContainer }>
             <ScrollView>
-                <Header title='MUNDO PREPÁRATE' />
+                <Header
+                    title='MUNDO PREPÁRATE'
+                    navigation={ navigation }
+                />
                 <View style={ stylesLevels.hero }>
                     <Image
                         source={ require('../assets/hero-world.png') }
@@ -25,7 +56,18 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             source={ require('../assets/star.png') }
                             style={ stylesLevels.imageStar }
                         />
-                        <Text style={ stylesLevels.starsCount }>0<Text style={ stylesLevels.starsTotal }>/10 Medallas</Text></Text>
+                        <Text style={ stylesLevels.starsCount }>
+                            {
+                                levels.map(level => {
+                                    let count: number = 0
+                                    if (level.status === 'COMPLETED') {
+                                        count++
+                                        return count
+                                    }
+                                })
+                            }
+                            <Text style={ stylesLevels.starsTotal }>/10 Medallas</Text>
+                        </Text>
                     </View>
                 </View>
                 <View style={ stylesLevels.bodyContainer }>
@@ -85,8 +127,8 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             number={ 1 }
                             levelTitle='Nivel 1'
                             levelDescription='INICIA TU PRIMER CICLO'
-                            completedMissions='0'
-                            totalMissions={ 3 }
+                            completedMissions={ levels.find(level => level.numberLevel! === 1)?.completedMissions!.toString() }
+                            totalMissions={ levels.find(level => level.numberLevel! === 1)?.totalMissions }
                             navigation={ navigation }
                         />
                         <Level
@@ -94,17 +136,18 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             number={ 2 }
                             levelTitle='Nivel 2'
                             levelDescription='CONOCE INFORMACIÓN CLAVE PARA TUS CLASES Y LA UNIVERSIDAD'
-                            completedMissions='0'
-                            totalMissions={ 3 }
-                            enable={ false }
+                            completedMissions={ levels.find(level => level.numberLevel! === 2)?.completedMissions!.toString() }
+                            totalMissions={ levels.find(level => level.numberLevel! === 2)?.totalMissions }
+                            enable={ levels.find(level => level.numberLevel! === 1)?.completedMissions! === levels.find(level => level.numberLevel! === 1)?.totalMissions! }
+                            navigation={ navigation }
                         />
                         <Level
                             levelStyle={ stylesLevels.level3 }
                             number={ 3 }
                             levelTitle='Nivel 3'
                             levelDescription='INTÉGRATE A LAS ACTIVIDADES CULTURALES'
-                            enable={ false }
-                            subsequent
+                            enable={ levels.find(level => level.numberLevel! === 2)?.completedMissions! === levels.find(level => level.numberLevel! === 2)?.totalMissions! }
+                            subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
                             levelStyle={ stylesLevels.level4 }
@@ -112,7 +155,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelTitle='Nivel 4'
                             levelDescription='RECIBE APOYO PERSONAL Y ACADÉMICO'
                             enable={ false }
-                            subsequent
+                            subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
                             levelStyle={ stylesLevels.level5 }
@@ -120,7 +163,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelTitle='Nivel 5'
                             levelDescription='APRENDE CÓMO RESERVAR ESPACIOS EN UPC'
                             enable={ false }
-                            subsequent
+                            subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
                             levelStyle={ stylesLevels.level6 }
@@ -128,7 +171,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelTitle='Nivel 6'
                             levelDescription='REALIZA TUS EXÁMENES PARCIALES'
                             enable={ false }
-                            subsequent
+                            subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
                             levelStyle={ stylesLevels.level7 }
@@ -136,7 +179,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelTitle='Nivel 7'
                             levelDescription='INTÉGRATE CON LAS ACTIVIDADES DE UPC'
                             enable={ false }
-                            subsequent
+                            subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
                             levelStyle={ stylesLevels.level8 }
@@ -144,7 +187,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelTitle='Nivel 8'
                             levelDescription='REFUERZA Y POTENCIA TUS CONOCIMIENTOS'
                             enable={ false }
-                            subsequent
+                            subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
                             levelStyle={ stylesLevels.level9 }
@@ -152,7 +195,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelTitle='Nivel 9'
                             levelDescription='PREPÁRATE PARA CULMINAR TU 1° CICLO'
                             enable={ false }
-                            subsequent
+                            subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
                             levelStyle={ stylesLevels.level10 }
@@ -160,7 +203,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelTitle='Nivel 10'
                             levelDescription='REALIZA TUS EVALUACIONES FINALES'
                             enable={ false }
-                            subsequent
+                            subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                     </View>
                     <View style={ stylesLevels.goalWrapper }>

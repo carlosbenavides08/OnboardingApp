@@ -15,9 +15,10 @@ import { User } from '../../../interfaces/User'
 interface Props {
     navigation: StackNavigationProp<RootStackParams, "MissionsListScreen", undefined>
     levelTitle: string
+    missionTitle?: string
 }
 
-export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
+export const MissionsListLevel2 = ({ navigation, levelTitle }: Props) => {
     const dispatch = useAppDispatch()
     const authentication = useAppSelector((state) => state.userReducer)
 
@@ -53,9 +54,9 @@ export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
         }
     }
 
-    const handleMission = (mission: number, description: string) => {
+    const handleMission = (mission: number, missionTitle: string, nextMissionTitle: string | null, nextMissionTitleBoolean: boolean, description: string) => {
         if (navigation) {
-            navigation.replace('MissionScreen', { levelTitle, description })
+            navigation.replace('MissionScreen', { levelTitle, missionTitle, nextMissionTitle, nextMissionTitleBoolean, description })
         }
         saveMission(mission)
     }
@@ -65,7 +66,7 @@ export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
             <TouchableOpacity
                 style={ stylesMissionsList.missionCard }
                 activeOpacity={ 1 }
-                onPress={ () => handleMission(1, 'Conoce los canales digitales primordiales para comenzar tus clases sin inconvenientes.') }
+                onPress={ () => handleMission(1, 'CONOCE TU LÍMITE DE INASISTENCIAS EN EL CICLO', 'APRENDE A VER Y CALCULAR TUS NOTAS', false, 'Hazle seguimiento a tus inasistencias y evita exceder el límite.') }
             >
                 {
                     authentication.missions.find(mission => mission.data.numberMission === 1)
@@ -97,7 +98,7 @@ export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
                             }
                         </Text>
                     </View>
-                    <Text style={ stylesMissionsList.missionTitle }>CONÉCTATE CON LA UNIVERSIDAD</Text>
+                    <Text style={ stylesMissionsList.missionTitle }>CONOCE TU LÍMITE DE INASISTENCIAS EN EL CICLO</Text>
                     <Text style={ stylesMissionsList.missionNumberText }>Misión 1</Text>
                 </View>
             </TouchableOpacity>
@@ -105,10 +106,10 @@ export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
                 activeOpacity={ 1 }
                 style={[
                     stylesMissionsList.missionCard,
-                    authentication.levels.find(level => level.numberLevel! === 1)?.completedMissions! < 1 ? stylesMissionsList.missionCardLocked : null
+                    authentication.levels.find(level => level.numberLevel! === 2)?.completedMissions! < 1 ? stylesMissionsList.missionCardLocked : null
                 ]}
-                disabled={ authentication.levels.find(level => level.numberLevel! === 1)?.completedMissions! < 1 }
-                onPress={ () => handleMission(2, 'Prepárate para asistir a todas las clases de tu primer ciclo.') }
+                disabled={ authentication.levels.find(level => level.numberLevel! === 2)?.completedMissions! < 1 }
+                onPress={ () => handleMission(2, 'APRENDE A VER Y CALCULAR TUS NOTAS', 'MANTENTE AL DÍA CON TUS PAGOS', false, 'Revisa tus notas y aprende a realizar el cálculo de ellas para obtener tu promedio ideal.') }
             >
                 {
                     authentication.missions.find(mission => mission.data.numberMission === 2)
@@ -118,7 +119,7 @@ export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
                             style={{ width: 24, height: 24 }}
                         />
                     )
-                    : authentication.levels.find(level => level.numberLevel! === 1)?.completedMissions! < 1
+                    : authentication.levels.find(level => level.numberLevel! === 2)?.completedMissions! < 1
                     ? (
                         <Image
                             source={ require('../../../assets/mission-locked.png') }
@@ -133,7 +134,7 @@ export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
                         stylesMissionsList.missionTag,
                         authentication.missions.find(mission => mission.data.numberMission === 2)
                         ? stylesMissionsList.missionTagFinished
-                        : authentication.levels.find(level => level.numberLevel! === 1)?.completedMissions! < 1
+                        : authentication.levels.find(level => level.numberLevel! === 2)?.completedMissions! < 1
                         ? stylesMissionsList.missionTagLocked
                         : stylesMissionsList.missionTagPending
                     ]}>
@@ -141,20 +142,20 @@ export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
                         <Text style={
                             authentication.missions.find(mission => mission.data.numberMission === 2)
                             ? stylesMissionsList.missionTagTextFinished
-                            : authentication.levels.find(level => level.numberLevel! === 1)?.completedMissions! < 1
+                            : authentication.levels.find(level => level.numberLevel! === 2)?.completedMissions! < 1
                             ? stylesMissionsList.missionTagTextLocked
                             : stylesMissionsList.missionTagTextPending
                         }>
                             {
                                 authentication.missions.find(mission => mission.data.numberMission === 2)
                                 ? 'TERMINADO'
-                                : authentication.levels.find(level => level.numberLevel! === 1)?.completedMissions! < 1
+                                : authentication.levels.find(level => level.numberLevel! === 2)?.completedMissions! < 1
                                 ? 'BLOQUEADO'
                                 : 'POR HACER'
                             }
                         </Text>
                     </View>
-                    <Text style={ stylesMissionsList.missionTitle }>ASISTE A TUS CLASES SIN INCONVENIENTES</Text>
+                    <Text style={ stylesMissionsList.missionTitle }>APRENDE A VER Y CALCULAR TUS NOTAS</Text>
                     <Text style={ stylesMissionsList.missionNumberText }>Misión 2</Text>
                 </View>
             </TouchableOpacity>
@@ -162,10 +163,10 @@ export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
                 activeOpacity={ 1 }
                 style={[
                     stylesMissionsList.missionCard,
-                    authentication.levels.find(level => level.numberLevel! === 1)?.completedMissions! < 2 ? stylesMissionsList.missionCardLocked : null
+                    authentication.levels.find(level => level.numberLevel! === 2)?.completedMissions! < 2 ? stylesMissionsList.missionCardLocked : null
                 ]}
-                disabled={ authentication.levels.find(level => level.numberLevel! === 1)?.completedMissions! < 2 }
-                onPress={ () => handleMission(3, 'Conoce las fechas importantes de tu ciclo académico 2023-1.') }
+                disabled={ authentication.levels.find(level => level.numberLevel! === 2)?.completedMissions! < 2 }
+                onPress={ () => handleMission(3, 'MANTENTE AL DÍA CON TUS PAGOS', '', false, 'Que no se te pasen las fechas de tus boletas y llega siempre al día con los pagos del ciclo.') }
             >
                 {
                     authentication.missions.find(mission => mission.data.numberMission === 3)
@@ -175,7 +176,7 @@ export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
                             style={{ width: 24, height: 24 }}
                         />
                     )
-                    : authentication.levels.find(level => level.numberLevel! === 1)?.completedMissions! < 2
+                    : authentication.levels.find(level => level.numberLevel! === 2)?.completedMissions! < 2
                     ? (
                         <Image
                             source={ require('../../../assets/mission-locked.png') }
@@ -190,7 +191,7 @@ export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
                         stylesMissionsList.missionTag,
                         authentication.missions.find(mission => mission.data.numberMission === 3)
                         ? stylesMissionsList.missionTagFinished
-                        : authentication.levels.find(level => level.numberLevel! === 1)?.completedMissions! < 2
+                        : authentication.levels.find(level => level.numberLevel! === 2)?.completedMissions! < 2
                         ? stylesMissionsList.missionTagLocked
                         : stylesMissionsList.missionTagPending
                     ]}>
@@ -199,13 +200,13 @@ export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
                             {
                                 authentication.missions.find(mission => mission.data.numberMission === 3)
                                 ? 'TERMINADO'
-                                : authentication.levels.find(level => level.numberLevel! === 1)?.completedMissions! < 2
+                                : authentication.levels.find(level => level.numberLevel! === 2)?.completedMissions! < 2
                                 ? 'BLOQUEADO'
                                 : 'POR HACER'
                             }
                         </Text>
                     </View>
-                    <Text style={ stylesMissionsList.missionTitle }>ASISTE A TU PRIMER DÍA DE CLASES</Text>
+                    <Text style={ stylesMissionsList.missionTitle }>MANTENTE AL DÍA CON TUS PAGOS</Text>
                     <Text style={ stylesMissionsList.missionNumberText }>Misión 3</Text>
                 </View>
             </TouchableOpacity>

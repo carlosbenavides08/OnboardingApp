@@ -66,7 +66,7 @@ export const InstructionsLevel1Mission2 = ({ slide }: Props) => {
                 activeOpacity={ 1 }
                 style={ stylesInstructions.buttonCode }
                 onPress={ () => {
-                    Linking.openURL('https://micuenta.upc.edu.pe/home/index?_f=1')
+                    Linking.openURL('https://micuenta.upc.edu.pe/home')
                     setCompleteMission(true)
                 }}
             >
@@ -207,6 +207,7 @@ const stylesInstructions = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 32,
+        marginBottom: 30,
     },
     buttonCompleteMissionDisabled: {
         backgroundColor: '#E6EDF3',

@@ -1,5 +1,10 @@
-import React, { useState } from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import React, { useContext, useEffect, useState } from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
+import mundoApi from '../api/mundoApi'
+import { LevelContext } from '../context/LevelContext'
+import { useAppDispatch } from '../redux/hooks'
+import { finish } from '../redux/slices/mission'
 
 import { stylesQualifyMission } from '../styles'
 
@@ -10,13 +15,30 @@ interface Props {
 
 export const QualifyMission = ({ setMissionCompleted, setQualify }: Props) => {
 
+    const dispatch = useAppDispatch()
     const [stars, setStars] = useState(0)
+    const { level, mission } = useContext(LevelContext)
 
     const handleQualify = (score: number) => {
         setStars(score)
     }
 
-    const handleSend = () => {
+    const handleSend = async() => {
+        try {
+            const studentCode = await AsyncStorage.getItem('user')
+            const sendData = {
+                studentCode: JSON.parse(studentCode!),
+                numberLevel: level,
+                numberMission: mission,
+                response: 'respuesta completa',
+                score: stars,
+            }
+
+            await mundoApi.post('/level/complete-mission', sendData)
+            dispatch(finish(sendData))
+        } catch (error: any) {
+            console.log(error.response)
+        }
         setMissionCompleted(true)
         setQualify(false)
     }

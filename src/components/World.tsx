@@ -50,7 +50,7 @@ export const World = ({ title, description, image, wonMedals, totalMedals, enabl
     return (
         <TouchableOpacity
             style={ stylesWorld.worldCard }
-            onPress={ navigation ? () => navigation.navigate('LevelsScreen') : undefined }
+            onPress={ navigation ? () => navigation.replace('LevelsScreen') : undefined }
             activeOpacity={ 1 }
         >
             <View style={ stylesWorld.imageBackground }>
@@ -62,15 +62,37 @@ export const World = ({ title, description, image, wonMedals, totalMedals, enabl
             <View style={{ flex: 1 }}>
                 <Text style={ stylesWorld.worldTitle }>{ title }</Text>
                 <Text style={ stylesWorld.worldDescription }>{ description }</Text>
-                <View style={ stylesWorld.starsWrapper }>
-                    <Image
-                        source={ require('../assets/star.png') }
-                        style={ stylesWorld.imageStar }
-                    />
-                    <Text style={ stylesWorld.starsCount }>
-                        { wonMedals }
-                        <Text style={ stylesWorld.starsTotal }>/{ totalMedals } Medallas</Text>
-                    </Text>
+                <View
+                    style={[
+                        stylesWorld.starsWrapper,
+                        !enable ? stylesWorld.starsWrapperDisabled : null
+                    ]}
+                >
+                    {
+                        enable
+                        ? (
+                            <Image
+                                source={ require('../assets/star.png') }
+                                style={ stylesWorld.imageStar }
+                            />
+                        ) : (
+                            <Image
+                                source={ require('../assets/level-lock.png') }
+                                style={ stylesWorld.imageStar }
+                            />
+                        )
+                    }
+                    {
+                        enable
+                        ? (
+                            <Text style={ stylesWorld.starsCount }>
+                                { wonMedals }
+                                <Text style={ stylesWorld.starsTotal }>/{ totalMedals } Medallas</Text>
+                            </Text>
+                        ) : (
+                            <Text style={ stylesWorld.levelsText }>Niveles</Text>
+                        )
+                    }
                 </View>
             </View>
         </TouchableOpacity>

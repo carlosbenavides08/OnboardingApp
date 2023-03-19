@@ -102,6 +102,10 @@ const stylesMissionsList = StyleSheet.create({
         backgroundColor: '#BBEBFF',
         width: 82,
     },
+    missionTagFinished: {
+        backgroundColor: '#B6FFB4',
+        width: 88,
+    },
     missionTagLocked: {
         backgroundColor: '#CCD9EC',
         width: 88,
@@ -121,8 +125,26 @@ const stylesMissionsList = StyleSheet.create({
         height: 6,
         borderRadius: 10,
     },
-    missionTagText: {
+    missionCircleFinished: {
+        backgroundColor: '#00A31A',
+        width: 6,
+        height: 6,
+        borderRadius: 10,
+    },
+    missionTagTextPending: {
         color: '#00405B',
+        fontFamily: 'WhitneyHTF-Bold',
+        fontSize: 10,
+        lineHeight: 16,
+    },
+    missionTagTextLocked: {
+        color: 'black',
+        fontFamily: 'WhitneyHTF-Bold',
+        fontSize: 10,
+        lineHeight: 16,
+    },
+    missionTagTextFinished: {
+        color: '#003208',
         fontFamily: 'WhitneyHTF-Bold',
         fontSize: 10,
         lineHeight: 16,

@@ -3,13 +3,18 @@ import { Image, Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-
 
 interface Props {
     slide: () => void
+    setQualify: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const InstructionsLevel1Mission3 = ({ slide }: Props) => {
+export const InstructionsLevel2Mission3 = ({ slide, setQualify }: Props) => {
 
-    // const [completeMission, setCompleteMission] = useState(false)
-    const [viewDates, setViewDates] = useState(false)
-    const [viewCalendar, setViewCalendar] = useState(false)
+    const [viewUpc, setViewUpc] = useState(false)
+    const [viewVideo, setViewVideo] = useState(false)
+
+    const handleCompleteMission = () => {
+        slide()
+        setQualify(true)
+    }
 
     return (
         <>
@@ -23,58 +28,53 @@ export const InstructionsLevel1Mission3 = ({ slide }: Props) => {
             <Text style={ stylesInstructions.missionTitle }>¿CÓMO COMPLETO LA MISIÓN?</Text>
             <View style={ stylesInstructions.missionDescriptionWrapper }>
                 <Text style={ stylesInstructions.missionBeginDescription }>
-                    Para terminar esta misión deberás realizar los siguientes pasos:
+                    Para terminar esta misión deberás realizar lo siguiente:
                 </Text>
                 <View style={ stylesInstructions.missionDescription }>
                     <View style={ stylesInstructions.missionPointsWrapper }>
                         <Text style={ stylesInstructions.missionPoints }>1.</Text>
                         <Text style={ stylesInstructions.missionPoints }>
-                            Explora la sección
-                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> Fechas importantes </Text>
-                            de tu Guía de Cachimbos
+                            Ingresa a
+                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> Mi UPC</Text>
                         </Text>
                     </View>
                     <View style={ stylesInstructions.missionPointsWrapper }>
                         <Text style={ stylesInstructions.missionPoints }>2.</Text>
                         <Text style={ stylesInstructions.missionPoints }>
-                            Revisa el
-                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> Calendario académico 2023-1</Text>
+                            Selecciona el panel
+                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> "Mis pagos" </Text>
+                            para que puedas ver tus boletas pendientes por pagar y fechas de vencimiento
                         </Text>
                     </View>
                     <View style={ stylesInstructions.missionPointsWrapper }>
                         <Text style={ stylesInstructions.missionPoints }>3.</Text>
                         <Text style={ stylesInstructions.missionPoints }>
-                            Responde una pregunta al
-                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> completar la misión</Text>
+                            Haz click en
+                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> "Pagar" </Text>
+                            y conoce la plataforma Finanzas UPC donde podrás realizar los pagos pendientes que tengas
                         </Text>
                     </View>
                 </View>
-                <Text style={ stylesInstructions.missionRemember }>
-                    Esta información es fundamental, porque aquí encontrarás las
-                    <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> semanas de exámenes, fechas de trámites académicos </Text>
-                    y
-                    <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> días de pago.</Text>
-                </Text>
             </View>
             <TouchableOpacity
                 activeOpacity={ 1 }
                 style={ stylesInstructions.buttonCode }
                 onPress={ () => {
-                    Linking.openURL('https://pregrado.upc.edu.pe/landings/guiacachimbos/fechas.html')
-                    setViewDates(true)
+                    Linking.openURL('https://micuenta.upc.edu.pe/home')
+                    setViewUpc(true)
                 }}
             >
-                <Text style={ stylesInstructions.buttonCodeText }>Ir a Fechas importantes</Text>
+                <Text style={ stylesInstructions.buttonCodeText }>Ir a Mi UPC</Text>
             </TouchableOpacity>
-            <View style={ stylesInstructions.viewCalendarContainer }>
+            <View style={ stylesInstructions.viewRulesContainer }>
                 <TouchableOpacity
                     activeOpacity={ 1 }
                     onPress={ () => {
-                        Linking.openURL('https://www.upc.edu.pe/servicios/contacto-para-alumnos-upc/calendario/documentos/calendario-academico-ac-2023-v-2.pdf')
-                        setViewCalendar(true)
+                        Linking.openURL('https://www.youtube.com/watch?v=jHRktAcFAO4&t=2s')
+                        setViewVideo(true)
                     }}
                 >
-                    <Text style={ stylesInstructions.viewCalendarText }>Ver calendario académico completo</Text>
+                    <Text style={ stylesInstructions.viewRulesText }>Ver video informativo</Text>
                 </TouchableOpacity>
                 <Image
                     source={ require('../../../../assets/ic-sm-right.png') }
@@ -100,14 +100,14 @@ export const InstructionsLevel1Mission3 = ({ slide }: Props) => {
                 activeOpacity={ 1 }
                 style={[
                     stylesInstructions.buttonCompleteMission,
-                    (!viewDates || !viewCalendar) ? stylesInstructions.buttonCompleteMissionDisabled : null
+                    (!viewUpc || !viewVideo) ? stylesInstructions.buttonCompleteMissionDisabled : null
                 ]}
-                onPress={ slide }
-                disabled={ !viewDates || !viewCalendar }
+                onPress={ handleCompleteMission }
+                disabled={ (!viewUpc || !viewVideo) }
             >
                 <Text style={[
                     stylesInstructions.buttonCompleteText,
-                    (!viewDates || !viewCalendar) ? stylesInstructions.buttonTextDisabled : null
+                    (!viewUpc || !viewVideo) ? stylesInstructions.buttonTextDisabled : null
                 ]}>Ir a completar misión</Text>
             </TouchableOpacity>
         </>
@@ -189,14 +189,14 @@ const stylesInstructions = StyleSheet.create({
         fontSize: 16,
         lineHeight: 24,
     },
-    viewCalendarContainer: {
+    viewRulesContainer: {
         gap: 4,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 24,
     },
-    viewCalendarText: {
+    viewRulesText: {
         color: '#3817FF',
         fontFamily: 'WhitneyHTF-Bold',
         fontSize: 14,
@@ -228,7 +228,7 @@ const stylesInstructions = StyleSheet.create({
         borderRadius: 14,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 32,
+        marginTop: 48,
         marginBottom: 30,
     },
     buttonCompleteMissionDisabled: {

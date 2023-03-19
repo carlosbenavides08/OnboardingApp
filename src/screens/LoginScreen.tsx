@@ -11,8 +11,6 @@ import {
     Platform,
 } from 'react-native'
 
-import SplashScreen from 'react-native-splash-screen'
-
 import BouncyCheckbox from 'react-native-bouncy-checkbox'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -20,12 +18,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { stylesLogin } from '../styles'
 import mundoApi from '../api/mundoApi'
 import { User } from '../interfaces/User'
+import { RootStackParams } from '../navigator/Navigator'
+import { useAppDispatch } from '../redux/hooks'
+import { auth } from '../redux/slices/user'
 
 const { width, height } = Dimensions.get('window')
 
-interface Props extends StackScreenProps<any, any>{}
+interface Props extends StackScreenProps<RootStackParams, 'LoginScreen'>{}
 
 export const LoginScreen = ({ navigation }: Props) => {
+    const dispatch = useAppDispatch()
+
     const [colorCheckbox, setColorCheckbox] = useState('black')
     const [checked, setChecked] = useState(false)
     const [buttonDisabled, setButtonDisabled] = useState(true)
@@ -37,15 +40,11 @@ export const LoginScreen = ({ navigation }: Props) => {
         checkStudentCode()
     }, [])
 
-    useEffect(() => {
-        SplashScreen.hide()
-    }, [])
-
     const checkStudentCode = async() => {
         const code = await AsyncStorage.getItem('studentCode')
-        setUser(code!)
-
-        if (code !== '') {
+        
+        if (code) {
+            setUser(code)
             setChecked(true)
             changeColorCheckbox()
             setButtonDisabled(false)
@@ -77,13 +76,21 @@ export const LoginScreen = ({ navigation }: Props) => {
 
     const handleLogin = async() => {
         const { data } = await mundoApi.post<User>('/auth/login', { studentCode: user })
-        const resp = JSON.stringify(data)
-        const convert = resp.replace(/\\/g, '')
-        console.log(convert)
-        // await AsyncStorage.setItem('user', convert.id)
+
+        try {
+            const userData = data.data.find(user => user.id === user.levelId)
+            await AsyncStorage.setItem('user', userData?.data.studentCode!)
+            await AsyncStorage.setItem('name', userData?.data.name!)
+            await AsyncStorage.setItem('carreer', userData?.data.career!)
+            dispatch(auth())
+        } catch (error) {
+            console.log(error)
+        }
 
         if (checked) {
             await AsyncStorage.setItem('studentCode', studentCode)
+        } else {
+            await AsyncStorage.removeItem('studentCode')
         }
 
         navigation.replace('TabsHome')

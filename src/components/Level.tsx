@@ -19,22 +19,22 @@ interface Props {
     number: number
     levelTitle: string
     levelDescription: string
-    completedMissions?: string | null
+    completedMissions?: string
     totalMissions?: number
     enable?: boolean
     subsequent?: boolean
     navigation?: StackNavigationProp<RootStackParams, 'LevelsScreen'> | undefined
 }
 
-export const Level = ({ levelStyle, number, levelTitle, levelDescription, completedMissions, totalMissions = 1, enable = true, subsequent = false, navigation }: Props) => {
+export const Level = ({ levelStyle, number, levelTitle, levelDescription, completedMissions = '0', totalMissions = 1, enable = true, subsequent = false, navigation }: Props) => {
 
     const { saveLevel } = useContext(LevelContext)
 
-    const handleLevel = (level: number, totalMissions: number) => {
-        if (navigation) {
-            navigation.navigate('MissionsListScreen')
-        }
+    const handleLevel = (level: number, totalMissions: number, title: string, description: string) => {
         saveLevel(level, totalMissions)
+        if (navigation) {
+            navigation.replace('MissionsListScreen', { title, description })
+        }
     }
 
     return (
@@ -44,10 +44,24 @@ export const Level = ({ levelStyle, number, levelTitle, levelDescription, comple
                 stylesLevel.levelContent,
                 levelStyle
             ]}
-            onPress={ () => handleLevel(number, totalMissions) }
+            onPress={ () => handleLevel(number, totalMissions, levelTitle, levelDescription) }
         >
             {
-                enable
+                Number(completedMissions) === Number(totalMissions)
+                ? (
+                    <Image
+                        source={ require('../assets/finished-level.png') }
+                        style={{ width: 80, height: 80 }}
+                    />
+                )
+                : Number(completedMissions) > 0
+                ? (
+                    <Image
+                        source={ require('../assets/progress-level.png') }
+                        style={{ width: 80, height: 80 }}
+                    />
+                )
+                : enable
                 ? (
                     <Image
                         source={ require('../assets/start-level.png') }

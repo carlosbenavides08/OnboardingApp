@@ -12,25 +12,28 @@ import { MissionTwoLevelOne } from '../components/worldOne/levelOne/MissionTwo/M
 import { MissionThreeLevelOne } from '../components/worldOne/levelOne/MissionThree/MissionThree'
 import { InstructionsLevel1Mission1 } from '../components/worldOne/levelOne/MissionOne/Instructions'
 import { InstructionsLevel1Mission2 } from '../components/worldOne/levelOne/MissionTwo/Instructions'
-import { InstructionsLevel1Mission3 } from '../components/worldOne/levelOne/MissionThree/Instructions';
+import { InstructionsLevel1Mission3 } from '../components/worldOne/levelOne/MissionThree/Instructions'
+import { InstructionsLevel2Mission1 } from '../components/worldOne/levelTwo/MissionOne/Instructions'
 import { BottomSheetCongrats } from '../components/BottomSheetCongrats'
 import { FinishedMission } from '../components/FinishedMission'
 import { LevelContext } from '../context/LevelContext'
 
 import { stylesMission, stylesBottomSheet } from '../styles'
+import { MissionOneLevelTwo } from '../components/worldOne/levelTwo/MissionOne/MissionOne';
+import { InstructionsLevel2Mission2 } from '../components/worldOne/levelTwo/MissionTwo/Instructions';
+import { MissionTwoLevelTwo } from '../components/worldOne/levelTwo/MissionTwo/MissionTwo';
+import { InstructionsLevel2Mission3 } from '../components/worldOne/levelTwo/MissionThree/Instructions';
 
 interface Props extends StackScreenProps<RootStackParams, 'MissionScreen'>{}
 
-export const MissionScreen = ({ navigation }: Props) => {
+export const MissionScreen = ({ navigation, route }: Props) => {
 
     const [activeBottomSheet, setActiveBottomSheet] = useState(false)
     const [showQuestion, setShowQuestion] = useState(false)
     const [qualify, setQualify] = useState(false)
     const [missionCompleted, setMissionCompleted] = useState(false)
 
-    const { mission } = useContext(LevelContext)
-
-    console.log(mission)
+    const { level, mission } = useContext(LevelContext)
 
     const slide = () => {
         setActiveBottomSheet(!activeBottomSheet)
@@ -41,37 +44,70 @@ export const MissionScreen = ({ navigation }: Props) => {
         <>
             <SafeAreaView style={ stylesMission.missionContainer }>
                 <ScrollView>
-                    <Header title='CONÉCTATE CON LA UNIVERSIDAD' />
+                    <Header
+                        title={
+                            route.params.nextMissionTitleBoolean
+                            ? `${ (route.params.nextMissionTitle!).length > 35 ? `${ route.params.nextMissionTitle!.substring(0, 35) }...` : route.params.nextMissionTitle }`
+                            : `${ (route.params.missionTitle!).length > 35 ? `${ route.params.missionTitle!.substring(0, 35) }...` : route.params.missionTitle }`
+                        }
+                        levelTitle={ route.params.levelTitle }
+                        navigation={ navigation }
+                    />
                     <View style={ stylesMission.textHeaderWrapper }>
                         <Text style={ stylesMission.textHeader }>
-                            Conoce los canales digitales primordiales para comenzar tus clases sin inconvenientes.
+                            { route.params.description }
                         </Text>
                     </View>
                     <View style={ stylesMission.missionsBody }>
                         {
-                            mission === 1 && (
+                            (level === 1 && mission === 1) && (
                                 <InstructionsLevel1Mission1
                                     slide={ slide }
                                 />
                             )
                         }
                         {
-                            mission === 2 && (
+                            (level === 1 && mission === 2) && (
                                 <InstructionsLevel1Mission2
                                     slide={ slide }
                                 />
                             )
                         }
                         {
-                            mission === 3 && (
+                            (level === 1 && mission === 3) && (
                                 <InstructionsLevel1Mission3
                                     slide={ slide }
                                 />
                             )
                         }
+                        {
+                            (level === 2 && mission === 1) && (
+                                <InstructionsLevel2Mission1
+                                    slide={ slide }
+                                />
+                            )
+                        }
+                        {
+                            (level === 2 && mission === 2) && (
+                                <InstructionsLevel2Mission2
+                                    slide={ slide }
+                                />
+                            )
+                        }
+                        {
+                            (level === 2 && mission === 3) && (
+                                <InstructionsLevel2Mission3
+                                    slide={ slide }
+                                    setQualify={ setQualify }
+                                />
+                            )
+                        }
                     </View>
                 </ScrollView>
-                <BottomSheet activeBottomSheet={ activeBottomSheet }>
+                <BottomSheet
+                    activeBottomSheet={ activeBottomSheet }
+                    width={ level === 2 && mission === 2 ? 700 : 350 }
+                >
                     <>
                         {
                             !missionCompleted && (
@@ -101,7 +137,7 @@ export const MissionScreen = ({ navigation }: Props) => {
                         }
                         <View style={ stylesBottomSheet.body }>
                             {
-                                (showQuestion && mission === 1) && (
+                                (showQuestion && level === 1 && mission === 1) && (
                                     <MissionOneLevelOne
                                         setQualify={ setQualify }
                                         setShowQuestion={ setShowQuestion }
@@ -109,7 +145,7 @@ export const MissionScreen = ({ navigation }: Props) => {
                                 )
                             }
                             {
-                                (showQuestion && mission === 2) && (
+                                (showQuestion && level === 1 && mission === 2) && (
                                     <MissionTwoLevelOne
                                         setQualify={ setQualify }
                                         setShowQuestion={ setShowQuestion }
@@ -117,8 +153,24 @@ export const MissionScreen = ({ navigation }: Props) => {
                                 )
                             }
                             {
-                                (showQuestion && mission === 3) && (
+                                (showQuestion && level === 1 && mission === 3) && (
                                     <MissionThreeLevelOne
+                                        setQualify={ setQualify }
+                                        setShowQuestion={ setShowQuestion }
+                                    />
+                                )
+                            }
+                            {
+                                (showQuestion && level === 2 && mission === 1) && (
+                                    <MissionOneLevelTwo
+                                        setQualify={ setQualify }
+                                        setShowQuestion={ setShowQuestion }
+                                    />
+                                )
+                            }
+                            {
+                                (showQuestion && level === 2 && mission === 2) && (
+                                    <MissionTwoLevelTwo
                                         setQualify={ setQualify }
                                         setShowQuestion={ setShowQuestion }
                                     />
@@ -136,6 +188,10 @@ export const MissionScreen = ({ navigation }: Props) => {
                                 missionCompleted && (
                                     <FinishedMission
                                         navigation={ navigation }
+                                        levelTitle={ route.params.levelTitle }
+                                        description={ route.params.description }
+                                        missionTitle={ route.params.missionTitle! }
+                                        nextMissionTitle={ route.params.nextMissionTitle! }
                                     />
                                 )
                             }

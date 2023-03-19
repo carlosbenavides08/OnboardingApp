@@ -61,6 +61,9 @@ const stylesWorld = StyleSheet.create({
         marginTop: 8,
         marginLeft: 16,
     },
+    starsWrapperDisabled: {
+        width: 72,
+    },
     imageStar: {
         width: 14,
         height: 14,
@@ -76,7 +79,12 @@ const stylesWorld = StyleSheet.create({
         color: '#42526A',
         fontFamily: 'WhitneyHTF-Medium',
         fontSize: 12,
-        fontWeight: '500',
+    },
+    levelsText: {
+        color: '#42526A',
+        fontFamily: 'WhitneyHTF-Medium',
+        fontSize: 12,
+        marginLeft: 5,
     },
     levelsWrapper: {
         flexDirection: 'row',

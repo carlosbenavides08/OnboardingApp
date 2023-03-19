@@ -1,4 +1,5 @@
-package com.onboardingapp;
+// package com.onboardingapp;
+package com.laureate.mimundoupc;
 import android.os.Bundle;
 
 import com.facebook.react.ReactActivity;

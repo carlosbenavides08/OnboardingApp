@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 
 import { LevelContext } from '../context/LevelContext'
-import { useNavigation } from '@react-navigation/native'
 import { RootStackParams } from '../navigator/Navigator'
 import { StackNavigationProp } from '@react-navigation/stack'
 
@@ -10,18 +9,20 @@ import { stylesFinishedMission } from '../styles'
 
 interface Props {
     navigation: StackNavigationProp<RootStackParams, "MissionScreen", undefined>
+    levelTitle: string
+    description: string
+    missionTitle: string
+    nextMissionTitle: string | null
+    // setQualify?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const FinishedMission = ({ navigation }: Props) => {
+export const FinishedMission = ({ levelTitle, description, missionTitle, nextMissionTitle, navigation }: Props) => {
 
     const { level, mission, totalMissions, saveMission } = useContext(LevelContext)
 
-    console.log('Mision', mission)
-    console.log('Total', totalMissions)
-
     const handleNavigation = () => {
         if (mission! < totalMissions!) {
-            navigation.replace('MissionScreen')
+            navigation.replace('MissionScreen', { levelTitle: levelTitle, description, missionTitle, nextMissionTitle, nextMissionTitleBoolean: true })
             saveMission(mission! + 1)
         } else {
             navigation.replace('LevelsScreen')

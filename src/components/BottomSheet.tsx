@@ -6,10 +6,11 @@ import { stylesBottomSheet } from '../styles'
 interface Props {
     activeBottomSheet: boolean
     children: JSX.Element
+    width: number
 }
 
-export const BottomSheet = ({ activeBottomSheet = false, children }: Props) => {
-    const slideBottomSheet = useRef(new Animated.Value(350)).current
+export const BottomSheet = ({ width, activeBottomSheet = false, children }: Props) => {
+    const slideBottomSheet = useRef(new Animated.Value(width)).current
 
     const slide = () => {
         Animated.timing(
@@ -26,7 +27,7 @@ export const BottomSheet = ({ activeBottomSheet = false, children }: Props) => {
         Animated.timing(
             slideBottomSheet,
             {
-                toValue: 350,
+                toValue: width,
                 duration: 200,
                 useNativeDriver: true
             }

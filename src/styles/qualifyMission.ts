@@ -43,6 +43,7 @@ const stylesQualifyMission = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 14,
         marginTop: 36,
+        marginBottom: 20,
     },
     buttonDisabled: {
         backgroundColor: '#E6EDF3',

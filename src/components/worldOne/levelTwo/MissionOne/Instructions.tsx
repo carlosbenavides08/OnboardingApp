@@ -5,11 +5,10 @@ interface Props {
     slide: () => void
 }
 
-export const InstructionsLevel1Mission3 = ({ slide }: Props) => {
+export const InstructionsLevel2Mission1 = ({ slide }: Props) => {
 
-    // const [completeMission, setCompleteMission] = useState(false)
-    const [viewDates, setViewDates] = useState(false)
-    const [viewCalendar, setViewCalendar] = useState(false)
+    const [goUpc, setGoUpc] = useState(false)
+    const [viewRules, setViewRules] = useState(false)
 
     return (
         <>
@@ -23,26 +22,34 @@ export const InstructionsLevel1Mission3 = ({ slide }: Props) => {
             <Text style={ stylesInstructions.missionTitle }>¿CÓMO COMPLETO LA MISIÓN?</Text>
             <View style={ stylesInstructions.missionDescriptionWrapper }>
                 <Text style={ stylesInstructions.missionBeginDescription }>
-                    Para terminar esta misión deberás realizar los siguientes pasos:
+                    Para terminar esta misión deberás realizar lo siguiente:
                 </Text>
                 <View style={ stylesInstructions.missionDescription }>
                     <View style={ stylesInstructions.missionPointsWrapper }>
                         <Text style={ stylesInstructions.missionPoints }>1.</Text>
                         <Text style={ stylesInstructions.missionPoints }>
-                            Explora la sección
-                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> Fechas importantes </Text>
-                            de tu Guía de Cachimbos
+                            Ingresa a
+                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> Mi UPC</Text>
                         </Text>
                     </View>
                     <View style={ stylesInstructions.missionPointsWrapper }>
                         <Text style={ stylesInstructions.missionPoints }>2.</Text>
                         <Text style={ stylesInstructions.missionPoints }>
-                            Revisa el
-                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> Calendario académico 2023-1</Text>
+                            En el panel
+                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> Mis notas </Text>
+                            , verás la lista de tus cursos
                         </Text>
                     </View>
                     <View style={ stylesInstructions.missionPointsWrapper }>
                         <Text style={ stylesInstructions.missionPoints }>3.</Text>
+                        <Text style={ stylesInstructions.missionPoints }>
+                            Haz click en uno de ellos para desplegar el contenido y en la parte inferior encontrarás las
+                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> inasistencias (faltas) </Text>
+                            que has acumulado
+                        </Text>
+                    </View>
+                    <View style={ stylesInstructions.missionPointsWrapper }>
+                        <Text style={ stylesInstructions.missionPoints }>4.</Text>
                         <Text style={ stylesInstructions.missionPoints }>
                             Responde una pregunta al
                             <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> completar la misión</Text>
@@ -50,31 +57,29 @@ export const InstructionsLevel1Mission3 = ({ slide }: Props) => {
                     </View>
                 </View>
                 <Text style={ stylesInstructions.missionRemember }>
-                    Esta información es fundamental, porque aquí encontrarás las
-                    <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> semanas de exámenes, fechas de trámites académicos </Text>
-                    y
-                    <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> días de pago.</Text>
+                    <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> Recuerda que el límite de inasistencias equivale al 25%.</Text>
+                    Revisa más detalle en el punto 2.1 del Reglamento de Estudios.
                 </Text>
             </View>
             <TouchableOpacity
                 activeOpacity={ 1 }
                 style={ stylesInstructions.buttonCode }
                 onPress={ () => {
-                    Linking.openURL('https://pregrado.upc.edu.pe/landings/guiacachimbos/fechas.html')
-                    setViewDates(true)
+                    Linking.openURL('https://micuenta.upc.edu.pe/home')
+                    setGoUpc(true)
                 }}
             >
-                <Text style={ stylesInstructions.buttonCodeText }>Ir a Fechas importantes</Text>
+                <Text style={ stylesInstructions.buttonCodeText }>Ir a Mi UPC</Text>
             </TouchableOpacity>
-            <View style={ stylesInstructions.viewCalendarContainer }>
+            <View style={ stylesInstructions.viewRulesContainer }>
                 <TouchableOpacity
                     activeOpacity={ 1 }
                     onPress={ () => {
-                        Linking.openURL('https://www.upc.edu.pe/servicios/contacto-para-alumnos-upc/calendario/documentos/calendario-academico-ac-2023-v-2.pdf')
-                        setViewCalendar(true)
+                        Linking.openURL('https://micuenta.upc.edu.pe/home')
+                        setViewRules(true)
                     }}
                 >
-                    <Text style={ stylesInstructions.viewCalendarText }>Ver calendario académico completo</Text>
+                    <Text style={ stylesInstructions.viewRulesText }>Ver Reglamento de Estudios</Text>
                 </TouchableOpacity>
                 <Image
                     source={ require('../../../../assets/ic-sm-right.png') }
@@ -100,14 +105,14 @@ export const InstructionsLevel1Mission3 = ({ slide }: Props) => {
                 activeOpacity={ 1 }
                 style={[
                     stylesInstructions.buttonCompleteMission,
-                    (!viewDates || !viewCalendar) ? stylesInstructions.buttonCompleteMissionDisabled : null
+                    (!goUpc || !viewRules) ? stylesInstructions.buttonCompleteMissionDisabled : null
                 ]}
                 onPress={ slide }
-                disabled={ !viewDates || !viewCalendar }
+                disabled={ (!goUpc || !viewRules) }
             >
                 <Text style={[
                     stylesInstructions.buttonCompleteText,
-                    (!viewDates || !viewCalendar) ? stylesInstructions.buttonTextDisabled : null
+                    (!goUpc || !viewRules) ? stylesInstructions.buttonTextDisabled : null
                 ]}>Ir a completar misión</Text>
             </TouchableOpacity>
         </>
@@ -189,14 +194,14 @@ const stylesInstructions = StyleSheet.create({
         fontSize: 16,
         lineHeight: 24,
     },
-    viewCalendarContainer: {
+    viewRulesContainer: {
         gap: 4,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 24,
     },
-    viewCalendarText: {
+    viewRulesText: {
         color: '#3817FF',
         fontFamily: 'WhitneyHTF-Bold',
         fontSize: 14,
