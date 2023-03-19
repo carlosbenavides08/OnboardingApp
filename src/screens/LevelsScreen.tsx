@@ -146,8 +146,9 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             number={ 3 }
                             levelTitle='Nivel 3'
                             levelDescription='INTÉGRATE A LAS ACTIVIDADES CULTURALES'
-                            enable={ levels.find(level => level.numberLevel! === 2)?.completedMissions! === levels.find(level => level.numberLevel! === 2)?.totalMissions! }
-                            subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
+                            enable={ false }
+                            subsequent
+                            // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
                             levelStyle={ stylesLevels.level4 }
@@ -155,7 +156,8 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelTitle='Nivel 4'
                             levelDescription='RECIBE APOYO PERSONAL Y ACADÉMICO'
                             enable={ false }
-                            subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
+                            subsequent
+                            // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
                             levelStyle={ stylesLevels.level5 }
@@ -163,7 +165,8 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelTitle='Nivel 5'
                             levelDescription='APRENDE CÓMO RESERVAR ESPACIOS EN UPC'
                             enable={ false }
-                            subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
+                            subsequent
+                            // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
                             levelStyle={ stylesLevels.level6 }
@@ -171,7 +174,8 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelTitle='Nivel 6'
                             levelDescription='REALIZA TUS EXÁMENES PARCIALES'
                             enable={ false }
-                            subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
+                            subsequent
+                            // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
                             levelStyle={ stylesLevels.level7 }
@@ -179,7 +183,8 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelTitle='Nivel 7'
                             levelDescription='INTÉGRATE CON LAS ACTIVIDADES DE UPC'
                             enable={ false }
-                            subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
+                            subsequent
+                            // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
                             levelStyle={ stylesLevels.level8 }
@@ -187,7 +192,8 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelTitle='Nivel 8'
                             levelDescription='REFUERZA Y POTENCIA TUS CONOCIMIENTOS'
                             enable={ false }
-                            subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
+                            subsequent
+                            // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
                             levelStyle={ stylesLevels.level9 }
@@ -195,7 +201,8 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelTitle='Nivel 9'
                             levelDescription='PREPÁRATE PARA CULMINAR TU 1° CICLO'
                             enable={ false }
-                            subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
+                            subsequent
+                            // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
                             levelStyle={ stylesLevels.level10 }
@@ -203,7 +210,8 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelTitle='Nivel 10'
                             levelDescription='REALIZA TUS EVALUACIONES FINALES'
                             enable={ false }
-                            subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
+                            subsequent
+                            // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                     </View>
                     <View style={ stylesLevels.goalWrapper }>
