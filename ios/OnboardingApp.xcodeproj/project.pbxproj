@@ -14,6 +14,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		57A91B9029C8FB04000AA05A /* logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 57A91B8F29C8FB04000AA05A /* logo_white.png */; };
 		624DA0CBE3C848878A413EB5 /* Solano-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BFF3CD79DAA34214BC4E235F /* Solano-Bold.otf */; };
 		7699B88040F8A987B510C191 /* libPods-OnboardingApp-OnboardingAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-OnboardingApp-OnboardingAppTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -54,6 +55,7 @@
 		3B4392A12AC88292D35C810B /* Pods-OnboardingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnboardingApp.debug.xcconfig"; path = "Target Support Files/Pods-OnboardingApp/Pods-OnboardingApp.debug.xcconfig"; sourceTree = "<group>"; };
 		50DC161FC4A74E6CA6554109 /* SolanoGothicMVB-Bd.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SolanoGothicMVB-Bd.ttf"; path = "../assets/fonts/SolanoGothicMVB-Bd.ttf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-OnboardingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnboardingApp.release.xcconfig"; path = "Target Support Files/Pods-OnboardingApp/Pods-OnboardingApp.release.xcconfig"; sourceTree = "<group>"; };
+		57A91B8F29C8FB04000AA05A /* logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo_white.png; path = ../src/assets/logo_white.png; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-OnboardingApp-OnboardingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnboardingApp-OnboardingAppTests.debug.xcconfig"; path = "Target Support Files/Pods-OnboardingApp-OnboardingAppTests/Pods-OnboardingApp-OnboardingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-OnboardingApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OnboardingApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6530C164822847B59140CCB0 /* WhitneyHTF-BoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WhitneyHTF-BoldItalic.otf"; path = "../assets/fonts/WhitneyHTF-BoldItalic.otf"; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		13B07FAE1A68108700A75B9A /* OnboardingApp */ = {
 			isa = PBXGroup;
 			children = (
+				57A91B8F29C8FB04000AA05A /* logo_white.png */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -287,6 +290,7 @@
 				02230128876F4DED87751AC3 /* WhitneyHTF-Medium.otf in Resources */,
 				624DA0CBE3C848878A413EB5 /* Solano-Bold.otf in Resources */,
 				0E3217DE06094AD4B0CA1309 /* UpcSolano.ttf in Resources */,
+				57A91B9029C8FB04000AA05A /* logo_white.png in Resources */,
 				CFEA9A21437B4D888C49E1BD /* SolanoGothicMVB-Bd.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
