@@ -15,6 +15,7 @@ import { User } from '../../../interfaces/User'
 interface Props {
     navigation: StackNavigationProp<RootStackParams, "MissionsListScreen", undefined>
     levelTitle: string
+    missionTitle?: string
 }
 
 export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
@@ -53,9 +54,9 @@ export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
         }
     }
 
-    const handleMission = (mission: number, description: string) => {
+    const handleMission = (mission: number, missionTitle: string, nextMissionTitle: string | null, nextMissionTitleBoolean: boolean, description: string) => {
         if (navigation) {
-            navigation.replace('MissionScreen', { levelTitle, description })
+            navigation.replace('MissionScreen', { levelTitle, missionTitle, nextMissionTitle, nextMissionTitleBoolean, description })
         }
         saveMission(mission)
     }
@@ -65,7 +66,7 @@ export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
             <TouchableOpacity
                 style={ stylesMissionsList.missionCard }
                 activeOpacity={ 1 }
-                onPress={ () => handleMission(1, 'Conoce los canales digitales primordiales para comenzar tus clases sin inconvenientes.') }
+                onPress={ () => handleMission(1, 'CONÉCTATE CON LA UNIVERSIDAD', 'ASISTE A TUS CLASES SIN INCONVENIENTES', false, 'Conoce los canales digitales primordiales para comenzar tus clases sin inconvenientes.') }
             >
                 {
                     authentication.missions.find(mission => mission.data.numberMission === 1)
@@ -108,7 +109,7 @@ export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
                     authentication.levels.find(level => level.numberLevel! === 1)?.completedMissions! < 1 ? stylesMissionsList.missionCardLocked : null
                 ]}
                 disabled={ authentication.levels.find(level => level.numberLevel! === 1)?.completedMissions! < 1 }
-                onPress={ () => handleMission(2, 'Prepárate para asistir a todas las clases de tu primer ciclo.') }
+                onPress={ () => handleMission(2, 'ASISTE A TUS CLASES SIN INCONVENIENTES', 'ASISTE A TU PRIMER DÍA DE CLASES', false, 'Prepárate para asistir a todas las clases de tu primer ciclo.') }
             >
                 {
                     authentication.missions.find(mission => mission.data.numberMission === 2)
@@ -165,7 +166,7 @@ export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
                     authentication.levels.find(level => level.numberLevel! === 1)?.completedMissions! < 2 ? stylesMissionsList.missionCardLocked : null
                 ]}
                 disabled={ authentication.levels.find(level => level.numberLevel! === 1)?.completedMissions! < 2 }
-                onPress={ () => handleMission(3, 'Conoce las fechas importantes de tu ciclo académico 2023-1.') }
+                onPress={ () => handleMission(3, 'ASISTE A TU PRIMER DÍA DE CLASES', '', false, 'Conoce las fechas importantes de tu ciclo académico 2023-1.') }
             >
                 {
                     authentication.missions.find(mission => mission.data.numberMission === 3)

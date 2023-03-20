@@ -16,8 +16,6 @@ export const MissionsListScreen = ({ route, navigation }: Props) => {
 
     const { level } = useContext(LevelContext)
 
-    console.log(route.params.description)
-
     return (
         <SafeAreaView style={ stylesMissionsList.missionsContainer }>
             <ScrollView>
