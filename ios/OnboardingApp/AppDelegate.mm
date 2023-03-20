@@ -12,8 +12,13 @@
   // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
 
+  // [RNSplashScreen show];
+  // return [super application:application didFinishLaunchingWithOptions:launchOptions];
+
+  bool didFinish=[super application:application didFinishLaunchingWithOptions:launchOptions];
+  
   [RNSplashScreen show];
-  return [super application:application didFinishLaunchingWithOptions:launchOptions];
+  return didFinish;
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
