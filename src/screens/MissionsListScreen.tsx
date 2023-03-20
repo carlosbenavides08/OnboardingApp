@@ -12,7 +12,7 @@ import { MissionsListLevel2 } from '../components/worldOne/levelTwo/MissionsList
 import mundoApi from '../api/mundoApi'
 import { User } from '../interfaces/User'
 import { setLevels, setMissions } from '../redux/slices/user'
-import { useAppDispatch } from '../redux/hooks'
+import { useAppDispatch, useAppSelector } from '../redux/hooks'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Mission } from '../interfaces/Mission'
 
@@ -20,6 +20,7 @@ interface Props extends StackScreenProps<RootStackParams, 'MissionsListScreen'>{
 
 export const MissionsListScreen = ({ route, navigation }: Props) => {
     const dispatch = useAppDispatch()
+    const { levels } = useAppSelector((state) => state.userReducer)
 
     const { level } = useContext(LevelContext)
 
@@ -62,10 +63,28 @@ export const MissionsListScreen = ({ route, navigation }: Props) => {
                     description={ route.params.description }
                 />
                 <View style={ stylesMissionsList.medalWrapper }>
-                    <Image
-                        source={ require('../assets/start-level.png') }
-                        style={{ width: 80, height: 80 }}
-                    />
+                    {
+                        levels.map(level => level.numberLevel === 1 && level.status === 'COMPLETED')
+                        ? (
+                            <Image
+                                source={ require('../assets/finished-level.png') }
+                                style={{ width: 80, height: 80 }}
+                            />
+                        )
+                        : levels.map(level => level.numberLevel === 1 && level.status === 'PROGRESS')
+                        ? (
+                            <Image
+                                source={ require('../assets/progress-level.png') }
+                                style={{ width: 80, height: 80 }}
+                            />
+                        )
+                        : (
+                            <Image
+                                source={ require('../assets/start-level.png') }
+                                style={{ width: 80, height: 80 }}
+                            />
+                        )
+                    }
                     <View style={ stylesMissionsList.medalDetailWrapper }>
                         <Text style={ stylesMissionsList.medalText }>MEDALLA</Text>
                         <Text style={ stylesMissionsList.medalTitle }>{ `Nivel ${ level }` }</Text>
