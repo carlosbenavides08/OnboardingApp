@@ -106,7 +106,7 @@ export const MissionScreen = ({ navigation, route }: Props) => {
                 </ScrollView>
                 <BottomSheet
                     activeBottomSheet={ activeBottomSheet }
-                    width={ level === 2 && mission === 2 ? 700 : 350 }
+                    height={ level === 2 && mission === 2 ? 700 : 330 }
                 >
                     <>
                         {

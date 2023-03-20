@@ -27,7 +27,7 @@ export const QualifyMission = ({ setMissionCompleted, setQualify }: Props) => {
         try {
             const studentCode = await AsyncStorage.getItem('user')
             const sendData = {
-                studentCode: JSON.parse(studentCode!),
+                studentCode,
                 numberLevel: level,
                 numberMission: mission,
                 response: 'respuesta completa',
@@ -36,11 +36,12 @@ export const QualifyMission = ({ setMissionCompleted, setQualify }: Props) => {
 
             await mundoApi.post('/level/complete-mission', sendData)
             dispatch(finish(sendData))
+            
+            setMissionCompleted(true)
+            setQualify(false)
         } catch (error: any) {
-            console.log(error.response)
+            console.log('QUALIFY: ', error)
         }
-        setMissionCompleted(true)
-        setQualify(false)
     }
 
     return (

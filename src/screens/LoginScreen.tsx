@@ -81,7 +81,7 @@ export const LoginScreen = ({ navigation }: Props) => {
             const userData = data.data.find(user => user.id === user.levelId)
             await AsyncStorage.setItem('user', userData?.data.studentCode!)
             await AsyncStorage.setItem('name', userData?.data.name!)
-            await AsyncStorage.setItem('carreer', userData?.data.career!)
+            await AsyncStorage.setItem('career', userData?.data.career!)
             dispatch(auth())
         } catch (error) {
             console.log(error)
@@ -149,7 +149,7 @@ export const LoginScreen = ({ navigation }: Props) => {
                                 { borderColor: colorCheckbox }
                             ]}
                             textStyle={ stylesLogin.checkboxText }
-                            style={{ marginTop: 24, marginBottom: 30 }}
+                            style={{ marginTop: 24, paddingBottom: 60 }}
                             innerIconStyle={{ borderWidth: 0 }}
                             isChecked={ checked }
                             onPress={ changeColorCheckbox }

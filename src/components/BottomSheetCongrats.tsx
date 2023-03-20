@@ -20,7 +20,7 @@ export const BottomSheetCongrats = ({ missionCompleted, setMissionCompleted, set
         Animated.timing(
             slideBottomSheet,
             {
-                toValue: -280,
+                toValue: -300,
                 duration: 200,
                 useNativeDriver: true
             }

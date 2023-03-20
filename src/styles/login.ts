@@ -19,7 +19,6 @@ const stylesLogin = StyleSheet.create({
         flex: 1,
         marginTop: 42,
         paddingHorizontal: 20,
-        paddingBottom: 28,
     },
     welcomeTextOne: {
         color: 'black',

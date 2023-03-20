@@ -51,6 +51,7 @@ const stylesHome = StyleSheet.create({
         fontFamily: 'SolanoGothicMVB-Bd',
         fontSize: 36,
         lineHeight: 48,
+        textTransform: 'uppercase',
     },
     generalDescriptionWrapper: {
         flexDirection: 'row',

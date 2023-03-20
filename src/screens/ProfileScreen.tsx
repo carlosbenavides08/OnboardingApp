@@ -22,11 +22,14 @@ export const ProfileScreen = ({ navigation }: Props) => {
 
     const load = async() => {
         const storageName = await AsyncStorage.getItem('name')
+        const storageCareer = await AsyncStorage.getItem('career')
         setName(storageName!)
+        setCareer(storageCareer!)
     }
 
     const handleLogout = async() => {
         await AsyncStorage.removeItem('user')
+        await AsyncStorage.removeItem('name')
         await AsyncStorage.removeItem('career')
 
         dispatch(notAuth())
@@ -37,7 +40,7 @@ export const ProfileScreen = ({ navigation }: Props) => {
     return (
         <View style={ stylesProfile.body }>
             <Text style={ stylesProfile.name }>{ name }</Text>
-            <Text style={ stylesProfile.career }>Ingeniería Civil</Text>
+            <Text style={ stylesProfile.career }>{ career }</Text>
             <TouchableOpacity
                 activeOpacity={ 1 }
                 style={ stylesProfile.button }

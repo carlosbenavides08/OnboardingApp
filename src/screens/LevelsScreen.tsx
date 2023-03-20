@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Image, SafeAreaView, ScrollView, Text, View } from 'react-native'
 import { StackScreenProps } from '@react-navigation/stack'
 import { RootStackParams } from '../navigator/Navigator'
@@ -20,12 +20,21 @@ export const LevelsScreen = ({ navigation }: Props) => {
     const dispatch = useAppDispatch()
     const { levels } = useAppSelector((state) => state.userReducer)
     
-    console.log(levels.find(level => level.numberLevel! === 2)?.completedMissions!)
-    console.log(levels.find(level => level.numberLevel! === 2)?.totalMissions!)
+    const [medals, setMedals] = useState(0)
 
     useEffect(() => {
         loadLevels()
     }, [])
+
+    useEffect(() => {
+        let count = 0
+        levels.map(level => {
+            if (level.status === 'COMPLETED') {
+                count++
+            }
+        })
+        setMedals(count)
+    }, [levels])
 
     const loadLevels = async() => {
         try {
@@ -57,15 +66,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             style={ stylesLevels.imageStar }
                         />
                         <Text style={ stylesLevels.starsCount }>
-                            {
-                                levels.map(level => {
-                                    let count: number = 0
-                                    if (level.status === 'COMPLETED') {
-                                        count++
-                                        return count
-                                    }
-                                })
-                            }
+                            { medals }
                             <Text style={ stylesLevels.starsTotal }>/10 Medallas</Text>
                         </Text>
                     </View>

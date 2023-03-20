@@ -1,16 +1,11 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { RootStackParams } from '../../../navigator/Navigator'
 import { LevelContext } from '../../../context/LevelContext'
 
 import { stylesMissionsList } from '../../../styles'
-import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import mundoApi from '../../../api/mundoApi'
-import { setLevels, setMissions } from '../../../redux/slices/user'
-import { Mission } from '../../../interfaces/Mission'
-import { User } from '../../../interfaces/User'
+import { useAppSelector } from '../../../redux/hooks'
 
 interface Props {
     navigation: StackNavigationProp<RootStackParams, "MissionsListScreen", undefined>
@@ -19,40 +14,9 @@ interface Props {
 }
 
 export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
-    const dispatch = useAppDispatch()
     const authentication = useAppSelector((state) => state.userReducer)
 
-    const { level, saveMission } = useContext(LevelContext)
-
-    useEffect(() => {
-        loadLevels()
-    }, [])
-
-    useEffect(() => {
-        loadMissions()
-    }, [])
-
-    const loadLevels = async() => {
-        try {
-            const user = await AsyncStorage.getItem('studentCode')
-            const { data } = await mundoApi.post<User>('/auth/login', { studentCode: user })
-            const levels = data.data.map(level => level.data)
-            dispatch(setLevels(levels))
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    const loadMissions = async() => {
-        try {
-            const user = await AsyncStorage.getItem('studentCode')
-            const { data } = await mundoApi.post<Mission>('/level/list-mission', { studentCode: user, numberLevel: level })
-            const missions = data.data.map(mission => mission)
-            dispatch(setMissions(missions))
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    const { saveMission } = useContext(LevelContext)
 
     const handleMission = (mission: number, missionTitle: string, nextMissionTitle: string | null, nextMissionTitleBoolean: boolean, description: string) => {
         if (navigation) {

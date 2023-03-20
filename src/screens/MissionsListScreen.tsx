@@ -1,5 +1,5 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Image, SafeAreaView, ScrollView, Text, View } from 'react-native'
 
 import { RootStackParams } from '../navigator/Navigator'
@@ -9,12 +9,49 @@ import { MissionsListLevel1 } from '../components/worldOne/levelOne/MissionsList
 
 import { stylesMissionsList } from '../styles'
 import { MissionsListLevel2 } from '../components/worldOne/levelTwo/MissionsList'
+import mundoApi from '../api/mundoApi'
+import { User } from '../interfaces/User'
+import { setLevels, setMissions } from '../redux/slices/user'
+import { useAppDispatch } from '../redux/hooks'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { Mission } from '../interfaces/Mission'
 
 interface Props extends StackScreenProps<RootStackParams, 'MissionsListScreen'>{}
 
 export const MissionsListScreen = ({ route, navigation }: Props) => {
+    const dispatch = useAppDispatch()
 
     const { level } = useContext(LevelContext)
+
+    useEffect(() => {
+        loadLevels()
+    }, [])
+
+    useEffect(() => {
+        loadMissions()
+    }, [])
+
+    const loadLevels = async() => {
+        try {
+            const user = await AsyncStorage.getItem('studentCode')
+            const { data } = await mundoApi.post<User>('/auth/login', { studentCode: user })
+            const levels = data.data.map(level => level.data)
+            dispatch(setLevels(levels))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const loadMissions = async() => {
+        try {
+            const user = await AsyncStorage.getItem('studentCode')
+            const { data } = await mundoApi.post<Mission>('/level/list-mission', { studentCode: user, numberLevel: level })
+            const missions = data.data.map(mission => mission)
+            dispatch(setMissions(missions))
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <SafeAreaView style={ stylesMissionsList.missionsContainer }>

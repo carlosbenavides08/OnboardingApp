@@ -13,18 +13,19 @@ interface Props {
     description: string
     missionTitle: string
     nextMissionTitle: string | null
-    // setQualify?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const FinishedMission = ({ levelTitle, description, missionTitle, nextMissionTitle, navigation }: Props) => {
 
-    const { level, mission, totalMissions, saveMission } = useContext(LevelContext)
+    const { level, mission, totalMissions, saveLevel, saveMission } = useContext(LevelContext)
 
     const handleNavigation = () => {
         if (mission! < totalMissions!) {
             navigation.replace('MissionScreen', { levelTitle: levelTitle, description, missionTitle, nextMissionTitle, nextMissionTitleBoolean: true })
             saveMission(mission! + 1)
         } else {
+            saveLevel(null, null)
+            saveMission(null)
             navigation.replace('LevelsScreen')
         }
     }
