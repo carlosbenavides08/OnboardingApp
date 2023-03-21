@@ -40,7 +40,7 @@ export const ProfileScreen = ({ navigation }: Props) => {
     return (
         <View style={ stylesProfile.body }>
             <Text style={ stylesProfile.name }>{ name }</Text>
-            <Text style={ stylesProfile.career }>{ career }</Text>
+            <Text style={ stylesProfile.career }>{ career } 🎓</Text>
             <TouchableOpacity
                 activeOpacity={ 1 }
                 style={ stylesProfile.button }

@@ -53,7 +53,10 @@ export const World = ({ title, description, image, wonMedals, totalMedals, enabl
             onPress={ navigation ? () => navigation.replace('LevelsScreen') : undefined }
             activeOpacity={ 1 }
         >
-            <View style={ stylesWorld.imageBackground }>
+            <View style={[
+                stylesWorld.imageBackground,
+                !enable ? stylesWorld.imageBackgroundDisabled : null
+            ]}>
                 <Image
                     source={ imageString.src }
                     style={ stylesWorld.imageWorld }
