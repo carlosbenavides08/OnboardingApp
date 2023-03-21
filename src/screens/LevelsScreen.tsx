@@ -140,7 +140,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             completedMissions={ levels.find(level => level.numberLevel! === 2)?.completedMissions!.toString() }
                             totalMissions={ levels.find(level => level.numberLevel! === 2)?.totalMissions }
                             enable={ levels.find(level => level.numberLevel! === 1)?.completedMissions! === levels.find(level => level.numberLevel! === 1)?.totalMissions! }
-                            navigation={ navigation }
+                            navigation={ levels.find(level => level.numberLevel! === 1)?.completedMissions! === levels.find(level => level.numberLevel! === 1)?.totalMissions! ? navigation : undefined }
                         />
                         <Level
                             levelStyle={ stylesLevels.level3 }
