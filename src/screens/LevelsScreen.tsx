@@ -41,7 +41,6 @@ export const LevelsScreen = ({ navigation }: Props) => {
             const user = await AsyncStorage.getItem('studentCode')
             const { data } = await mundoApi.post<User>('/auth/login', { studentCode: user })
             const levels = data.data.map(level => level.data)
-            // console.log(levels)
             dispatch(setLevels(levels))
         } catch (error) {
             console.log(error)

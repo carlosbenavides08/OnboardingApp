@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react'
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import React, { useState } from 'react'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 import BouncyCheckboxGroup, { ICheckboxButton } from 'react-native-bouncy-checkbox-group'
 

@@ -60,7 +60,6 @@ export const MissionsListScreen = ({ route, navigation }: Props) => {
                 <Header
                     title={ `NIVEL ${ level }: ${ (route.params.description).length > 30 ? `${ route.params.description.substring(0, 30) }...` : route.params.description }` }
                     navigation={ navigation }
-                    description={ route.params.description }
                 />
                 <View style={ stylesMissionsList.medalWrapper }>
                     {

@@ -35,6 +35,7 @@ export const LoginScreen = ({ navigation }: Props) => {
     const [buttonTextDisabled, setButtonTextDisabled] = useState(true)
     const [studentCode, setStudentCode] = useState('')
     const [user, setUser] = useState('')
+    const [error, setError] = useState(false)
 
     useEffect(() => {
         checkStudentCode()
@@ -75,25 +76,32 @@ export const LoginScreen = ({ navigation }: Props) => {
     }
 
     const handleLogin = async() => {
-        const { data } = await mundoApi.post<User>('/auth/login', { studentCode: user })
-
+        
         try {
-            const userData = data.data.find(user => user.id === user.levelId)
-            await AsyncStorage.setItem('user', userData?.data.studentCode!)
-            await AsyncStorage.setItem('name', userData?.data.name!)
-            await AsyncStorage.setItem('career', userData?.data.career!)
-            dispatch(auth())
+            const { data } = await mundoApi.post<User>('/auth/login', { studentCode: user })
+
+            if (data.data.length > 0) {
+                setError(false)
+                const userData = data.data.find(user => user.id === user.levelId)
+                await AsyncStorage.setItem('user', userData?.data.studentCode!)
+                await AsyncStorage.setItem('name', userData?.data.name!)
+                await AsyncStorage.setItem('career', userData?.data.career!)
+                dispatch(auth())
+    
+                if (checked) {
+                    await AsyncStorage.setItem('studentCode', studentCode)
+                } else {
+                    await AsyncStorage.removeItem('studentCode')
+                }
+    
+                navigation.replace('TabsHome')
+            } else {
+                setError(true)
+                console.log('ERROR EN EL LOGIN')
+            }
         } catch (error) {
             console.log(error)
         }
-
-        if (checked) {
-            await AsyncStorage.setItem('studentCode', studentCode)
-        } else {
-            await AsyncStorage.removeItem('studentCode')
-        }
-
-        navigation.replace('TabsHome')
     }
 
     return (
@@ -131,13 +139,21 @@ export const LoginScreen = ({ navigation }: Props) => {
                             <FloatingLabelInput
                                 label='Código de alumno'
                                 multiline={ false }
-                                containerStyles={ stylesLogin.userTextInput }
-                                customLabelStyles={{ topFocused: -15 }}
+                                containerStyles={ !error ? stylesLogin.userTextInput : stylesLogin.userTextInputError }
+                                customLabelStyles={ error ? { topFocused: -15, colorFocused: '#FF2F48' } : { topFocused: -15 }}
                                 labelStyles={{ paddingHorizontal: 16  }}
                                 inputStyles={ stylesLogin.inputStyles }
                                 onChangeText={ value => validateText(value) }
                                 value={ user }
                             />
+                            <View style={{ marginTop: 8, flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <Text></Text>
+                                {
+                                    error && (
+                                        <Text style={{ color: 'red', fontFamily: 'WhitneyHTF-Medium' }}>*Error en el código</Text>
+                                    )
+                                }
+                            </View>
                         </View>
                         <BouncyCheckbox
                             size={20}
@@ -149,7 +165,7 @@ export const LoginScreen = ({ navigation }: Props) => {
                                 { borderColor: colorCheckbox }
                             ]}
                             textStyle={ stylesLogin.checkboxText }
-                            style={{ marginTop: 24, paddingBottom: 60 }}
+                            style={{ marginTop: 0, paddingBottom: 60 }}
                             innerIconStyle={{ borderWidth: 0 }}
                             isChecked={ checked }
                             onPress={ changeColorCheckbox }

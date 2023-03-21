@@ -12,10 +12,9 @@ interface Props {
     navigation: StackNavigationProp<RootStackParams, "LevelsScreen", undefined>
                 | StackNavigationProp<RootStackParams, "MissionsListScreen", undefined>
                 | StackNavigationProp<RootStackParams, "MissionScreen", undefined>
-    description?: string
 }
 
-export const Header = ({ title, levelTitle, description = '', navigation }: Props) => {
+export const Header = ({ title, levelTitle, navigation }: Props) => {
     const { level, mission, saveLevel, saveMission } = useContext(LevelContext)
     
     const handleBack = () => {

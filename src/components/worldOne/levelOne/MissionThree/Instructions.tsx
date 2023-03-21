@@ -7,7 +7,6 @@ interface Props {
 
 export const InstructionsLevel1Mission3 = ({ slide }: Props) => {
 
-    // const [completeMission, setCompleteMission] = useState(false)
     const [viewDates, setViewDates] = useState(false)
     const [viewCalendar, setViewCalendar] = useState(false)
 

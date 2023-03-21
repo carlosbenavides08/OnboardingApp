@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 import mundoApi from '../api/mundoApi'
 import { LevelContext } from '../context/LevelContext'
