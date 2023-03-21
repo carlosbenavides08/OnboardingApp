@@ -154,7 +154,7 @@ const stylesMissionThree = StyleSheet.create({
         lineHeight: 20,
     },
     response: {
-        marginTop: 24,
+        marginTop: 16,
     },
     button: {
         backgroundColor: '#E50A17',
@@ -162,8 +162,8 @@ const stylesMissionThree = StyleSheet.create({
         textAlign: 'center',
         alignItems: 'center',
         borderRadius: 14,
-        marginTop: 30,
-        marginBottom: 20,
+        marginTop: 24,
+        // marginBottom: 50,
     },
     buttonDisabled: {
         backgroundColor: '#E6EDF3',

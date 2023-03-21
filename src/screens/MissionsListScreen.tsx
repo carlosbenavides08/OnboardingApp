@@ -9,12 +9,9 @@ import { MissionsListLevel1 } from '../components/worldOne/levelOne/MissionsList
 
 import { stylesMissionsList } from '../styles'
 import { MissionsListLevel2 } from '../components/worldOne/levelTwo/MissionsList'
-import mundoApi from '../api/mundoApi'
-import { User } from '../interfaces/User'
 import { setLevels, setMissions } from '../redux/slices/user'
 import { useAppDispatch, useAppSelector } from '../redux/hooks'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { Mission } from '../interfaces/Mission'
+import { loadLevelsBack, loadMissionsBack } from '../hooks/loadData'
 
 interface Props extends StackScreenProps<RootStackParams, 'MissionsListScreen'>{}
 
@@ -33,25 +30,13 @@ export const MissionsListScreen = ({ route, navigation }: Props) => {
     }, [])
 
     const loadLevels = async() => {
-        try {
-            const user = await AsyncStorage.getItem('studentCode')
-            const { data } = await mundoApi.post<User>('/auth/login', { studentCode: user })
-            const levels = data.data.map(level => level.data)
-            dispatch(setLevels(levels))
-        } catch (error) {
-            console.log(error)
-        }
+        const levels = await loadLevelsBack()
+        dispatch(setLevels(levels!))
     }
 
     const loadMissions = async() => {
-        try {
-            const user = await AsyncStorage.getItem('studentCode')
-            const { data } = await mundoApi.post<Mission>('/level/list-mission', { studentCode: user, numberLevel: level })
-            const missions = data.data.map(mission => mission)
-            dispatch(setMissions(missions))
-        } catch (error) {
-            console.log(error)
-        }
+        const missions = await loadMissionsBack(level!)
+        dispatch(setMissions(missions!))
     }
 
     return (

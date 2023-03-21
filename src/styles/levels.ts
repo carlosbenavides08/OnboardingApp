@@ -130,6 +130,13 @@ const stylesLevels = StyleSheet.create({
         lineHeight: 24,
         width: 184,
     },
+    missionContainerLocked: {
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0,0,0,0.8)',
+        zIndex: 90,
+    },
 })
 
 export {

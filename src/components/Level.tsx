@@ -23,17 +23,22 @@ interface Props {
     totalMissions?: number
     enable?: boolean
     subsequent?: boolean
+    setActiveMessage: React.Dispatch<React.SetStateAction<boolean>>
     navigation?: StackNavigationProp<RootStackParams, 'LevelsScreen'> | undefined
 }
 
-export const Level = ({ levelStyle, number, levelTitle, levelDescription, completedMissions = '0', totalMissions = 1, enable = true, subsequent = false, navigation }: Props) => {
+export const Level = ({ levelStyle, number, levelTitle, levelDescription, completedMissions = '0', totalMissions = 1, enable = true, subsequent = false, setActiveMessage, navigation }: Props) => {
 
     const { saveLevel } = useContext(LevelContext)
 
     const handleLevel = (level: number, totalMissions: number, title: string, description: string) => {
-        saveLevel(level, totalMissions)
         if (navigation) {
+            saveLevel(level, totalMissions)
             navigation.replace('MissionsListScreen', { title, description })
+        }
+
+        if (!enable) {
+            setActiveMessage(true)
         }
     }
 

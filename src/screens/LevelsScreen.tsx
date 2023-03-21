@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Image, SafeAreaView, ScrollView, Text, View } from 'react-native'
+import { Image, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { StackScreenProps } from '@react-navigation/stack'
 import { RootStackParams } from '../navigator/Navigator'
 
@@ -10,9 +10,9 @@ import { stylesLevels } from '../styles'
 
 import { useAppDispatch, useAppSelector } from '../redux/hooks'
 import { setLevels } from '../redux/slices/user'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { User } from '../interfaces/User'
-import mundoApi from '../api/mundoApi'
+import { loadLevelsBack } from '../hooks/loadData'
+import { BottomSheetMessage } from '../components/BottomSheetMessage'
+import { stylesBottomSheetMessage } from '../styles/bottomSheetMessage'
 
 interface Props extends StackScreenProps<RootStackParams, 'LevelsScreen'>{}
 
@@ -21,9 +21,20 @@ export const LevelsScreen = ({ navigation }: Props) => {
     const { levels } = useAppSelector((state) => state.userReducer)
     
     const [medals, setMedals] = useState(0)
+    const [date, setDate] = useState('')
+    const [activeMessage, setActiveMessage] = useState(false)
 
     useEffect(() => {
         loadLevels()
+    }, [])
+
+    useEffect(() => {
+        const date = new Date()
+        const year = date.getFullYear()
+        const month = date.getMonth() < 10 ? `0${ date.getMonth() + 1 }` : date.getMonth()
+        const day = date.getDate() < 10 ? `0${ date.getDate() }` : date.getDate()
+
+        setDate(`${ year }-${ month }-${ day }`)
     }, [])
 
     useEffect(() => {
@@ -37,14 +48,8 @@ export const LevelsScreen = ({ navigation }: Props) => {
     }, [levels])
 
     const loadLevels = async() => {
-        try {
-            const user = await AsyncStorage.getItem('studentCode')
-            const { data } = await mundoApi.post<User>('/auth/login', { studentCode: user })
-            const levels = data.data.map(level => level.data)
-            dispatch(setLevels(levels))
-        } catch (error) {
-            console.log(error)
-        }
+        const levels = await loadLevelsBack()
+        dispatch(setLevels(levels!))
     }
 
     return (
@@ -129,6 +134,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelDescription='INICIA TU PRIMER CICLO'
                             completedMissions={ levels.find(level => level.numberLevel! === 1)?.completedMissions!.toString() }
                             totalMissions={ levels.find(level => level.numberLevel! === 1)?.totalMissions }
+                            setActiveMessage={ setActiveMessage }
                             navigation={ navigation }
                         />
                         <Level
@@ -138,7 +144,8 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelDescription='CONOCE INFORMACIÓN CLAVE PARA TUS CLASES Y LA UNIVERSIDAD'
                             completedMissions={ levels.find(level => level.numberLevel! === 2)?.completedMissions!.toString() }
                             totalMissions={ levels.find(level => level.numberLevel! === 2)?.totalMissions }
-                            enable={ levels.find(level => level.numberLevel! === 1)?.completedMissions! === levels.find(level => level.numberLevel! === 1)?.totalMissions! }
+                            enable={ levels.find(level => level.numberLevel! === 1)?.completedMissions! === levels.find(level => level.numberLevel! === 1)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 2)?.startDate!) <= new Date(date) }
+                            setActiveMessage={ setActiveMessage }
                             navigation={ levels.find(level => level.numberLevel! === 1)?.completedMissions! === levels.find(level => level.numberLevel! === 1)?.totalMissions! ? navigation : undefined }
                         />
                         <Level
@@ -146,8 +153,9 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             number={ 3 }
                             levelTitle='Nivel 3'
                             levelDescription='INTÉGRATE A LAS ACTIVIDADES CULTURALES'
-                            enable={ false }
+                            enable={ levels.find(level => level.numberLevel! === 2)?.completedMissions! === levels.find(level => level.numberLevel! === 2)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 3)?.startDate!) <= new Date(date) }
                             subsequent
+                            setActiveMessage={ setActiveMessage }
                             // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
@@ -157,6 +165,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelDescription='RECIBE APOYO PERSONAL Y ACADÉMICO'
                             enable={ false }
                             subsequent
+                            setActiveMessage={ setActiveMessage }
                             // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
@@ -166,6 +175,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelDescription='APRENDE CÓMO RESERVAR ESPACIOS EN UPC'
                             enable={ false }
                             subsequent
+                            setActiveMessage={ setActiveMessage }
                             // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
@@ -175,6 +185,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelDescription='REALIZA TUS EXÁMENES PARCIALES'
                             enable={ false }
                             subsequent
+                            setActiveMessage={ setActiveMessage }
                             // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
@@ -184,6 +195,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelDescription='INTÉGRATE CON LAS ACTIVIDADES DE UPC'
                             enable={ false }
                             subsequent
+                            setActiveMessage={ setActiveMessage }
                             // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
@@ -193,6 +205,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelDescription='REFUERZA Y POTENCIA TUS CONOCIMIENTOS'
                             enable={ false }
                             subsequent
+                            setActiveMessage={ setActiveMessage }
                             // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
@@ -202,6 +215,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelDescription='PREPÁRATE PARA CULMINAR TU 1° CICLO'
                             enable={ false }
                             subsequent
+                            setActiveMessage={ setActiveMessage }
                             // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
@@ -211,6 +225,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelDescription='REALIZA TUS EVALUACIONES FINALES'
                             enable={ false }
                             subsequent
+                            setActiveMessage={ setActiveMessage }
                             // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                     </View>
@@ -232,6 +247,40 @@ export const LevelsScreen = ({ navigation }: Props) => {
                     </View>
                 </View>
             </ScrollView>
+            <BottomSheetMessage
+                activeMessage={ activeMessage }
+                setActiveMessage={ setActiveMessage }
+                title='SIGUIENTE NIVEL BLOQUEADO'
+            >
+                <View style={ stylesBottomSheetMessage.body }>
+                    <Image
+                        source={ require('../assets/locked-level.png') }
+                        style={{ width: 80, height: 80, alignSelf: 'center' }}
+                    />
+                    <Text style={{
+                        color: '#42526A',
+                        fontFamily: 'WhitneyHTF-Medium',
+                        fontSize: 14,
+                        lineHeight: 20,
+                        marginTop: 16
+                    }}>
+                        Asegúrate de completar todas las misiones del nivel anterior para desbloquear este nivel o espera a que en las siguientes semanas
+                        activemos nuevos niveles del Mundo Inicia.
+                    </Text>
+                    <TouchableOpacity
+                        activeOpacity={ 1 }
+                        style={ stylesBottomSheetMessage.button }
+                        onPress={ () => setActiveMessage(false) }
+                    >
+                        <Text style={ stylesBottomSheetMessage.buttonText }>Volver al mapa</Text>
+                    </TouchableOpacity>
+                </View>
+            </BottomSheetMessage>
+            {
+                activeMessage && (
+                    <View style={ stylesLevels.missionContainerLocked }></View>
+                )
+            }
         </SafeAreaView>
     )
 }

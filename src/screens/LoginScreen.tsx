@@ -76,7 +76,6 @@ export const LoginScreen = ({ navigation }: Props) => {
     }
 
     const handleLogin = async() => {
-        
         try {
             const { data } = await mundoApi.post<User>('/auth/login', { studentCode: user })
 
@@ -97,7 +96,6 @@ export const LoginScreen = ({ navigation }: Props) => {
                 navigation.replace('TabsHome')
             } else {
                 setError(true)
-                console.log('ERROR EN EL LOGIN')
             }
         } catch (error) {
             console.log(error)

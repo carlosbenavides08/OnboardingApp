@@ -36,9 +36,6 @@ export const Navigator = () => {
 
     const checkSession = async() => {
         const check = await AsyncStorage.getItem('user')
-        console.log('entró al navigator')
-        console.log(check)
-        console.log(authentication.status)
 
         if (!check) {
             SplashScreen.hide()
