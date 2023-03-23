@@ -33,7 +33,6 @@ export const LoginScreen = ({ navigation }: Props) => {
     const [checked, setChecked] = useState(false)
     const [buttonDisabled, setButtonDisabled] = useState(true)
     const [buttonTextDisabled, setButtonTextDisabled] = useState(true)
-    const [studentCode, setStudentCode] = useState('')
     const [user, setUser] = useState('')
     const [error, setError] = useState(false)
 
@@ -65,7 +64,6 @@ export const LoginScreen = ({ navigation }: Props) => {
 
     const validateText = (value: string) => {
         setUser(value)
-        setStudentCode(value)
         if (value.length > 0) {
             setButtonDisabled(false)
             setButtonTextDisabled(false)
@@ -88,7 +86,7 @@ export const LoginScreen = ({ navigation }: Props) => {
                 dispatch(auth())
     
                 if (checked) {
-                    await AsyncStorage.setItem('studentCode', studentCode)
+                    await AsyncStorage.setItem('studentCode', user)
                 } else {
                     await AsyncStorage.removeItem('studentCode')
                 }

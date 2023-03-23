@@ -48,14 +48,14 @@ export const MissionsListScreen = ({ route, navigation }: Props) => {
                 />
                 <View style={ stylesMissionsList.medalWrapper }>
                     {
-                        levels.map(level => level.numberLevel === 1 && level.status === 'COMPLETED')
+                        levels.find(level => level.numberLevel === 1)?.status === 'COMPLETED'
                         ? (
                             <Image
                                 source={ require('../assets/finished-level.png') }
                                 style={{ width: 80, height: 80 }}
                             />
                         )
-                        : levels.map(level => level.numberLevel === 1 && level.status === 'PROGRESS')
+                        : levels.find(level => level.numberLevel === 1)?.status === 'PROGRESS'
                         ? (
                             <Image
                                 source={ require('../assets/progress-level.png') }

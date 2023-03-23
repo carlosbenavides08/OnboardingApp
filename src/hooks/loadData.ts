@@ -6,7 +6,7 @@ import { setMissions } from "../redux/slices/user";
 
 const loadLevelsBack = async() => {
     try {
-        const user = await AsyncStorage.getItem('studentCode')
+        const user = await AsyncStorage.getItem('user')
         const { data } = await mundoApi.post<User>('/auth/login', { studentCode: user })
         const levels = data.data.map(level => level.data)
         return levels

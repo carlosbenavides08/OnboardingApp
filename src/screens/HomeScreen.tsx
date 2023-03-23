@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Text, View, Image, ScrollView, SafeAreaView } from 'react-native';
+import { Text, View, Image, ScrollView, SafeAreaView } from 'react-native'
 import { StackScreenProps } from '@react-navigation/stack'
 import { RootStackParams } from '../navigator/Navigator'
 
-import { World } from '../components/World';
+import { World } from '../components/World'
 
 import { stylesHome } from '../styles'
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import mundoApi from '../api/mundoApi';
-import { User } from '../interfaces/User';
-import { setLevels } from '../redux/slices/user';
+import { useAppDispatch, useAppSelector } from '../redux/hooks'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
+import { setLevels } from '../redux/slices/user'
+import { loadLevelsBack } from '../hooks/loadData'
 
 interface Props extends StackScreenProps<RootStackParams, 'HomeScreen'>{}
 
@@ -30,19 +30,12 @@ export const HomeScreen = ({ navigation }: Props) => {
 
     const getName = async() => {
         const storageName = await AsyncStorage.getItem('name')
-        // const firstName = storageName?.split(' ')
         setName(storageName!)
     }
 
     const loadLevels = async() => {
-        try {
-            const user = await AsyncStorage.getItem('studentCode')
-            const { data } = await mundoApi.post<User>('/auth/login', { studentCode: user })
-            const levels = data.data.map(level => level.data)
-            dispatch(setLevels(levels))
-        } catch (error) {
-            console.log(error)
-        }
+        const levels = await loadLevelsBack()
+        dispatch(setLevels(levels!))
     }
 
     const [medals, setMedals] = useState(0)
