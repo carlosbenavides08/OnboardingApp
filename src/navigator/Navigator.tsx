@@ -18,7 +18,7 @@ export type RootStackParams = {
     HomeScreen: undefined,
     ProfileScreen: undefined,
     TabsHome: undefined,
-    LevelsScreen: undefined,
+    LevelsScreen: { levelTitle: string },
     MissionsListScreen: { title: string, description: string },
     MissionScreen: { levelTitle: string, missionTitle: string, nextMissionTitle?: string | null, nextMissionTitleBoolean: boolean, description: string }
 }
@@ -63,7 +63,6 @@ export const Navigator = () => {
                         <Stack.Screen name="LevelsScreen" component={ LevelsScreen }></Stack.Screen>
                         <Stack.Screen name="MissionsListScreen" component={ MissionsListScreen }></Stack.Screen>
                         <Stack.Screen name="MissionScreen" component={ MissionScreen }></Stack.Screen>
-                        {/* <Stack.Screen name="LoginScreen" component={ LoginScreen }></Stack.Screen> */}
                     </>
                 ) : (
                     <>

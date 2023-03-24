@@ -23,7 +23,7 @@ const stylesProfile = StyleSheet.create({
         textAlign: 'center',
         alignItems: 'center',
         borderRadius: 14,
-        backgroundColor: 'white',
+        backgroundColor: 'transparent',
         borderColor: '#E50A17',
         borderWidth: 2,
         marginTop: 40,

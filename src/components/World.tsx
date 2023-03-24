@@ -50,7 +50,7 @@ export const World = ({ title, description, image, wonMedals, totalMedals, enabl
     return (
         <TouchableOpacity
             style={ stylesWorld.worldCard }
-            onPress={ navigation ? () => navigation.replace('LevelsScreen') : undefined }
+            onPress={ navigation ? () => navigation.replace('LevelsScreen', { levelTitle: title }) : undefined }
             activeOpacity={ 1 }
         >
             <View style={[

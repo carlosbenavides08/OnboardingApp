@@ -16,7 +16,7 @@ import { stylesBottomSheetMessage } from '../styles/bottomSheetMessage'
 
 interface Props extends StackScreenProps<RootStackParams, 'LevelsScreen'>{}
 
-export const LevelsScreen = ({ navigation }: Props) => {
+export const LevelsScreen = ({ navigation, route }: Props) => {
     const dispatch = useAppDispatch()
     const { levels } = useAppSelector((state) => state.userReducer)
     
@@ -56,7 +56,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
         <SafeAreaView style={ stylesLevels.levelsContainer }>
             <ScrollView>
                 <Header
-                    title='MUNDO PREPÁRATE'
+                    title={ route.params.levelTitle }
                     navigation={ navigation }
                 />
                 <View style={ stylesLevels.hero }>

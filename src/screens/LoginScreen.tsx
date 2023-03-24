@@ -91,7 +91,7 @@ export const LoginScreen = ({ navigation }: Props) => {
                     await AsyncStorage.removeItem('studentCode')
                 }
     
-                navigation.replace('TabsHome')
+                // navigation.replace('TabsHome')
             } else {
                 setError(true)
             }
