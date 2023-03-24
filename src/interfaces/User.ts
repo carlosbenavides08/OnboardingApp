@@ -23,6 +23,7 @@ export interface Datum {
 export interface Data {
     numberLevel?:       number
     name?:              string
+    lastName?:          string
     medal?:             string
     totalMissions?:     number
     status?:            Status
