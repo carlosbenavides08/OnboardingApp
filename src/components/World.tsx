@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 
 import { StackNavigationProp } from '@react-navigation/stack'
 import { RootStackParams } from '../navigator/Navigator'
 
 import { stylesWorld } from '../styles'
+import { LevelContext } from '../context/LevelContext'
 
 type ImageName = 
     | 'world-begins'
@@ -21,6 +22,8 @@ interface Props {
 }
 
 export const World = ({ title, description, image, wonMedals, totalMedals, enable = true, navigation }: Props) => {
+    const { saveWorldTitle } = useContext(LevelContext)
+
     const [imageString, setImageString] = useState({
         src: require('../assets/world-begins-enabled.png')
     })
@@ -47,10 +50,17 @@ export const World = ({ title, description, image, wonMedals, totalMedals, enabl
         }
     }
 
+    const handleGoToLevel = () => {
+        if (navigation) {
+            saveWorldTitle(title)
+            navigation.replace('LevelsScreen')
+        }
+    }
+
     return (
         <TouchableOpacity
             style={ stylesWorld.worldCard }
-            onPress={ navigation ? () => navigation.replace('LevelsScreen') : undefined }
+            onPress={ handleGoToLevel }
             activeOpacity={ 1 }
         >
             <View style={[

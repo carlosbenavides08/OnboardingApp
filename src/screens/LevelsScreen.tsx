@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Image, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { StackScreenProps } from '@react-navigation/stack'
 import { RootStackParams } from '../navigator/Navigator'
@@ -13,12 +13,15 @@ import { setLevels } from '../redux/slices/user'
 import { loadLevelsBack } from '../hooks/loadData'
 import { BottomSheetMessage } from '../components/BottomSheetMessage'
 import { stylesBottomSheetMessage } from '../styles/bottomSheetMessage'
+import { LevelContext } from '../context/LevelContext'
 
 interface Props extends StackScreenProps<RootStackParams, 'LevelsScreen'>{}
 
-export const LevelsScreen = ({ navigation, route }: Props) => {
+export const LevelsScreen = ({ navigation }: Props) => {
     const dispatch = useAppDispatch()
     const { levels } = useAppSelector((state) => state.userReducer)
+
+    const { worldTitle } = useContext(LevelContext)
     
     const [medals, setMedals] = useState(0)
     const [date, setDate] = useState('')
@@ -56,7 +59,7 @@ export const LevelsScreen = ({ navigation, route }: Props) => {
         <SafeAreaView style={ stylesLevels.levelsContainer }>
             <ScrollView>
                 <Header
-                    title={ '' }
+                    title={ worldTitle }
                     navigation={ navigation }
                 />
                 <View style={ stylesLevels.hero }>

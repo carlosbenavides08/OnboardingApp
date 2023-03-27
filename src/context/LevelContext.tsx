@@ -2,11 +2,13 @@ import React, { createContext, useReducer } from 'react'
 import { levelReducer, LevelState } from './levelReducer'
 
 type LevelContextProps = {
+    worldTitle: string
     levelTitle: string
     level: number | null
     mission: number | null
     totalMissions: number | null
     missions: { title: string, description: string }[]
+    saveWorldTitle: (worldTitle: string) => void
     saveLevelTitle: (levelTitle: string) => void
     saveLevel: (level: number | null, totalMissions: number | null) => void
     saveMission: (mission: number | null) => void
@@ -14,6 +16,7 @@ type LevelContextProps = {
 }
 
 const loginInitialState: LevelState = {
+    worldTitle: '',
     levelTitle: '',
     level: null,
     mission: null,
@@ -26,6 +29,10 @@ export const LevelContext = createContext({} as LevelContextProps)
 export const LevelProvider = ({ children }: any) =>  {
 
     const [state, dispatch] = useReducer(levelReducer, loginInitialState)
+
+    const saveWorldTitle = (worldTitle: string) => {
+        dispatch({ type: 'saveWorldTitle', payload: worldTitle })
+    }
 
     const saveLevelTitle = (levelTitle: string) => {
         dispatch({ type: 'saveLevelTitle', payload: levelTitle })
@@ -46,6 +53,7 @@ export const LevelProvider = ({ children }: any) =>  {
     return (
         <LevelContext.Provider value={{
             ...state,
+            saveWorldTitle,
             saveLevelTitle,
             saveLevel,
             saveMission,
