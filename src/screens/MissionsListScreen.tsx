@@ -22,8 +22,6 @@ export const MissionsListScreen = ({ navigation }: Props) => {
 
     const { level } = useContext(LevelContext)
 
-    // console.log(level)
-
     useEffect(() => {
         loadLevels()
     }, [])

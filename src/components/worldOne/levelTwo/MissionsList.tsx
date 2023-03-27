@@ -5,7 +5,7 @@ import { RootStackParams } from '../../../navigator/Navigator'
 import { LevelContext } from '../../../context/LevelContext'
 
 import { stylesMissionsList } from '../../../styles'
-import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
+import { useAppSelector } from '../../../redux/hooks'
 
 interface Props {
     navigation: StackNavigationProp<RootStackParams, "MissionsListScreen", undefined>
@@ -20,16 +20,16 @@ export const MissionsListLevel2 = ({ navigation }: Props) => {
     useEffect(() => {
         saveMissions([
             {
-                title: 'CONÉCTATE CON LA UNIVERSIDAD',
-                description: 'Conoce los canales digitales primordiales para comenzar tus clases sin inconvenientes.'
+                title: 'CONOCE TU LÍMITE DE INASISTENCIAS EN EL CICLO',
+                description: 'Hazle seguimiento a tus inasistencias y evita exceder el límite.'
             },
             {
-                title: 'ASISTE A TUS CLASES SIN INCONVENIENTES',
-                description: 'Prepárate para asistir a todas las clases de tu primer ciclo.'
+                title: 'APRENDE A VER Y CALCULAR TUS NOTAS',
+                description: 'Revisa tus notas y aprende a realizar el cálculo de ellas para obtener tu promedio ideal.'
             },
             {
-                title: 'ASISTE A TU PRIMER DÍA DE CLASES',
-                description: 'Conoce las fechas importantes de tu ciclo académico 2023-1.'
+                title: 'MANTENTE AL DÍA CON TUS PAGOS',
+                description: 'Que no se te pasen las fechas de tus boletas y llega siempre al día con los pagos del ciclo.'
             }
         ])
     }, [])
