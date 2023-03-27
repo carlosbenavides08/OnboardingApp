@@ -26,7 +26,7 @@ export const Header = ({ title, levelTitle, navigation }: Props) => {
         }
 
         if (level && mission) {
-            navigation.replace('MissionsListScreen', { title: levelTitle!, description: levelTitle! })
+            navigation.replace('MissionsListScreen')
             saveMission(null)
         }
     }

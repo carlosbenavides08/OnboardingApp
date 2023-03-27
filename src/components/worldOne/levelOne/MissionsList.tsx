@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { RootStackParams } from '../../../navigator/Navigator'
@@ -9,20 +9,37 @@ import { useAppSelector } from '../../../redux/hooks'
 
 interface Props {
     navigation: StackNavigationProp<RootStackParams, "MissionsListScreen", undefined>
-    levelTitle: string
     missionTitle?: string
 }
 
-export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
+export const MissionsListLevel1 = ({ navigation }: Props) => {
     const authentication = useAppSelector((state) => state.userReducer)
 
-    const { saveMission } = useContext(LevelContext)
+    const { saveMission, saveMissions } = useContext(LevelContext)
 
-    const handleMission = (mission: number, missionTitle: string, nextMissionTitle: string | null, nextMissionTitleBoolean: boolean, description: string) => {
-        if (navigation) {
-            navigation.replace('MissionScreen', { levelTitle, missionTitle, nextMissionTitle, nextMissionTitleBoolean, description })
-        }
+    useEffect(() => {
+        saveMissions([
+            {
+                title: 'CONÉCTATE CON LA UNIVERSIDAD',
+                description: 'Conoce los canales digitales primordiales para comenzar tus clases sin inconvenientes.'
+            },
+            {
+                title: 'ASISTE A TUS CLASES SIN INCONVENIENTES',
+                description: 'Prepárate para asistir a todas las clases de tu primer ciclo.'
+            },
+            {
+                title: 'ASISTE A TU PRIMER DÍA DE CLASES',
+                description: 'Conoce las fechas importantes de tu ciclo académico 2023-1.'
+            }
+        ])
+    }, [])
+
+    const handleMission = (mission: number, nextMissionTitleBoolean: boolean) => {
         saveMission(mission)
+
+        if (navigation) {
+            navigation.replace('MissionScreen', { nextMissionTitleBoolean })
+        }
     }
 
     return (
@@ -30,7 +47,7 @@ export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
             <TouchableOpacity
                 style={ stylesMissionsList.missionCard }
                 activeOpacity={ 1 }
-                onPress={ () => handleMission(1, 'CONÉCTATE CON LA UNIVERSIDAD', 'ASISTE A TUS CLASES SIN INCONVENIENTES', false, 'Conoce los canales digitales primordiales para comenzar tus clases sin inconvenientes.') }
+                onPress={ () => handleMission(1, false) }
             >
                 {
                     authentication.missions.find(mission => mission.data.numberMission === 1)
@@ -52,7 +69,9 @@ export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
                         : stylesMissionsList.missionTagPending
                     ]}>
                         <View style={
-                            authentication.missions.find(mission => mission.data.numberMission === 1) ? stylesMissionsList.missionCircleFinished : stylesMissionsList.missionCirclePending
+                            authentication.missions.find(mission => mission.data.numberMission === 1)
+                            ? stylesMissionsList.missionCircleFinished
+                            : stylesMissionsList.missionCirclePending
                         }></View>
                         <Text style={ stylesMissionsList.missionTagTextPending }>
                             {
@@ -73,7 +92,7 @@ export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
                     authentication.levels.find(level => level.numberLevel! === 1)?.completedMissions! < 1 ? stylesMissionsList.missionCardLocked : null
                 ]}
                 disabled={ authentication.levels.find(level => level.numberLevel! === 1)?.completedMissions! < 1 }
-                onPress={ () => handleMission(2, 'ASISTE A TUS CLASES SIN INCONVENIENTES', 'ASISTE A TU PRIMER DÍA DE CLASES', false, 'Prepárate para asistir a todas las clases de tu primer ciclo.') }
+                onPress={ () => handleMission(2, false) }
             >
                 {
                     authentication.missions.find(mission => mission.data.numberMission === 2)
@@ -102,7 +121,13 @@ export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
                         ? stylesMissionsList.missionTagLocked
                         : stylesMissionsList.missionTagPending
                     ]}>
-                        <View style={ stylesMissionsList.missionCircleLocked }></View>
+                        <View style={
+                            authentication.missions.find(mission => mission.data.numberMission === 2)
+                            ? stylesMissionsList.missionCircleFinished
+                            : authentication.levels.find(level => level.numberLevel! === 1)?.completedMissions! < 1
+                            ? stylesMissionsList.missionCircleLocked
+                            : stylesMissionsList.missionCirclePending
+                        }></View>
                         <Text style={
                             authentication.missions.find(mission => mission.data.numberMission === 2)
                             ? stylesMissionsList.missionTagTextFinished
@@ -130,7 +155,7 @@ export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
                     authentication.levels.find(level => level.numberLevel! === 1)?.completedMissions! < 2 ? stylesMissionsList.missionCardLocked : null
                 ]}
                 disabled={ authentication.levels.find(level => level.numberLevel! === 1)?.completedMissions! < 2 }
-                onPress={ () => handleMission(3, 'ASISTE A TU PRIMER DÍA DE CLASES', '', false, 'Conoce las fechas importantes de tu ciclo académico 2023-1.') }
+                onPress={ () => handleMission(3, false) }
             >
                 {
                     authentication.missions.find(mission => mission.data.numberMission === 3)
@@ -159,7 +184,13 @@ export const MissionsListLevel1 = ({ navigation, levelTitle }: Props) => {
                         ? stylesMissionsList.missionTagLocked
                         : stylesMissionsList.missionTagPending
                     ]}>
-                        <View style={ stylesMissionsList.missionCircleLocked }></View>
+                        <View style={
+                            authentication.missions.find(mission => mission.data.numberMission === 3)
+                            ? stylesMissionsList.missionCircleFinished
+                            : authentication.levels.find(level => level.numberLevel! === 1)?.completedMissions! < 2
+                            ? stylesMissionsList.missionCircleLocked
+                            : stylesMissionsList.missionCirclePending
+                        }></View>
                         <Text style={ stylesMissionsList.missionTagTextPending }>
                             {
                                 authentication.missions.find(mission => mission.data.numberMission === 3)

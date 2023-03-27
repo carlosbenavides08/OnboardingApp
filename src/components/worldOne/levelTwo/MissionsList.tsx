@@ -6,59 +6,40 @@ import { LevelContext } from '../../../context/LevelContext'
 
 import { stylesMissionsList } from '../../../styles'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import mundoApi from '../../../api/mundoApi'
-import { setLevels, setMissions } from '../../../redux/slices/user'
-import { Mission } from '../../../interfaces/Mission'
-import { User } from '../../../interfaces/User'
 
 interface Props {
     navigation: StackNavigationProp<RootStackParams, "MissionsListScreen", undefined>
-    levelTitle: string
     missionTitle?: string
 }
 
-export const MissionsListLevel2 = ({ navigation, levelTitle }: Props) => {
-    const dispatch = useAppDispatch()
+export const MissionsListLevel2 = ({ navigation }: Props) => {
     const authentication = useAppSelector((state) => state.userReducer)
 
-    const { level, saveMission } = useContext(LevelContext)
+    const { saveMission, saveMissions } = useContext(LevelContext)
 
     useEffect(() => {
-        loadLevels()
+        saveMissions([
+            {
+                title: 'CONÉCTATE CON LA UNIVERSIDAD',
+                description: 'Conoce los canales digitales primordiales para comenzar tus clases sin inconvenientes.'
+            },
+            {
+                title: 'ASISTE A TUS CLASES SIN INCONVENIENTES',
+                description: 'Prepárate para asistir a todas las clases de tu primer ciclo.'
+            },
+            {
+                title: 'ASISTE A TU PRIMER DÍA DE CLASES',
+                description: 'Conoce las fechas importantes de tu ciclo académico 2023-1.'
+            }
+        ])
     }, [])
 
-    useEffect(() => {
-        loadMissions()
-    }, [])
-
-    const loadLevels = async() => {
-        try {
-            const user = await AsyncStorage.getItem('studentCode')
-            const { data } = await mundoApi.post<User>('/auth/login', { studentCode: user })
-            const levels = data.data.map(level => level.data)
-            dispatch(setLevels(levels))
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    const loadMissions = async() => {
-        try {
-            const user = await AsyncStorage.getItem('studentCode')
-            const { data } = await mundoApi.post<Mission>('/level/list-mission', { studentCode: user, numberLevel: level })
-            const missions = data.data.map(mission => mission)
-            dispatch(setMissions(missions))
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    const handleMission = (mission: number, missionTitle: string, nextMissionTitle: string | null, nextMissionTitleBoolean: boolean, description: string) => {
-        if (navigation) {
-            navigation.replace('MissionScreen', { levelTitle, missionTitle, nextMissionTitle, nextMissionTitleBoolean, description })
-        }
+    const handleMission = (mission: number, nextMissionTitleBoolean: boolean) => {
         saveMission(mission)
+
+        if (navigation) {
+            navigation.replace('MissionScreen', { nextMissionTitleBoolean })
+        }
     }
 
     return (
@@ -66,7 +47,7 @@ export const MissionsListLevel2 = ({ navigation, levelTitle }: Props) => {
             <TouchableOpacity
                 style={ stylesMissionsList.missionCard }
                 activeOpacity={ 1 }
-                onPress={ () => handleMission(1, 'CONOCE TU LÍMITE DE INASISTENCIAS EN EL CICLO', 'APRENDE A VER Y CALCULAR TUS NOTAS', false, 'Hazle seguimiento a tus inasistencias y evita exceder el límite.') }
+                onPress={ () => handleMission(1, false) }
             >
                 {
                     authentication.missions.find(mission => mission.data.numberMission === 1)
@@ -88,7 +69,9 @@ export const MissionsListLevel2 = ({ navigation, levelTitle }: Props) => {
                         : stylesMissionsList.missionTagPending
                     ]}>
                         <View style={
-                            authentication.missions.find(mission => mission.data.numberMission === 1) ? stylesMissionsList.missionCircleFinished : stylesMissionsList.missionCirclePending
+                            authentication.missions.find(mission => mission.data.numberMission === 1)
+                            ? stylesMissionsList.missionCircleFinished
+                            : stylesMissionsList.missionCirclePending
                         }></View>
                         <Text style={ stylesMissionsList.missionTagTextPending }>
                             {
@@ -109,7 +92,7 @@ export const MissionsListLevel2 = ({ navigation, levelTitle }: Props) => {
                     authentication.levels.find(level => level.numberLevel! === 2)?.completedMissions! < 1 ? stylesMissionsList.missionCardLocked : null
                 ]}
                 disabled={ authentication.levels.find(level => level.numberLevel! === 2)?.completedMissions! < 1 }
-                onPress={ () => handleMission(2, 'APRENDE A VER Y CALCULAR TUS NOTAS', 'MANTENTE AL DÍA CON TUS PAGOS', false, 'Revisa tus notas y aprende a realizar el cálculo de ellas para obtener tu promedio ideal.') }
+                onPress={ () => handleMission(2, false) }
             >
                 {
                     authentication.missions.find(mission => mission.data.numberMission === 2)
@@ -138,7 +121,13 @@ export const MissionsListLevel2 = ({ navigation, levelTitle }: Props) => {
                         ? stylesMissionsList.missionTagLocked
                         : stylesMissionsList.missionTagPending
                     ]}>
-                        <View style={ stylesMissionsList.missionCircleLocked }></View>
+                        <View style={
+                            authentication.missions.find(mission => mission.data.numberMission === 2)
+                            ? stylesMissionsList.missionCircleFinished
+                            : authentication.levels.find(level => level.numberLevel! === 2)?.completedMissions! < 1
+                            ? stylesMissionsList.missionCircleLocked
+                            : stylesMissionsList.missionCirclePending
+                        }></View>
                         <Text style={
                             authentication.missions.find(mission => mission.data.numberMission === 2)
                             ? stylesMissionsList.missionTagTextFinished
@@ -166,7 +155,7 @@ export const MissionsListLevel2 = ({ navigation, levelTitle }: Props) => {
                     authentication.levels.find(level => level.numberLevel! === 2)?.completedMissions! < 2 ? stylesMissionsList.missionCardLocked : null
                 ]}
                 disabled={ authentication.levels.find(level => level.numberLevel! === 2)?.completedMissions! < 2 }
-                onPress={ () => handleMission(3, 'MANTENTE AL DÍA CON TUS PAGOS', '', false, 'Que no se te pasen las fechas de tus boletas y llega siempre al día con los pagos del ciclo.') }
+                onPress={ () => handleMission(3, false) }
             >
                 {
                     authentication.missions.find(mission => mission.data.numberMission === 3)
@@ -195,7 +184,13 @@ export const MissionsListLevel2 = ({ navigation, levelTitle }: Props) => {
                         ? stylesMissionsList.missionTagLocked
                         : stylesMissionsList.missionTagPending
                     ]}>
-                        <View style={ stylesMissionsList.missionCircleLocked }></View>
+                        <View style={
+                            authentication.missions.find(mission => mission.data.numberMission === 3)
+                            ? stylesMissionsList.missionCircleFinished
+                            : authentication.levels.find(level => level.numberLevel! === 2)?.completedMissions! < 2
+                            ? stylesMissionsList.missionCircleLocked
+                            : stylesMissionsList.missionCirclePending
+                        }></View>
                         <Text style={ stylesMissionsList.missionTagTextPending }>
                             {
                                 authentication.missions.find(mission => mission.data.numberMission === 3)

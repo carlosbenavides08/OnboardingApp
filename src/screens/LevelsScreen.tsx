@@ -56,7 +56,7 @@ export const LevelsScreen = ({ navigation, route }: Props) => {
         <SafeAreaView style={ stylesLevels.levelsContainer }>
             <ScrollView>
                 <Header
-                    title={ route.params.levelTitle }
+                    title={ '' }
                     navigation={ navigation }
                 />
                 <View style={ stylesLevels.hero }>
@@ -130,6 +130,7 @@ export const LevelsScreen = ({ navigation, route }: Props) => {
                         <Level
                             levelStyle={ stylesLevels.level1 }
                             number={ 1 }
+                            // worldTitle={ route.params.worldTitle }
                             levelTitle='Nivel 1'
                             levelDescription='INICIA TU PRIMER CICLO'
                             completedMissions={ levels.find(level => level.numberLevel! === 1)?.completedMissions!.toString() }
@@ -140,6 +141,7 @@ export const LevelsScreen = ({ navigation, route }: Props) => {
                         <Level
                             levelStyle={ stylesLevels.level2 }
                             number={ 2 }
+                            // worldTitle={ route.params.worldTitle }
                             levelTitle='Nivel 2'
                             levelDescription='CONOCE INFORMACIÓN CLAVE PARA TUS CLASES Y LA UNIVERSIDAD'
                             completedMissions={ levels.find(level => level.numberLevel! === 2)?.completedMissions!.toString() }
@@ -151,6 +153,7 @@ export const LevelsScreen = ({ navigation, route }: Props) => {
                         <Level
                             levelStyle={ stylesLevels.level3 }
                             number={ 3 }
+                            // worldTitle={ route.params.worldTitle }
                             levelTitle='Nivel 3'
                             levelDescription='INTÉGRATE A LAS ACTIVIDADES CULTURALES'
                             enable={ levels.find(level => level.numberLevel! === 2)?.completedMissions! === levels.find(level => level.numberLevel! === 2)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 3)?.startDate!) <= new Date(date) }
@@ -161,6 +164,7 @@ export const LevelsScreen = ({ navigation, route }: Props) => {
                         <Level
                             levelStyle={ stylesLevels.level4 }
                             number={ 4 }
+                            // worldTitle={ route.params.worldTitle }
                             levelTitle='Nivel 4'
                             levelDescription='RECIBE APOYO PERSONAL Y ACADÉMICO'
                             enable={ false }
@@ -171,6 +175,7 @@ export const LevelsScreen = ({ navigation, route }: Props) => {
                         <Level
                             levelStyle={ stylesLevels.level5 }
                             number={ 5 }
+                            // worldTitle={ route.params.worldTitle }
                             levelTitle='Nivel 5'
                             levelDescription='APRENDE CÓMO RESERVAR ESPACIOS EN UPC'
                             enable={ false }
@@ -181,6 +186,7 @@ export const LevelsScreen = ({ navigation, route }: Props) => {
                         <Level
                             levelStyle={ stylesLevels.level6 }
                             number={ 6 }
+                            // worldTitle={ route.params.worldTitle }
                             levelTitle='Nivel 6'
                             levelDescription='REALIZA TUS EXÁMENES PARCIALES'
                             enable={ false }
@@ -191,6 +197,7 @@ export const LevelsScreen = ({ navigation, route }: Props) => {
                         <Level
                             levelStyle={ stylesLevels.level7 }
                             number={ 7 }
+                            // worldTitle={ route.params.worldTitle }
                             levelTitle='Nivel 7'
                             levelDescription='INTÉGRATE CON LAS ACTIVIDADES DE UPC'
                             enable={ false }
@@ -201,6 +208,7 @@ export const LevelsScreen = ({ navigation, route }: Props) => {
                         <Level
                             levelStyle={ stylesLevels.level8 }
                             number={ 8 }
+                            // worldTitle={ route.params.worldTitle }
                             levelTitle='Nivel 8'
                             levelDescription='REFUERZA Y POTENCIA TUS CONOCIMIENTOS'
                             enable={ false }
@@ -211,6 +219,7 @@ export const LevelsScreen = ({ navigation, route }: Props) => {
                         <Level
                             levelStyle={ stylesLevels.level9 }
                             number={ 9 }
+                            // worldTitle={ route.params.worldTitle }
                             levelTitle='Nivel 9'
                             levelDescription='PREPÁRATE PARA CULMINAR TU 1° CICLO'
                             enable={ false }
@@ -221,6 +230,7 @@ export const LevelsScreen = ({ navigation, route }: Props) => {
                         <Level
                             levelStyle={ stylesLevels.level10 }
                             number={ 10 }
+                            // worldTitle={ route.params.worldTitle }
                             levelTitle='Nivel 10'
                             levelDescription='REALIZA TUS EVALUACIONES FINALES'
                             enable={ false }

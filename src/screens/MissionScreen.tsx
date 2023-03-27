@@ -26,14 +26,14 @@ import { InstructionsLevel2Mission3 } from '../components/worldOne/levelTwo/Miss
 
 interface Props extends StackScreenProps<RootStackParams, 'MissionScreen'>{}
 
-export const MissionScreen = ({ navigation, route }: Props) => {
+export const MissionScreen = ({ route, navigation }: Props) => {
 
     const [activeBottomSheet, setActiveBottomSheet] = useState(false)
     const [showQuestion, setShowQuestion] = useState(false)
     const [qualify, setQualify] = useState(false)
     const [missionCompleted, setMissionCompleted] = useState(false)
 
-    const { level, mission } = useContext(LevelContext)
+    const { level, mission, levelTitle, missions } = useContext(LevelContext)
 
     const slide = () => {
         setActiveBottomSheet(!activeBottomSheet)
@@ -47,15 +47,28 @@ export const MissionScreen = ({ navigation, route }: Props) => {
                     <Header
                         title={
                             route.params.nextMissionTitleBoolean
-                            ? `${ (route.params.nextMissionTitle!).length > 35 ? `${ route.params.nextMissionTitle!.substring(0, 35) }...` : route.params.nextMissionTitle }`
-                            : `${ (route.params.missionTitle!).length > 35 ? `${ route.params.missionTitle!.substring(0, 35) }...` : route.params.missionTitle }`
+                            ? `${
+                                mission! >= 1 &&
+                                    missions[mission!-1].title.length > 35 ? `${ missions[mission!-1].title.substring(0, 35) }...` : missions[mission!-1].title
+                            }`
+                            : `${
+                                mission! >= 1 &&
+                                    missions[mission!-1].title.length > 35 ? `${ missions[mission!-1].title.substring(0, 35) }...` : missions[mission!-1].title }`
                         }
-                        levelTitle={ route.params.levelTitle }
+                        levelTitle={ levelTitle }
                         navigation={ navigation }
                     />
                     <View style={ stylesMission.textHeaderWrapper }>
                         <Text style={ stylesMission.textHeader }>
-                            { route.params.description }
+                            {
+                                route.params.nextMissionTitleBoolean
+                                ?
+                                    mission! >= 1 &&
+                                        missions[mission!-1].description
+                                : 
+                                    mission! >= 1 &&
+                                        missions[mission!-1].description
+                            }
                         </Text>
                     </View>
                     <View style={ stylesMission.missionsBody }>
@@ -188,10 +201,6 @@ export const MissionScreen = ({ navigation, route }: Props) => {
                                 missionCompleted && (
                                     <FinishedMission
                                         navigation={ navigation }
-                                        levelTitle={ route.params.levelTitle }
-                                        description={ route.params.description }
-                                        missionTitle={ route.params.missionTitle! }
-                                        nextMissionTitle={ route.params.nextMissionTitle! }
                                     />
                                 )
                             }

@@ -4,7 +4,7 @@ import { Image, SafeAreaView, ScrollView, Text, View } from 'react-native'
 
 import { RootStackParams } from '../navigator/Navigator'
 import { Header } from '../components/Header'
-import { LevelContext } from '../context/LevelContext'
+import { LevelContext } from '../context/LevelContext';
 import { MissionsListLevel1 } from '../components/worldOne/levelOne/MissionsList';
 
 import { stylesMissionsList } from '../styles'
@@ -15,11 +15,14 @@ import { loadLevelsBack, loadMissionsBack } from '../hooks/loadData'
 
 interface Props extends StackScreenProps<RootStackParams, 'MissionsListScreen'>{}
 
-export const MissionsListScreen = ({ route, navigation }: Props) => {
+export const MissionsListScreen = ({ navigation }: Props) => {
     const dispatch = useAppDispatch()
     const { levels } = useAppSelector((state) => state.userReducer)
+    const { levelTitle } = useContext(LevelContext)
 
     const { level } = useContext(LevelContext)
+
+    // console.log(level)
 
     useEffect(() => {
         loadLevels()
@@ -43,19 +46,19 @@ export const MissionsListScreen = ({ route, navigation }: Props) => {
         <SafeAreaView style={ stylesMissionsList.missionsContainer }>
             <ScrollView>
                 <Header
-                    title={ `NIVEL ${ level }: ${ (route.params.description).length > 30 ? `${ route.params.description.substring(0, 30) }...` : route.params.description }` }
+                    title={ levelTitle.length >= 38 ? `${ levelTitle.substring(0, 38) }...` : levelTitle }
                     navigation={ navigation }
                 />
                 <View style={ stylesMissionsList.medalWrapper }>
                     {
-                        levels.find(level => level.numberLevel === 1)?.status === 'COMPLETED'
+                        levels.find(lev => lev.numberLevel === level)?.status === 'COMPLETED'
                         ? (
                             <Image
                                 source={ require('../assets/finished-level.png') }
                                 style={{ width: 80, height: 80 }}
                             />
                         )
-                        : levels.find(level => level.numberLevel === 1)?.status === 'PROGRESS'
+                        : levels.find(level => level.numberLevel === level)?.status === 'PROGRESS'
                         ? (
                             <Image
                                 source={ require('../assets/progress-level.png') }
@@ -89,7 +92,6 @@ export const MissionsListScreen = ({ route, navigation }: Props) => {
                             level === 1 && (
                                 <MissionsListLevel1
                                     navigation={ navigation }
-                                    levelTitle={ route.params.description }
                                 />
                             )
                         }
@@ -97,7 +99,6 @@ export const MissionsListScreen = ({ route, navigation }: Props) => {
                             level === 2 && (
                                 <MissionsListLevel2
                                     navigation={ navigation }
-                                    levelTitle={ route.params.description }
                                 />
                             )
                         }

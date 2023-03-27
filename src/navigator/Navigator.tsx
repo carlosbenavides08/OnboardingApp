@@ -18,9 +18,9 @@ export type RootStackParams = {
     HomeScreen: undefined,
     ProfileScreen: undefined,
     TabsHome: undefined,
-    LevelsScreen: { levelTitle: string },
-    MissionsListScreen: { title: string, description: string },
-    MissionScreen: { levelTitle: string, missionTitle: string, nextMissionTitle?: string | null, nextMissionTitleBoolean: boolean, description: string }
+    LevelsScreen: undefined,
+    MissionsListScreen: undefined,
+    MissionScreen: { nextMissionTitleBoolean: boolean }
 }
 
 const Stack = createNativeStackNavigator<RootStackParams>()

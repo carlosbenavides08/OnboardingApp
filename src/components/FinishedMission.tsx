@@ -9,20 +9,16 @@ import { stylesFinishedMission } from '../styles'
 
 interface Props {
     navigation: StackNavigationProp<RootStackParams, "MissionScreen", undefined>
-    levelTitle: string
-    description: string
-    missionTitle: string
-    nextMissionTitle: string | null
 }
 
-export const FinishedMission = ({ levelTitle, description, missionTitle, nextMissionTitle, navigation }: Props) => {
+export const FinishedMission = ({ navigation }: Props) => {
 
     const { level, mission, totalMissions, saveLevel, saveMission } = useContext(LevelContext)
 
     const handleNavigation = () => {
         if (mission! < totalMissions!) {
-            navigation.replace('MissionScreen', { levelTitle: levelTitle, description, missionTitle, nextMissionTitle, nextMissionTitleBoolean: true })
             saveMission(mission! + 1)
+            navigation.replace('MissionScreen', { nextMissionTitleBoolean: true })
         } else {
             saveLevel(null, null)
             saveMission(null)

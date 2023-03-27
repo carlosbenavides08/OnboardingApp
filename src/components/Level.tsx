@@ -29,12 +29,13 @@ interface Props {
 
 export const Level = ({ levelStyle, number, levelTitle, levelDescription, completedMissions = '0', totalMissions = 1, enable = true, subsequent = false, setActiveMessage, navigation }: Props) => {
 
-    const { saveLevel } = useContext(LevelContext)
+    const { saveLevel, saveLevelTitle } = useContext(LevelContext)
 
     const handleLevel = (level: number, totalMissions: number, title: string, description: string) => {
         if (navigation) {
             saveLevel(level, totalMissions)
-            navigation.replace('MissionsListScreen', { title, description })
+            saveLevelTitle(`${ title }: ${ description }`)
+            navigation.replace('MissionsListScreen')
         }
 
         if (!enable) {
