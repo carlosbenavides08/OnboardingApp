@@ -12,13 +12,15 @@ import { MissionsListLevel2 } from '../components/worldOne/levelTwo/MissionsList
 import { setLevels, setMissions } from '../redux/slices/user'
 import { useAppDispatch, useAppSelector } from '../redux/hooks'
 import { loadLevelsBack, loadMissionsBack } from '../hooks/loadData'
+import { MissionsListLevel3 } from '../components/worldOne/levelThree/MissionsList'
+import { MissionsListLevel4 } from '../components/worldOne/levelFour/MissionsList'
 
 interface Props extends StackScreenProps<RootStackParams, 'MissionsListScreen'>{}
 
 export const MissionsListScreen = ({ navigation }: Props) => {
     const dispatch = useAppDispatch()
     const { levels } = useAppSelector((state) => state.userReducer)
-    const { levelTitle } = useContext(LevelContext)
+    const { levelTitle, medal } = useContext(LevelContext)
 
     const { level } = useContext(LevelContext)
 
@@ -44,7 +46,7 @@ export const MissionsListScreen = ({ navigation }: Props) => {
         <SafeAreaView style={ stylesMissionsList.missionsContainer }>
             <ScrollView>
                 <Header
-                    title={ levelTitle.length >= 38 ? `${ levelTitle.substring(0, 38) }...` : levelTitle }
+                    title={ levelTitle.length >= 40 ? `${ levelTitle.substring(0, 40) }...` : levelTitle }
                     navigation={ navigation }
                 />
                 <View style={ stylesMissionsList.medalWrapper }>
@@ -72,7 +74,7 @@ export const MissionsListScreen = ({ navigation }: Props) => {
                     }
                     <View style={ stylesMissionsList.medalDetailWrapper }>
                         <Text style={ stylesMissionsList.medalText }>MEDALLA</Text>
-                        <Text style={ stylesMissionsList.medalTitle }>{ `Nivel ${ level }` }</Text>
+                        <Text style={ stylesMissionsList.medalTitle }>{ medal }</Text>
                         <Text style={ stylesMissionsList.medalDescription }>¡Completa las misiones y vive la experiencia UPC!</Text>
                     </View>
                 </View>
@@ -96,6 +98,20 @@ export const MissionsListScreen = ({ navigation }: Props) => {
                         {
                             level === 2 && (
                                 <MissionsListLevel2
+                                    navigation={ navigation }
+                                />
+                            )
+                        }
+                        {
+                            level === 3 && (
+                                <MissionsListLevel3
+                                    navigation={ navigation }
+                                />
+                            )
+                        }
+                        {
+                            level === 4 && (
+                                <MissionsListLevel4
                                     navigation={ navigation }
                                 />
                             )

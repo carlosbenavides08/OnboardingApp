@@ -13,7 +13,7 @@ interface ImageGallery {
     filename: string
 }
 
-export const MissionTwoLevelOne = ({ setQualify, setShowQuestion }: Props) => {
+export const MissionTwoLevelThree = ({ setQualify, setShowQuestion }: Props) => {
 
     const [tempUri, setTempUri] = useState<ImageGallery>()
 
@@ -43,7 +43,7 @@ export const MissionTwoLevelOne = ({ setQualify, setShowQuestion }: Props) => {
     return (
         <>
             <Text style={ stylesMissionTwo.question }>
-                Completa esta misión subiendo una foto en tu primer día de clases.
+                Completa esta misión subiendo una foto participando de nuestro Viernes Cultural.
             </Text>
 
             {

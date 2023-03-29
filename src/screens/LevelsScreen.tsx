@@ -133,9 +133,9 @@ export const LevelsScreen = ({ navigation }: Props) => {
                         <Level
                             levelStyle={ stylesLevels.level1 }
                             number={ 1 }
-                            // worldTitle={ route.params.worldTitle }
                             levelTitle='Nivel 1'
                             levelDescription='INICIA TU PRIMER CICLO'
+                            medal='El gran inicio'
                             completedMissions={ levels.find(level => level.numberLevel! === 1)?.completedMissions!.toString() }
                             totalMissions={ levels.find(level => level.numberLevel! === 1)?.totalMissions }
                             setActiveMessage={ setActiveMessage }
@@ -144,9 +144,9 @@ export const LevelsScreen = ({ navigation }: Props) => {
                         <Level
                             levelStyle={ stylesLevels.level2 }
                             number={ 2 }
-                            // worldTitle={ route.params.worldTitle }
                             levelTitle='Nivel 2'
                             levelDescription='CONOCE INFORMACIÓN CLAVE PARA TUS CLASES Y LA UNIVERSIDAD'
+                            medal='No lo pierdas de vista'
                             completedMissions={ levels.find(level => level.numberLevel! === 2)?.completedMissions!.toString() }
                             totalMissions={ levels.find(level => level.numberLevel! === 2)?.totalMissions }
                             enable={ levels.find(level => level.numberLevel! === 1)?.completedMissions! === levels.find(level => level.numberLevel! === 1)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 2)?.startDate!) <= new Date(date) }
@@ -156,90 +156,80 @@ export const LevelsScreen = ({ navigation }: Props) => {
                         <Level
                             levelStyle={ stylesLevels.level3 }
                             number={ 3 }
-                            // worldTitle={ route.params.worldTitle }
                             levelTitle='Nivel 3'
                             levelDescription='INTÉGRATE A LAS ACTIVIDADES CULTURALES'
+                            medal='Me divierto en UPC I'
+                            completedMissions={ levels.find(level => level.numberLevel! === 3)?.completedMissions!.toString() }
+                            totalMissions={ levels.find(level => level.numberLevel! === 3)?.totalMissions }
                             enable={ levels.find(level => level.numberLevel! === 2)?.completedMissions! === levels.find(level => level.numberLevel! === 2)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 3)?.startDate!) <= new Date(date) }
-                            subsequent
                             setActiveMessage={ setActiveMessage }
-                            // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
+                            navigation={ levels.find(level => level.numberLevel! === 2)?.completedMissions! === levels.find(level => level.numberLevel! === 2)?.totalMissions! ? navigation : undefined }
                         />
                         <Level
                             levelStyle={ stylesLevels.level4 }
                             number={ 4 }
-                            // worldTitle={ route.params.worldTitle }
                             levelTitle='Nivel 4'
                             levelDescription='RECIBE APOYO PERSONAL Y ACADÉMICO'
-                            enable={ false }
-                            subsequent
+                            medal='Creciendo con UPC'
+                            completedMissions={ levels.find(level => level.numberLevel! === 4)?.completedMissions!.toString() }
+                            totalMissions={ levels.find(level => level.numberLevel! === 4)?.totalMissions }
+                            enable={ levels.find(level => level.numberLevel! === 3)?.completedMissions! === levels.find(level => level.numberLevel! === 3)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 4)?.startDate!) <= new Date(date) }
                             setActiveMessage={ setActiveMessage }
-                            // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
+                            navigation={ levels.find(level => level.numberLevel! === 3)?.completedMissions! === levels.find(level => level.numberLevel! === 3)?.totalMissions! ? navigation : undefined }
                         />
                         <Level
                             levelStyle={ stylesLevels.level5 }
                             number={ 5 }
-                            // worldTitle={ route.params.worldTitle }
                             levelTitle='Nivel 5'
                             levelDescription='APRENDE CÓMO RESERVAR ESPACIOS EN UPC'
                             enable={ false }
                             subsequent
                             setActiveMessage={ setActiveMessage }
-                            // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
                             levelStyle={ stylesLevels.level6 }
                             number={ 6 }
-                            // worldTitle={ route.params.worldTitle }
                             levelTitle='Nivel 6'
                             levelDescription='REALIZA TUS EXÁMENES PARCIALES'
                             enable={ false }
                             subsequent
                             setActiveMessage={ setActiveMessage }
-                            // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
                             levelStyle={ stylesLevels.level7 }
                             number={ 7 }
-                            // worldTitle={ route.params.worldTitle }
                             levelTitle='Nivel 7'
                             levelDescription='INTÉGRATE CON LAS ACTIVIDADES DE UPC'
                             enable={ false }
                             subsequent
                             setActiveMessage={ setActiveMessage }
-                            // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
                             levelStyle={ stylesLevels.level8 }
                             number={ 8 }
-                            // worldTitle={ route.params.worldTitle }
                             levelTitle='Nivel 8'
                             levelDescription='REFUERZA Y POTENCIA TUS CONOCIMIENTOS'
                             enable={ false }
                             subsequent
                             setActiveMessage={ setActiveMessage }
-                            // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
                             levelStyle={ stylesLevels.level9 }
                             number={ 9 }
-                            // worldTitle={ route.params.worldTitle }
                             levelTitle='Nivel 9'
                             levelDescription='PREPÁRATE PARA CULMINAR TU 1° CICLO'
                             enable={ false }
                             subsequent
                             setActiveMessage={ setActiveMessage }
-                            // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                         <Level
                             levelStyle={ stylesLevels.level10 }
                             number={ 10 }
-                            // worldTitle={ route.params.worldTitle }
                             levelTitle='Nivel 10'
                             levelDescription='REALIZA TUS EVALUACIONES FINALES'
                             enable={ false }
                             subsequent
                             setActiveMessage={ setActiveMessage }
-                            // subsequent={ levels.find(level => level.numberLevel! === 2)?.completedMissions! !== levels.find(level => level.numberLevel! === 2)?.totalMissions! }
                         />
                     </View>
                     <View style={ stylesLevels.goalWrapper }>

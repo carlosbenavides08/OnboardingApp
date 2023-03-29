@@ -13,7 +13,7 @@ interface ImageGallery {
     filename: string
 }
 
-export const MissionTwoLevelOne = ({ setQualify, setShowQuestion }: Props) => {
+export const MissionOneLevelThree = ({ setQualify, setShowQuestion }: Props) => {
 
     const [tempUri, setTempUri] = useState<ImageGallery>()
 
@@ -42,8 +42,8 @@ export const MissionTwoLevelOne = ({ setQualify, setShowQuestion }: Props) => {
 
     return (
         <>
-            <Text style={ stylesMissionTwo.question }>
-                Completa esta misión subiendo una foto en tu primer día de clases.
+            <Text style={ stylesMissionOne.question }>
+                Completa esta misión subiendo una captura de pantalla donde sigas el instagram de Vida Universitaria UPC.
             </Text>
 
             {
@@ -51,20 +51,20 @@ export const MissionTwoLevelOne = ({ setQualify, setShowQuestion }: Props) => {
                     <TouchableOpacity
                         activeOpacity={ 1 }
                         onPress={ handleOpenGallery }
-                        style={ stylesMissionTwo.galleryButton }
+                        style={ stylesMissionOne.galleryButton }
                     >
                         <Image
                             source={ require('../../../../assets/add.png') }
                             style={{ width: 32, height: 32 }}
                         />
-                        <Text style={ stylesMissionTwo.galleryButtonText }>Agregar imagen</Text>
+                        <Text style={ stylesMissionOne.galleryButtonText }>Agregar imagen</Text>
                     </TouchableOpacity>
                 )
             }
 
             {
                 tempUri && (
-                    <View style={ stylesMissionTwo.imageContainer }>
+                    <View style={ stylesMissionOne.imageContainer }>
                         {
                             tempUri && (
                                 <Image
@@ -74,8 +74,8 @@ export const MissionTwoLevelOne = ({ setQualify, setShowQuestion }: Props) => {
                             )
                         }
                         <View>
-                            {/* <Text style={ stylesMissionTwo.filename }>{ tempUri.filename }</Text> */}
-                            <Text style={ stylesMissionTwo.completedLoad }>Carga completa</Text>
+                            {/* <Text style={ stylesMissionOne.filename }>{ tempUri.filename }</Text> */}
+                            <Text style={ stylesMissionOne.completedLoad }>Carga completa</Text>
                         </View>
                         <TouchableOpacity
                             activeOpacity={ 1 }
@@ -101,22 +101,22 @@ export const MissionTwoLevelOne = ({ setQualify, setShowQuestion }: Props) => {
             <TouchableOpacity
                 activeOpacity={ 1 }
                 style={[
-                    stylesMissionTwo.button,
-                    !tempUri ? stylesMissionTwo.buttonDisabled : null
+                    stylesMissionOne.button,
+                    !tempUri ? stylesMissionOne.buttonDisabled : null
                 ]}
                 disabled={ !tempUri }
                 onPress={ handleFinish }
             >
                 <Text style={[
-                    stylesMissionTwo.buttonText,
-                    !tempUri ? stylesMissionTwo.buttonTextDisabled : null
+                    stylesMissionOne.buttonText,
+                    !tempUri ? stylesMissionOne.buttonTextDisabled : null
                 ]}>Finalizar misión</Text>
             </TouchableOpacity>
         </>
     )
 }
 
-const stylesMissionTwo = StyleSheet.create({
+const stylesMissionOne = StyleSheet.create({
     question: {
         color: '#42526A',
         fontFamily: 'WhitneyHTF-Medium',

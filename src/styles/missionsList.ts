@@ -62,9 +62,10 @@ const stylesMissionsList = StyleSheet.create({
     },
     missionList: {
         marginTop: 32,
-        // gap: 20,
     },
     missionCard: {
+        // borderWidth: 1,
+        // borderColor: 'red',
         flexDirection: 'row',
         alignItems: 'center',
         gap: 12,
@@ -97,6 +98,7 @@ const stylesMissionsList = StyleSheet.create({
         gap: 4,
         borderRadius: 4,
         paddingHorizontal: 8,
+        marginBottom: 8
     },
     missionTagPending: {
         backgroundColor: '#BBEBFF',
@@ -153,7 +155,8 @@ const stylesMissionsList = StyleSheet.create({
         color: 'black',
         fontFamily: 'SolanoGothicMVB-Bd',
         fontSize: 18,
-        lineHeight: 28,
+        lineHeight: 24,
+        marginRight: 16,
     },
     missionNumberText: {
         color: '#67778F',

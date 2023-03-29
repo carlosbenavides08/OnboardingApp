@@ -19,6 +19,7 @@ interface Props {
     number: number
     levelTitle: string
     levelDescription: string
+    medal?: string
     completedMissions?: string
     totalMissions?: number
     enable?: boolean
@@ -27,14 +28,15 @@ interface Props {
     navigation?: StackNavigationProp<RootStackParams, 'LevelsScreen'> | undefined
 }
 
-export const Level = ({ levelStyle, number, levelTitle, levelDescription, completedMissions = '0', totalMissions = 1, enable = true, subsequent = false, setActiveMessage, navigation }: Props) => {
+export const Level = ({ levelStyle, number, levelTitle, levelDescription, medal = '', completedMissions = '0', totalMissions = 1, enable = true, subsequent = false, setActiveMessage, navigation }: Props) => {
 
-    const { saveLevel, saveLevelTitle } = useContext(LevelContext)
+    const { saveLevel, saveLevelTitle, saveMedal } = useContext(LevelContext)
 
     const handleLevel = (level: number, totalMissions: number, title: string, description: string) => {
         if (navigation) {
             saveLevel(level, totalMissions)
             saveLevelTitle(`${ title }: ${ description }`)
+            saveMedal(medal)
             navigation.replace('MissionsListScreen')
         }
 

@@ -2,6 +2,7 @@ export interface LevelState {
     worldTitle: string
     levelTitle: string
     level: number | null
+    medal: string
     mission: number | null
     totalMissions: number | null
     missions: { title: string, description: string }[]
@@ -10,6 +11,7 @@ export interface LevelState {
 type LevelAction =
     | { type: 'saveWorldTitle', payload: string }
     | { type: 'saveLevelTitle', payload: string }
+    | { type: 'saveMedal', payload: string }
     | { type: 'saveLevel', payload: { level: number | null, totalMissions: number | null } }
     | { type: 'saveMission', payload: number | null }
     | { type: 'saveMissions', payload: { title: string, description: string }[] }
@@ -25,6 +27,11 @@ export const levelReducer = (state: LevelState, action: LevelAction): LevelState
             return {
                 ...state,
                 levelTitle: action.payload,
+            }
+        case 'saveMedal':
+            return {
+                ...state,
+                medal: action.payload,
             }
         case 'saveLevel':
             return {

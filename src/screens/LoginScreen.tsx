@@ -80,7 +80,6 @@ export const LoginScreen = ({ navigation }: Props) => {
             if (data.data.length > 0) {
                 setError(false)
                 const userData = data.data.find(user => user.id === user.levelId)
-                console.log(userData)
                 await AsyncStorage.setItem('user', userData?.data.studentCode!)
                 await AsyncStorage.setItem('name', userData?.data.name!)
                 await AsyncStorage.setItem('lastname', userData?.data.lastName!)
@@ -92,8 +91,6 @@ export const LoginScreen = ({ navigation }: Props) => {
                 } else {
                     await AsyncStorage.removeItem('studentCode')
                 }
-    
-                // navigation.replace('TabsHome')
             } else {
                 setError(true)
             }

@@ -7,22 +7,32 @@ import { RootStackParams } from '../navigator/Navigator'
 
 import { BottomSheet } from '../components/BottomSheet'
 import { QualifyMission } from '../components/QualifyMission'
-import { MissionOneLevelOne } from '../components/worldOne/levelOne/MissionOne/MissionOne'
-import { MissionTwoLevelOne } from '../components/worldOne/levelOne/MissionTwo/MissionTwo'
-import { MissionThreeLevelOne } from '../components/worldOne/levelOne/MissionThree/MissionThree'
 import { InstructionsLevel1Mission1 } from '../components/worldOne/levelOne/MissionOne/Instructions'
 import { InstructionsLevel1Mission2 } from '../components/worldOne/levelOne/MissionTwo/Instructions'
 import { InstructionsLevel1Mission3 } from '../components/worldOne/levelOne/MissionThree/Instructions'
 import { InstructionsLevel2Mission1 } from '../components/worldOne/levelTwo/MissionOne/Instructions'
+import { InstructionsLevel2Mission2 } from '../components/worldOne/levelTwo/MissionTwo/Instructions'
+import { InstructionsLevel2Mission3 } from '../components/worldOne/levelTwo/MissionThree/Instructions'
+import { InstructionsLevel3Mission1 } from '../components/worldOne/levelThree/MissionOne/Instructions'
+import { InstructionsLevel3Mission2 } from '../components/worldOne/levelThree/MissionTwo/Instructions'
+import { InstructionsLevel4Mission1 } from '../components/worldOne/levelFour/MissionOne/Instructions'
+import { InstructionsLevel4Mission2 } from '../components/worldOne/levelFour/MissionTwo/Instructions'
+import { InstructionsLevel4Mission3 } from '../components/worldOne/levelFour/MissionThree/Instructions'
+import { MissionOneLevelOne } from '../components/worldOne/levelOne/MissionOne/MissionOne'
+import { MissionTwoLevelOne } from '../components/worldOne/levelOne/MissionTwo/MissionTwo'
+import { MissionThreeLevelOne } from '../components/worldOne/levelOne/MissionThree/MissionThree'
+import { MissionOneLevelTwo } from '../components/worldOne/levelTwo/MissionOne/MissionOne'
+import { MissionTwoLevelTwo } from '../components/worldOne/levelTwo/MissionTwo/MissionTwo'
+import { MissionOneLevelThree } from '../components/worldOne/levelThree/MissionOne/MissionOne'
+import { MissionTwoLevelThree } from '../components/worldOne/levelThree/MissionTwo/MissionTwo'
+import { MissionOneLevelFour } from '../components/worldOne/levelFour/MissionOne/MissionOne'
+import { MissionTwoLevelFour } from '../components/worldOne/levelFour/MissionTwo/MissionTwo'
+import { MissionThreeLevelFour } from '../components/worldOne/levelFour/MissionThree/MissionThree'
 import { BottomSheetCongrats } from '../components/BottomSheetCongrats'
 import { FinishedMission } from '../components/FinishedMission'
 import { LevelContext } from '../context/LevelContext'
 
 import { stylesMission, stylesBottomSheet } from '../styles'
-import { MissionOneLevelTwo } from '../components/worldOne/levelTwo/MissionOne/MissionOne';
-import { InstructionsLevel2Mission2 } from '../components/worldOne/levelTwo/MissionTwo/Instructions';
-import { MissionTwoLevelTwo } from '../components/worldOne/levelTwo/MissionTwo/MissionTwo';
-import { InstructionsLevel2Mission3 } from '../components/worldOne/levelTwo/MissionThree/Instructions';
 
 interface Props extends StackScreenProps<RootStackParams, 'MissionScreen'>{}
 
@@ -115,11 +125,49 @@ export const MissionScreen = ({ route, navigation }: Props) => {
                                 />
                             )
                         }
+                        {
+                            (level === 3 && mission === 1) && (
+                                <InstructionsLevel3Mission1
+                                    slide={ slide }
+                                />
+                            )
+                        }
+                        {
+                            (level === 3 && mission === 2) && (
+                                <InstructionsLevel3Mission2
+                                    slide={ slide }
+                                />
+                            )
+                        }
+                        {
+                            (level === 4 && mission === 1) && (
+                                <InstructionsLevel4Mission1
+                                    slide={ slide }
+                                />
+                            )
+                        }
+                        {
+                            (level === 4 && mission === 2) && (
+                                <InstructionsLevel4Mission2
+                                    slide={ slide }
+                                />
+                            )
+                        }
+                        {
+                            (level === 4 && mission === 3) && (
+                                <InstructionsLevel4Mission3
+                                    slide={ slide }
+                                />
+                            )
+                        }
                     </View>
                 </ScrollView>
                 <BottomSheet
                     activeBottomSheet={ activeBottomSheet }
-                    height={ (level === 2 && mission === 2 && !qualify && !missionCompleted) ? 700 : 330 }
+                    height={
+                        (level === 2 && mission === 2 && !qualify && !missionCompleted) ? 700
+                        : (level === 4 && mission === 1 && !qualify && !missionCompleted) ? 380
+                        : 330 }
                 >
                     <>
                         {
@@ -184,6 +232,46 @@ export const MissionScreen = ({ route, navigation }: Props) => {
                             {
                                 (showQuestion && level === 2 && mission === 2) && (
                                     <MissionTwoLevelTwo
+                                        setQualify={ setQualify }
+                                        setShowQuestion={ setShowQuestion }
+                                    />
+                                )
+                            }
+                            {
+                                (showQuestion && level === 3 && mission === 1) && (
+                                    <MissionOneLevelThree
+                                        setQualify={ setQualify }
+                                        setShowQuestion={ setShowQuestion }
+                                    />
+                                )
+                            }
+                            {
+                                (showQuestion && level === 3 && mission === 2) && (
+                                    <MissionTwoLevelThree
+                                        setQualify={ setQualify }
+                                        setShowQuestion={ setShowQuestion }
+                                    />
+                                )
+                            }
+                            {
+                                (showQuestion && level === 4 && mission === 1) && (
+                                    <MissionOneLevelFour
+                                        setQualify={ setQualify }
+                                        setShowQuestion={ setShowQuestion }
+                                    />
+                                )
+                            }
+                            {
+                                (showQuestion && level === 4 && mission === 2) && (
+                                    <MissionTwoLevelFour
+                                        setQualify={ setQualify }
+                                        setShowQuestion={ setShowQuestion }
+                                    />
+                                )
+                            }
+                            {
+                                (showQuestion && level === 4 && mission === 3) && (
+                                    <MissionThreeLevelFour
                                         setQualify={ setQualify }
                                         setShowQuestion={ setShowQuestion }
                                     />

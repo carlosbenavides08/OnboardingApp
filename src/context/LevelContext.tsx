@@ -5,11 +5,13 @@ type LevelContextProps = {
     worldTitle: string
     levelTitle: string
     level: number | null
+    medal: string
     mission: number | null
     totalMissions: number | null
     missions: { title: string, description: string }[]
     saveWorldTitle: (worldTitle: string) => void
     saveLevelTitle: (levelTitle: string) => void
+    saveMedal: (levelTitle: string) => void
     saveLevel: (level: number | null, totalMissions: number | null) => void
     saveMission: (mission: number | null) => void
     saveMissions: (missions: { title: string, description: string }[]) => void
@@ -18,6 +20,7 @@ type LevelContextProps = {
 const loginInitialState: LevelState = {
     worldTitle: '',
     levelTitle: '',
+    medal: '',
     level: null,
     mission: null,
     totalMissions: null,
@@ -38,6 +41,10 @@ export const LevelProvider = ({ children }: any) =>  {
         dispatch({ type: 'saveLevelTitle', payload: levelTitle })
     }
 
+    const saveMedal = (medal: string) => {
+        dispatch({ type: 'saveMedal', payload: medal })
+    }
+
     const saveLevel = (level: number | null, totalMissions: number | null) => {
         dispatch({ type: 'saveLevel', payload: { level, totalMissions } })
     }
@@ -55,6 +62,7 @@ export const LevelProvider = ({ children }: any) =>  {
             ...state,
             saveWorldTitle,
             saveLevelTitle,
+            saveMedal,
             saveLevel,
             saveMission,
             saveMissions
