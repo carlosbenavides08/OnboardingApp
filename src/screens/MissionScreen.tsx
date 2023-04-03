@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { SafeAreaView, ScrollView, Text, View, TouchableOpacity, Image } from 'react-native'
+import { SafeAreaView, ScrollView, Text, View, TouchableOpacity, Image, KeyboardAvoidingView, Platform } from 'react-native'
 import { StackScreenProps } from '@react-navigation/stack'
 
 import { Header } from '../components/Header'
@@ -53,262 +53,267 @@ export const MissionScreen = ({ route, navigation }: Props) => {
     return (
         <>
             <SafeAreaView style={ stylesMission.missionContainer }>
-                <ScrollView>
-                    <Header
-                        title={
-                            route.params.nextMissionTitleBoolean
-                            ? `${
-                                mission! >= 1 &&
-                                    missions[mission!-1].title.length > 35 ? `${ missions[mission!-1].title.substring(0, 35) }...` : missions[mission!-1].title
-                            }`
-                            : `${
-                                mission! >= 1 &&
-                                    missions[mission!-1].title.length > 35 ? `${ missions[mission!-1].title.substring(0, 35) }...` : missions[mission!-1].title }`
-                        }
-                        levelTitle={ levelTitle }
-                        navigation={ navigation }
-                    />
-                    <View style={ stylesMission.textHeaderWrapper }>
-                        <Text style={ stylesMission.textHeader }>
-                            {
-                                route.params.nextMissionTitleBoolean
-                                ?
-                                    mission! >= 1 &&
-                                        missions[mission!-1].description
-                                : 
-                                    mission! >= 1 &&
-                                        missions[mission!-1].description
-                            }
-                        </Text>
-                    </View>
-                    <View style={ stylesMission.missionsBody }>
-                        {
-                            (level === 1 && mission === 1) && (
-                                <InstructionsLevel1Mission1
-                                    slide={ slide }
-                                />
-                            )
-                        }
-                        {
-                            (level === 1 && mission === 2) && (
-                                <InstructionsLevel1Mission2
-                                    slide={ slide }
-                                />
-                            )
-                        }
-                        {
-                            (level === 1 && mission === 3) && (
-                                <InstructionsLevel1Mission3
-                                    slide={ slide }
-                                />
-                            )
-                        }
-                        {
-                            (level === 2 && mission === 1) && (
-                                <InstructionsLevel2Mission1
-                                    slide={ slide }
-                                />
-                            )
-                        }
-                        {
-                            (level === 2 && mission === 2) && (
-                                <InstructionsLevel2Mission2
-                                    slide={ slide }
-                                />
-                            )
-                        }
-                        {
-                            (level === 2 && mission === 3) && (
-                                <InstructionsLevel2Mission3
-                                    slide={ slide }
-                                    setQualify={ setQualify }
-                                />
-                            )
-                        }
-                        {
-                            (level === 3 && mission === 1) && (
-                                <InstructionsLevel3Mission1
-                                    slide={ slide }
-                                />
-                            )
-                        }
-                        {
-                            (level === 3 && mission === 2) && (
-                                <InstructionsLevel3Mission2
-                                    slide={ slide }
-                                />
-                            )
-                        }
-                        {
-                            (level === 4 && mission === 1) && (
-                                <InstructionsLevel4Mission1
-                                    slide={ slide }
-                                />
-                            )
-                        }
-                        {
-                            (level === 4 && mission === 2) && (
-                                <InstructionsLevel4Mission2
-                                    slide={ slide }
-                                />
-                            )
-                        }
-                        {
-                            (level === 4 && mission === 3) && (
-                                <InstructionsLevel4Mission3
-                                    slide={ slide }
-                                />
-                            )
-                        }
-                    </View>
-                </ScrollView>
-                <BottomSheet
-                    activeBottomSheet={ activeBottomSheet }
-                    height={
-                        (level === 2 && mission === 2 && !qualify && !missionCompleted) ? 700
-                        : (level === 4 && mission === 1 && !qualify && !missionCompleted) ? 380
-                        : 330 }
+                <KeyboardAvoidingView
+                    style={{ flex: 1, zIndex: 99999 }}
+                    behavior={ Platform.OS === 'ios' ? 'padding' : 'height' }
                 >
-                    <>
-                        {
-                            !missionCompleted && (
-                                <View style={ stylesBottomSheet.header }>
-                                    {
-                                        !qualify ? (
-                                            <Text style={ stylesBottomSheet.headerTitle }>COMPLETAR MISIÓN</Text>
-                                        ) : (
-                                            <View></View>
-                                        )
-                                    }
-                                    <TouchableOpacity
-                                        activeOpacity={ 1 }
-                                        onPress={ () => {
-                                            setActiveBottomSheet(false)
-                                            setShowQuestion(true)
-                                            setQualify(false)
-                                        }}
-                                    >
-                                        <Image
-                                            source={ require('../assets/ic-sm-error.png') }
-                                            style={{ width: 24, height: 24 }}
-                                        />
-                                    </TouchableOpacity>
-                                </View>
-                            )
-                        }
-                        <View style={ stylesBottomSheet.body }>
+                    <ScrollView>
+                        <Header
+                            title={
+                                route.params.nextMissionTitleBoolean
+                                ? `${
+                                    mission! >= 1 &&
+                                        missions[mission!-1].title.length > 35 ? `${ missions[mission!-1].title.substring(0, 35) }...` : missions[mission!-1].title
+                                }`
+                                : `${
+                                    mission! >= 1 &&
+                                        missions[mission!-1].title.length > 35 ? `${ missions[mission!-1].title.substring(0, 35) }...` : missions[mission!-1].title }`
+                            }
+                            levelTitle={ levelTitle }
+                            navigation={ navigation }
+                        />
+                        <View style={ stylesMission.textHeaderWrapper }>
+                            <Text style={ stylesMission.textHeader }>
+                                {
+                                    route.params.nextMissionTitleBoolean
+                                    ?
+                                        mission! >= 1 &&
+                                            missions[mission!-1].description
+                                    : 
+                                        mission! >= 1 &&
+                                            missions[mission!-1].description
+                                }
+                            </Text>
+                        </View>
+                        <View style={ stylesMission.missionsBody }>
                             {
-                                (showQuestion && level === 1 && mission === 1) && (
-                                    <MissionOneLevelOne
-                                        setQualify={ setQualify }
-                                        setShowQuestion={ setShowQuestion }
+                                (level === 1 && mission === 1) && (
+                                    <InstructionsLevel1Mission1
+                                        slide={ slide }
                                     />
                                 )
                             }
                             {
-                                (showQuestion && level === 1 && mission === 2) && (
-                                    <MissionTwoLevelOne
-                                        setQualify={ setQualify }
-                                        setShowQuestion={ setShowQuestion }
+                                (level === 1 && mission === 2) && (
+                                    <InstructionsLevel1Mission2
+                                        slide={ slide }
                                     />
                                 )
                             }
                             {
-                                (showQuestion && level === 1 && mission === 3) && (
-                                    <MissionThreeLevelOne
-                                        setQualify={ setQualify }
-                                        setShowQuestion={ setShowQuestion }
+                                (level === 1 && mission === 3) && (
+                                    <InstructionsLevel1Mission3
+                                        slide={ slide }
                                     />
                                 )
                             }
                             {
-                                (showQuestion && level === 2 && mission === 1) && (
-                                    <MissionOneLevelTwo
-                                        setQualify={ setQualify }
-                                        setShowQuestion={ setShowQuestion }
+                                (level === 2 && mission === 1) && (
+                                    <InstructionsLevel2Mission1
+                                        slide={ slide }
                                     />
                                 )
                             }
                             {
-                                (showQuestion && level === 2 && mission === 2) && (
-                                    <MissionTwoLevelTwo
-                                        setQualify={ setQualify }
-                                        setShowQuestion={ setShowQuestion }
+                                (level === 2 && mission === 2) && (
+                                    <InstructionsLevel2Mission2
+                                        slide={ slide }
                                     />
                                 )
                             }
                             {
-                                (showQuestion && level === 3 && mission === 1) && (
-                                    <MissionOneLevelThree
-                                        setQualify={ setQualify }
-                                        setShowQuestion={ setShowQuestion }
-                                    />
-                                )
-                            }
-                            {
-                                (showQuestion && level === 3 && mission === 2) && (
-                                    <MissionTwoLevelThree
-                                        setQualify={ setQualify }
-                                        setShowQuestion={ setShowQuestion }
-                                    />
-                                )
-                            }
-                            {
-                                (showQuestion && level === 4 && mission === 1) && (
-                                    <MissionOneLevelFour
-                                        setQualify={ setQualify }
-                                        setShowQuestion={ setShowQuestion }
-                                    />
-                                )
-                            }
-                            {
-                                (showQuestion && level === 4 && mission === 2) && (
-                                    <MissionTwoLevelFour
-                                        setQualify={ setQualify }
-                                        setShowQuestion={ setShowQuestion }
-                                    />
-                                )
-                            }
-                            {
-                                (showQuestion && level === 4 && mission === 3) && (
-                                    <MissionThreeLevelFour
-                                        setQualify={ setQualify }
-                                        setShowQuestion={ setShowQuestion }
-                                    />
-                                )
-                            }
-                            {
-                                qualify && (
-                                    <QualifyMission
-                                        setMissionCompleted={ setMissionCompleted }
+                                (level === 2 && mission === 3) && (
+                                    <InstructionsLevel2Mission3
+                                        slide={ slide }
                                         setQualify={ setQualify }
                                     />
                                 )
                             }
                             {
-                                missionCompleted && (
-                                    <FinishedMission
-                                        navigation={ navigation }
+                                (level === 3 && mission === 1) && (
+                                    <InstructionsLevel3Mission1
+                                        slide={ slide }
+                                    />
+                                )
+                            }
+                            {
+                                (level === 3 && mission === 2) && (
+                                    <InstructionsLevel3Mission2
+                                        slide={ slide }
+                                    />
+                                )
+                            }
+                            {
+                                (level === 4 && mission === 1) && (
+                                    <InstructionsLevel4Mission1
+                                        slide={ slide }
+                                    />
+                                )
+                            }
+                            {
+                                (level === 4 && mission === 2) && (
+                                    <InstructionsLevel4Mission2
+                                        slide={ slide }
+                                    />
+                                )
+                            }
+                            {
+                                (level === 4 && mission === 3) && (
+                                    <InstructionsLevel4Mission3
+                                        slide={ slide }
                                     />
                                 )
                             }
                         </View>
-                    </>
-                </BottomSheet>
-                {
-                    missionCompleted && (
-                        <BottomSheetCongrats
-                            missionCompleted={ missionCompleted }
-                            setMissionCompleted={ setMissionCompleted }
-                            setActiveBottomSheet={ setActiveBottomSheet }
-                        />
-                    )
-                }
-                {
-                    activeBottomSheet && (
-                        <View style={ stylesMission.missionContainerLocked }></View>
-                    )
-                }
+                    </ScrollView>
+                    <BottomSheet
+                        activeBottomSheet={ activeBottomSheet }
+                        height={
+                            (level === 2 && mission === 2 && !qualify && !missionCompleted) ? 700
+                            : (level === 4 && mission === 1 && !qualify && !missionCompleted) ? 380
+                            : 330 }
+                    >
+                        <>
+                            {
+                                !missionCompleted && (
+                                    <View style={ stylesBottomSheet.header }>
+                                        {
+                                            !qualify ? (
+                                                <Text style={ stylesBottomSheet.headerTitle }>COMPLETAR MISIÓN</Text>
+                                            ) : (
+                                                <View></View>
+                                            )
+                                        }
+                                        <TouchableOpacity
+                                            activeOpacity={ 1 }
+                                            onPress={ () => {
+                                                setActiveBottomSheet(false)
+                                                setShowQuestion(true)
+                                                setQualify(false)
+                                            }}
+                                        >
+                                            <Image
+                                                source={ require('../assets/ic-sm-error.png') }
+                                                style={{ width: 24, height: 24 }}
+                                            />
+                                        </TouchableOpacity>
+                                    </View>
+                                )
+                            }
+                            <View style={ stylesBottomSheet.body }>
+                                {
+                                    (showQuestion && level === 1 && mission === 1) && (
+                                        <MissionOneLevelOne
+                                            setQualify={ setQualify }
+                                            setShowQuestion={ setShowQuestion }
+                                        />
+                                    )
+                                }
+                                {
+                                    (showQuestion && level === 1 && mission === 2) && (
+                                        <MissionTwoLevelOne
+                                            setQualify={ setQualify }
+                                            setShowQuestion={ setShowQuestion }
+                                        />
+                                    )
+                                }
+                                {
+                                    (showQuestion && level === 1 && mission === 3) && (
+                                        <MissionThreeLevelOne
+                                            setQualify={ setQualify }
+                                            setShowQuestion={ setShowQuestion }
+                                        />
+                                    )
+                                }
+                                {
+                                    (showQuestion && level === 2 && mission === 1) && (
+                                        <MissionOneLevelTwo
+                                            setQualify={ setQualify }
+                                            setShowQuestion={ setShowQuestion }
+                                        />
+                                    )
+                                }
+                                {
+                                    (showQuestion && level === 2 && mission === 2) && (
+                                        <MissionTwoLevelTwo
+                                            setQualify={ setQualify }
+                                            setShowQuestion={ setShowQuestion }
+                                        />
+                                    )
+                                }
+                                {
+                                    (showQuestion && level === 3 && mission === 1) && (
+                                        <MissionOneLevelThree
+                                            setQualify={ setQualify }
+                                            setShowQuestion={ setShowQuestion }
+                                        />
+                                    )
+                                }
+                                {
+                                    (showQuestion && level === 3 && mission === 2) && (
+                                        <MissionTwoLevelThree
+                                            setQualify={ setQualify }
+                                            setShowQuestion={ setShowQuestion }
+                                        />
+                                    )
+                                }
+                                {
+                                    (showQuestion && level === 4 && mission === 1) && (
+                                        <MissionOneLevelFour
+                                            setQualify={ setQualify }
+                                            setShowQuestion={ setShowQuestion }
+                                        />
+                                    )
+                                }
+                                {
+                                    (showQuestion && level === 4 && mission === 2) && (
+                                        <MissionTwoLevelFour
+                                            setQualify={ setQualify }
+                                            setShowQuestion={ setShowQuestion }
+                                        />
+                                    )
+                                }
+                                {
+                                    (showQuestion && level === 4 && mission === 3) && (
+                                        <MissionThreeLevelFour
+                                            setQualify={ setQualify }
+                                            setShowQuestion={ setShowQuestion }
+                                        />
+                                    )
+                                }
+                                {
+                                    qualify && (
+                                        <QualifyMission
+                                            setMissionCompleted={ setMissionCompleted }
+                                            setQualify={ setQualify }
+                                        />
+                                    )
+                                }
+                                {
+                                    missionCompleted && (
+                                        <FinishedMission
+                                            navigation={ navigation }
+                                        />
+                                    )
+                                }
+                            </View>
+                        </>
+                    </BottomSheet>
+                    {
+                        missionCompleted && (
+                            <BottomSheetCongrats
+                                missionCompleted={ missionCompleted }
+                                setMissionCompleted={ setMissionCompleted }
+                                setActiveBottomSheet={ setActiveBottomSheet }
+                            />
+                        )
+                    }
+                    {
+                        activeBottomSheet && (
+                            <View style={ stylesMission.missionContainerLocked }></View>
+                        )
+                    }
+                </KeyboardAvoidingView>
             </SafeAreaView>
         </>
     )

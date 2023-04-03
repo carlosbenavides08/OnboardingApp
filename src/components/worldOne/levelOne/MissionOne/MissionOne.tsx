@@ -149,8 +149,6 @@ const stylesMissionOne = StyleSheet.create({
         alignSelf: 'center',
         gap: 12,
         width: 230,
-        // borderWidth: 1,
-        // borderColor: 'green',
     },
     boxNumber: {
         borderWidth: 1,
@@ -172,7 +170,7 @@ const stylesMissionOne = StyleSheet.create({
         textAlign: 'center',
         alignItems: 'center',
         borderRadius: 14,
-        marginTop: 30,
+        bottom: -10,
     },
     buttonDisabled: {
         backgroundColor: '#E6EDF3',
