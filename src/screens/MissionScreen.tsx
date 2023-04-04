@@ -51,12 +51,12 @@ export const MissionScreen = ({ route, navigation }: Props) => {
     }
 
     return (
-        <>
-            <SafeAreaView style={ stylesMission.missionContainer }>
-                <KeyboardAvoidingView
-                    style={{ flex: 1, zIndex: 99999 }}
+        <KeyboardAvoidingView
+                    style={{ flex: 1 }}
                     behavior={ Platform.OS === 'ios' ? 'padding' : 'height' }
                 >
+            <SafeAreaView style={ stylesMission.missionContainer }>
+                
                     <ScrollView>
                         <Header
                             title={
@@ -313,8 +313,9 @@ export const MissionScreen = ({ route, navigation }: Props) => {
                             <View style={ stylesMission.missionContainerLocked }></View>
                         )
                     }
-                </KeyboardAvoidingView>
+                
             </SafeAreaView>
-        </>
+            
+            </KeyboardAvoidingView>
     )
 }
