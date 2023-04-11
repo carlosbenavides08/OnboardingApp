@@ -182,18 +182,26 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             number={ 5 }
                             levelTitle='Nivel 5'
                             levelDescription='APRENDE CÓMO RESERVAR ESPACIOS EN UPC'
-                            enable={ false }
-                            subsequent
+                            medal='Aprovecho mis recursos'
+                            completedMissions={ levels.find(level => level.numberLevel! === 5)?.completedMissions!.toString() }
+                            totalMissions={ levels.find(level => level.numberLevel! === 5)?.totalMissions }
+                            enable={ levels.find(level => level.numberLevel! === 4)?.completedMissions! === levels.find(level => level.numberLevel! === 4)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 5)?.startDate!) <= new Date(date) }
                             setActiveMessage={ setActiveMessage }
+                            navigation={ levels.find(level => level.numberLevel! === 4)?.completedMissions! === levels.find(level => level.numberLevel! === 4)?.totalMissions! ? navigation : undefined }
                         />
                         <Level
                             levelStyle={ stylesLevels.level6 }
                             number={ 6 }
                             levelTitle='Nivel 6'
                             levelDescription='REALIZA TUS EXÁMENES PARCIALES'
-                            enable={ false }
-                            subsequent
+                            medal='Fin de parciales'
+                            completedMissions={ levels.find(level => level.numberLevel! === 6)?.completedMissions!.toString() }
+                            totalMissions={ levels.find(level => level.numberLevel! === 6)?.totalMissions }
+                            enable={ new Date(levels.find(level => level.numberLevel! === 6)?.startDate!) <= new Date(date) }
+                            // enable={ true }
                             setActiveMessage={ setActiveMessage }
+                            navigation={ new Date(levels.find(level => level.numberLevel! === 6)?.startDate!) <= new Date(date) ? navigation : undefined }
+                            // navigation={ navigation }
                         />
                         <Level
                             levelStyle={ stylesLevels.level7 }

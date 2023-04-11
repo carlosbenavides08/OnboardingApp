@@ -2,7 +2,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage"
 import mundoApi from '../api/mundoApi';
 import { Mission } from "../interfaces/Mission";
 import { User } from "../interfaces/User";
-import { setMissions } from "../redux/slices/user";
 
 const loadLevelsBack = async() => {
     try {

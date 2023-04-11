@@ -14,6 +14,8 @@ import { useAppDispatch, useAppSelector } from '../redux/hooks'
 import { loadLevelsBack, loadMissionsBack } from '../hooks/loadData'
 import { MissionsListLevel3 } from '../components/worldOne/levelThree/MissionsList'
 import { MissionsListLevel4 } from '../components/worldOne/levelFour/MissionsList'
+import { MissionsListLevel5 } from '../components/worldOne/levelFive/MissionsList'
+import { MissionsListLevel6 } from '../components/worldOne/LevelSix/MissionsList'
 
 interface Props extends StackScreenProps<RootStackParams, 'MissionsListScreen'>{}
 
@@ -112,6 +114,20 @@ export const MissionsListScreen = ({ navigation }: Props) => {
                         {
                             level === 4 && (
                                 <MissionsListLevel4
+                                    navigation={ navigation }
+                                />
+                            )
+                        }
+                        {
+                            level === 5 && (
+                                <MissionsListLevel5
+                                    navigation={ navigation }
+                                />
+                            )
+                        }
+                        {
+                            level === 6 && (
+                                <MissionsListLevel6
                                     navigation={ navigation }
                                 />
                             )
