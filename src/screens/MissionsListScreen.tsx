@@ -16,6 +16,7 @@ import { MissionsListLevel3 } from '../components/worldOne/levelThree/MissionsLi
 import { MissionsListLevel4 } from '../components/worldOne/levelFour/MissionsList'
 import { MissionsListLevel5 } from '../components/worldOne/levelFive/MissionsList'
 import { MissionsListLevel6 } from '../components/worldOne/LevelSix/MissionsList'
+import { MissionsListLevel7 } from '../components/worldOne/levelSeven/MissionsList'
 
 interface Props extends StackScreenProps<RootStackParams, 'MissionsListScreen'>{}
 
@@ -128,6 +129,13 @@ export const MissionsListScreen = ({ navigation }: Props) => {
                         {
                             level === 6 && (
                                 <MissionsListLevel6
+                                    navigation={ navigation }
+                                />
+                            )
+                        }
+                        {
+                            level === 7 && (
+                                <MissionsListLevel7
                                     navigation={ navigation }
                                 />
                             )

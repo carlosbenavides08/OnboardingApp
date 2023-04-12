@@ -12,7 +12,7 @@ interface Props {
     missionTitle?: string
 }
 
-export const MissionsListLevel6 = ({ navigation }: Props) => {
+export const MissionsListLevel7 = ({ navigation }: Props) => {
     const authentication = useAppSelector((state) => state.userReducer)
 
     const { saveMission, saveMissions } = useContext(LevelContext)
@@ -20,16 +20,16 @@ export const MissionsListLevel6 = ({ navigation }: Props) => {
     useEffect(() => {
         saveMissions([
             {
-                title: 'PREPÁRATE PARA TUS EVALUACIONES PARCIALES',
-                description: 'Aprende buenos hábitos de estudio y prepárate para tus Evaluaciones Parciales.'
+                title: 'CONOCE Y EXPLORA UPC CULTURAL',
+                description: 'Amplía tu conocimiento explorando diferentes espacios culturales que UPC tiene para ti.'
             },
             {
-                title: 'ASISTE A TUS EVALUACIONES PARCIALES',
-                description: 'Realiza tus evaluaciones parciales y continúa con tu desarrollo académico en la universidad.'
+                title: 'CONOCE EL PASAPORTE DE ACTIVIDADES CULTURALES',
+                description: 'Descubre cómo participar de diferentes actividades culturales en museos y galerías.'
             },
             {
-                title: 'INFÓRMATE SOBRE LA RECUPERACIÓN DE EVALUACIONES',
-                description: 'Conoce cómo puedes recuperar una práctica o evaluación parcial que no pudiste rendir.'
+                title: 'DESCUBRE LAS ACTIVIDADES DEPORTIVAS EN UPC',
+                description: 'Entérate de las actividades deportivas que tiene UPC y motívate a participar en ellas.'
             }
         ])
     }, [])
@@ -81,7 +81,7 @@ export const MissionsListLevel6 = ({ navigation }: Props) => {
                             }
                         </Text>
                     </View>
-                    <Text style={ stylesMissionsList.missionTitle }>PREPÁRATE PARA TUS EVALUACIONES PARCIALES</Text>
+                    <Text style={ stylesMissionsList.missionTitle }>CONOCE Y EXPLORA UPC CULTURAL</Text>
                     <Text style={ stylesMissionsList.missionNumberText }>Misión 1</Text>
                 </View>
             </TouchableOpacity>
@@ -89,9 +89,9 @@ export const MissionsListLevel6 = ({ navigation }: Props) => {
                 activeOpacity={ 1 }
                 style={[
                     stylesMissionsList.missionCard,
-                    authentication.levels.find(level => level.numberLevel! === 6)?.completedMissions! < 1 ? stylesMissionsList.missionCardLocked : null
+                    authentication.levels.find(level => level.numberLevel! === 7)?.completedMissions! < 1 ? stylesMissionsList.missionCardLocked : null
                 ]}
-                disabled={ authentication.levels.find(level => level.numberLevel! === 6)?.completedMissions! < 1 }
+                disabled={ authentication.levels.find(level => level.numberLevel! === 7)?.completedMissions! < 1 }
                 onPress={ () => handleMission(2, false) }
             >
                 {
@@ -102,7 +102,7 @@ export const MissionsListLevel6 = ({ navigation }: Props) => {
                             style={{ width: 24, height: 24 }}
                         />
                     )
-                    : authentication.levels.find(level => level.numberLevel! === 6)?.completedMissions! < 1
+                    : authentication.levels.find(level => level.numberLevel! === 7)?.completedMissions! < 1
                     ? (
                         <Image
                             source={ require('../../../assets/mission-locked.png') }
@@ -117,34 +117,34 @@ export const MissionsListLevel6 = ({ navigation }: Props) => {
                         stylesMissionsList.missionTag,
                         authentication.missions.find(mission => mission.data.numberMission === 2)
                         ? stylesMissionsList.missionTagFinished
-                        : authentication.levels.find(level => level.numberLevel! === 6)?.completedMissions! < 1
+                        : authentication.levels.find(level => level.numberLevel! === 7)?.completedMissions! < 1
                         ? stylesMissionsList.missionTagLocked
                         : stylesMissionsList.missionTagPending
                     ]}>
                         <View style={
                             authentication.missions.find(mission => mission.data.numberMission === 2)
                             ? stylesMissionsList.missionCircleFinished
-                            : authentication.levels.find(level => level.numberLevel! === 6)?.completedMissions! < 1
+                            : authentication.levels.find(level => level.numberLevel! === 7)?.completedMissions! < 1
                             ? stylesMissionsList.missionCircleLocked
                             : stylesMissionsList.missionCirclePending
                         }></View>
                         <Text style={
                             authentication.missions.find(mission => mission.data.numberMission === 2)
                             ? stylesMissionsList.missionTagTextFinished
-                            : authentication.levels.find(level => level.numberLevel! === 6)?.completedMissions! < 1
+                            : authentication.levels.find(level => level.numberLevel! === 7)?.completedMissions! < 1
                             ? stylesMissionsList.missionTagTextLocked
                             : stylesMissionsList.missionTagTextPending
                         }>
                             {
                                 authentication.missions.find(mission => mission.data.numberMission === 2)
                                 ? 'TERMINADO'
-                                : authentication.levels.find(level => level.numberLevel! === 6)?.completedMissions! < 1
+                                : authentication.levels.find(level => level.numberLevel! === 7)?.completedMissions! < 1
                                 ? 'BLOQUEADO'
                                 : 'POR HACER'
                             }
                         </Text>
                     </View>
-                    <Text style={ stylesMissionsList.missionTitle }>ASISTE A TUS EVALUACIONES PARCIALES</Text>
+                    <Text style={ stylesMissionsList.missionTitle }>CONOCE EL PASAPORTE DE ACTIVIDADES CULTURALES</Text>
                     <Text style={ stylesMissionsList.missionNumberText }>Misión 2</Text>
                 </View>
             </TouchableOpacity>
@@ -152,9 +152,9 @@ export const MissionsListLevel6 = ({ navigation }: Props) => {
                 activeOpacity={ 1 }
                 style={[
                     stylesMissionsList.missionCard,
-                    authentication.levels.find(level => level.numberLevel! === 6)?.completedMissions! < 2 ? stylesMissionsList.missionCardLocked : null
+                    authentication.levels.find(level => level.numberLevel! === 7)?.completedMissions! < 2 ? stylesMissionsList.missionCardLocked : null
                 ]}
-                disabled={ authentication.levels.find(level => level.numberLevel! === 6)?.completedMissions! < 2 }
+                disabled={ authentication.levels.find(level => level.numberLevel! === 7)?.completedMissions! < 2 }
                 onPress={ () => handleMission(3, false) }
             >
                 {
@@ -165,7 +165,7 @@ export const MissionsListLevel6 = ({ navigation }: Props) => {
                             style={{ width: 24, height: 24 }}
                         />
                     )
-                    : authentication.levels.find(level => level.numberLevel! === 6)?.completedMissions! < 2
+                    : authentication.levels.find(level => level.numberLevel! === 7)?.completedMissions! < 2
                     ? (
                         <Image
                             source={ require('../../../assets/mission-locked.png') }
@@ -180,14 +180,14 @@ export const MissionsListLevel6 = ({ navigation }: Props) => {
                         stylesMissionsList.missionTag,
                         authentication.missions.find(mission => mission.data.numberMission === 3)
                         ? stylesMissionsList.missionTagFinished
-                        : authentication.levels.find(level => level.numberLevel! === 5)?.completedMissions! < 2
+                        : authentication.levels.find(level => level.numberLevel! === 7)?.completedMissions! < 2
                         ? stylesMissionsList.missionTagLocked
                         : stylesMissionsList.missionTagPending
                     ]}>
                         <View style={
                             authentication.missions.find(mission => mission.data.numberMission === 3)
                             ? stylesMissionsList.missionCircleFinished
-                            : authentication.levels.find(level => level.numberLevel! === 5)?.completedMissions! < 2
+                            : authentication.levels.find(level => level.numberLevel! === 7)?.completedMissions! < 2
                             ? stylesMissionsList.missionCircleLocked
                             : stylesMissionsList.missionCirclePending
                         }></View>
@@ -195,13 +195,13 @@ export const MissionsListLevel6 = ({ navigation }: Props) => {
                             {
                                 authentication.missions.find(mission => mission.data.numberMission === 3)
                                 ? 'TERMINADO'
-                                : authentication.levels.find(level => level.numberLevel! === 5)?.completedMissions! < 2
+                                : authentication.levels.find(level => level.numberLevel! === 7)?.completedMissions! < 2
                                 ? 'BLOQUEADO'
                                 : 'POR HACER'
                             }
                         </Text>
                     </View>
-                    <Text style={ stylesMissionsList.missionTitle }>INFÓRMATE SOBRE LA RECUPERACIÓN DE EVALUACIONES</Text>
+                    <Text style={ stylesMissionsList.missionTitle }>DESCUBRE LAS ACTIVIDADES DEPORTIVAS EN UPC</Text>
                     <Text style={ stylesMissionsList.missionNumberText }>Misión 3</Text>
                 </View>
             </TouchableOpacity>

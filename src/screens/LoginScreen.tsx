@@ -140,6 +140,7 @@ export const LoginScreen = ({ navigation }: Props) => {
                                 inputStyles={ stylesLogin.inputStyles }
                                 onChangeText={ value => validateText(value) }
                                 value={ user }
+                                autoCorrect={ false }
                             />
                             <View style={{ marginTop: 8, flexDirection: 'row', justifyContent: 'space-between' }}>
                                 <Text></Text>

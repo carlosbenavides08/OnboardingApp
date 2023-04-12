@@ -45,6 +45,11 @@ import { MissionOneLevelSix } from '../components/worldOne/LevelSix/MissionOne/M
 import { MissionTwoLevelSix } from '../components/worldOne/LevelSix/MissionTwo/MissionTwo'
 import { InstructionsLevel6Mission2 } from '../components/worldOne/LevelSix/MissionTwo/Instructions'
 import { InstructionsLevel6Mission3 } from '../components/worldOne/LevelSix/MissionThree/Instructions'
+import { InstructionsLevel7Mission1 } from '../components/worldOne/levelSeven/MissionOne/Instructions'
+import { MissionOneLevelSeven } from '../components/worldOne/levelSeven/MissionOne/MissionOne'
+import { InstructionsLevel7Mission2 } from '../components/worldOne/levelSeven/MissionTwo/Instructions'
+import { MissionThreeLevelSeven } from '../components/worldOne/levelSeven/MissionThree/MissionThree'
+import { InstructionsLevel7Mission3 } from '../components/worldOne/levelSeven/MissionThree/Instructions'
 
 interface Props extends StackScreenProps<RootStackParams, 'MissionScreen'>{}
 
@@ -226,6 +231,28 @@ export const MissionScreen = ({ route, navigation }: Props) => {
                                 />
                             )
                         }
+                        {
+                            (level === 7 && mission === 1) && (
+                                <InstructionsLevel7Mission1
+                                    slide={ slide }
+                                />
+                            )
+                        }
+                        {
+                            (level === 7 && mission === 2) && (
+                                <InstructionsLevel7Mission2
+                                    slide={ slide }
+                                    setQualify={ setQualify }
+                                />
+                            )
+                        }
+                        {
+                            (level === 7 && mission === 3) && (
+                                <InstructionsLevel7Mission3
+                                    slide={ slide }
+                                />
+                            )
+                        }
                     </View>
                 </ScrollView>
                 <BottomSheet
@@ -382,6 +409,22 @@ export const MissionScreen = ({ route, navigation }: Props) => {
                             {
                                 (showQuestion && level === 6 && mission === 2) && (
                                     <MissionTwoLevelSix
+                                        setQualify={ setQualify }
+                                        setShowQuestion={ setShowQuestion }
+                                    />
+                                )
+                            }
+                            {
+                                (showQuestion && level === 7 && mission === 1) && (
+                                    <MissionOneLevelSeven
+                                        setQualify={ setQualify }
+                                        setShowQuestion={ setShowQuestion }
+                                    />
+                                )
+                            }
+                            {
+                                (showQuestion && level === 7 && mission === 3) && (
+                                    <MissionThreeLevelSeven
                                         setQualify={ setQualify }
                                         setShowQuestion={ setShowQuestion }
                                     />

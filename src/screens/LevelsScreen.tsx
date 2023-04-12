@@ -198,19 +198,22 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             completedMissions={ levels.find(level => level.numberLevel! === 6)?.completedMissions!.toString() }
                             totalMissions={ levels.find(level => level.numberLevel! === 6)?.totalMissions }
                             enable={ new Date(levels.find(level => level.numberLevel! === 5)?.startDate!) <= new Date(date) }
-                            // enable={ true }
                             setActiveMessage={ setActiveMessage }
                             navigation={ new Date(levels.find(level => level.numberLevel! === 5)?.startDate!) <= new Date(date) ? navigation : undefined }
-                            // navigation={ navigation }
                         />
                         <Level
                             levelStyle={ stylesLevels.level7 }
                             number={ 7 }
                             levelTitle='Nivel 7'
                             levelDescription='INTÉGRATE CON LAS ACTIVIDADES DE UPC'
-                            enable={ false }
-                            subsequent
+                            medal='Cultura y deporte'
+                            completedMissions={ levels.find(level => level.numberLevel! === 7)?.completedMissions!.toString() }
+                            totalMissions={ levels.find(level => level.numberLevel! === 7)?.totalMissions }
+                            enable
+                            // enable={ levels.find(level => level.numberLevel! === 6)?.completedMissions! === levels.find(level => level.numberLevel! === 6)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 7)?.startDate!) <= new Date(date) }
                             setActiveMessage={ setActiveMessage }
+                            // navigation={ levels.find(level => level.numberLevel! === 6)?.completedMissions! === levels.find(level => level.numberLevel! === 6)?.totalMissions! ? navigation : undefined }
+                            navigation={ navigation }
                         />
                         <Level
                             levelStyle={ stylesLevels.level8 }
