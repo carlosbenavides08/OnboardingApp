@@ -197,10 +197,10 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             medal='Fin de parciales'
                             completedMissions={ levels.find(level => level.numberLevel! === 6)?.completedMissions!.toString() }
                             totalMissions={ levels.find(level => level.numberLevel! === 6)?.totalMissions }
-                            enable={ new Date(levels.find(level => level.numberLevel! === 6)?.startDate!) <= new Date(date) }
+                            enable={ new Date(levels.find(level => level.numberLevel! === 5)?.startDate!) <= new Date(date) }
                             // enable={ true }
                             setActiveMessage={ setActiveMessage }
-                            navigation={ new Date(levels.find(level => level.numberLevel! === 6)?.startDate!) <= new Date(date) ? navigation : undefined }
+                            navigation={ new Date(levels.find(level => level.numberLevel! === 5)?.startDate!) <= new Date(date) ? navigation : undefined }
                             // navigation={ navigation }
                         />
                         <Level
