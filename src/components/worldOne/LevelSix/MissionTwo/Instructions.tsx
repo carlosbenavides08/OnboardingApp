@@ -28,8 +28,7 @@ export const InstructionsLevel6Mission2 = ({ slide }: Props) => {
                         <Text style={ stylesInstructions.missionPoints }>1.</Text>
                         <Text style={ stylesInstructions.missionPoints }>
                             Ingresa a
-                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> Mi UPC </Text>
-                            y conoce buenas prácticas de estudio para tus parciales
+                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> Mi UPC</Text>
                         </Text>
                     </View>
                     <View style={ stylesInstructions.missionPointsWrapper }>
@@ -52,13 +51,13 @@ export const InstructionsLevel6Mission2 = ({ slide }: Props) => {
                         <Text style={ stylesInstructions.missionPoints }>
                             En caso sea
                             <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> virtual</Text>
-                            , ubícate en un espacio cómodo y conéctate con tiempo a la video conferencia
+                            , ubícate en un espacio cómodo y conéctate con tiempo
                         </Text>
                     </View>
                     <View style={ stylesInstructions.missionPointsWrapper }>
                         <Text style={ stylesInstructions.missionPoints }>4.</Text>
                         <Text style={ stylesInstructions.missionPoints }>
-                            Finalmente, tómate una foto cuando hayas finalizado tu último parcial y súbela al
+                            Finalmente, tómale una foto a tu horario de parciales y súbela al
                             <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> ir completar la misión</Text>
                         </Text>
                     </View>
@@ -84,12 +83,22 @@ export const InstructionsLevel6Mission2 = ({ slide }: Props) => {
                 />
                 <View>
                     <Text style={ stylesInstructions.disclaimerTitle }>¿ALGUNA DUDA ADICIONAL?</Text>
-                    <Text style={ stylesInstructions.disclaimerDescription }>
-                        Resuélvelas a través de{ ' ' }
-                        <Text
-                            style={{ fontFamily: 'WhitneyHTF-Bold', color: '#3817FF', textDecorationColor: '#3817FF', textDecorationLine: 'underline' }}
-                        >Contacto Web.</Text>
-                    </Text>
+                    <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        <Text style={ stylesInstructions.disclaimerDescription }>
+                            Resuélvelas a través de{ ' ' }
+                        </Text>
+                        <TouchableOpacity
+                            style={{ margin: 0, padding: 0 }}
+                            activeOpacity={ 1 }
+                            onPress={ () => {
+                                Linking.openURL('https://contactoweb.upc.edu.pe')
+                            }}
+                        >
+                            <Text
+                                style={{ fontFamily: 'WhitneyHTF-Bold', color: '#3817FF', textDecorationColor: '#3817FF', textDecorationLine: 'underline' }}
+                            >Contacto Web.</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
             <TouchableOpacity
@@ -204,6 +213,7 @@ const stylesInstructions = StyleSheet.create({
     disclaimerDescription: {
         color: '#42526A',
         fontFamily: 'WhitneyHTF-Medium',
+        lineHeight: 20,
     },
     buttonCompleteMission: {
         backgroundColor: '#E50A17',

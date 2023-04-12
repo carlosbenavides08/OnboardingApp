@@ -77,7 +77,7 @@ export const MissionsListLevel3 = ({ navigation }: Props) => {
                             }
                         </Text>
                     </View>
-                    <Text style={ stylesMissionsList.missionTitle }>DESCUBRE LAS ACTIVIDADES Y EVENTOS QUE TIENE UPC UPC UPC UPC</Text>
+                    <Text style={ stylesMissionsList.missionTitle }>DESCUBRE LAS ACTIVIDADES Y EVENTOS QUE TIENE UPC</Text>
                     <Text style={ stylesMissionsList.missionNumberText }>Misión 1</Text>
                 </View>
             </TouchableOpacity>

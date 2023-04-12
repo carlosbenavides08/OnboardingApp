@@ -35,8 +35,7 @@ export const InstructionsLevel4Mission2 = ({ slide }: Props) => {
                         <Text style={ stylesInstructions.missionPoints }>2.</Text>
                         <Text style={ stylesInstructions.missionPoints }>
                             Entérate de los distintos
-                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> servicios que tenemos para ti </Text>
-                            que pueda representar a ti y a tus compañeros
+                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> servicios que tenemos para ti</Text>
                         </Text>
                     </View>
                     <View style={ stylesInstructions.missionPointsWrapper }>
@@ -75,12 +74,22 @@ export const InstructionsLevel4Mission2 = ({ slide }: Props) => {
                 />
                 <View>
                     <Text style={ stylesInstructions.disclaimerTitle }>¿ALGUNA DUDA ADICIONAL?</Text>
-                    <Text style={ stylesInstructions.disclaimerDescription }>
-                        Resuélvelas a través de{ ' ' }
-                        <Text
-                            style={{ fontFamily: 'WhitneyHTF-Bold', color: '#3817FF', textDecorationColor: '#3817FF', textDecorationLine: 'underline' }}
-                        >Contacto Web.</Text>
-                    </Text>
+                    <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        <Text style={ stylesInstructions.disclaimerDescription }>
+                            Resuélvelas a través de{ ' ' }
+                        </Text>
+                        <TouchableOpacity
+                            style={{ margin: 0, padding: 0 }}
+                            activeOpacity={ 1 }
+                            onPress={ () => {
+                                Linking.openURL('https://contactoweb.upc.edu.pe')
+                            }}
+                        >
+                            <Text
+                                style={{ fontFamily: 'WhitneyHTF-Bold', color: '#3817FF', textDecorationColor: '#3817FF', textDecorationLine: 'underline' }}
+                            >Contacto Web.</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
             <TouchableOpacity
@@ -195,6 +204,7 @@ const stylesInstructions = StyleSheet.create({
     disclaimerDescription: {
         color: '#42526A',
         fontFamily: 'WhitneyHTF-Medium',
+        lineHeight: 20,
     },
     buttonCompleteMission: {
         backgroundColor: '#E50A17',

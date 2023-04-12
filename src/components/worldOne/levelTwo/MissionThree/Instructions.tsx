@@ -55,6 +55,10 @@ export const InstructionsLevel2Mission3 = ({ slide, setQualify }: Props) => {
                         </Text>
                     </View>
                 </View>
+                <Text style={ stylesInstructions.missionRemember }>
+                    Te recordamos que también puedes realizar el pago en línea a través de los bancos
+                    <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> Interbank, Scotiabank y BCP</Text>.
+                </Text>
             </View>
             <TouchableOpacity
                 activeOpacity={ 1 }
@@ -88,12 +92,22 @@ export const InstructionsLevel2Mission3 = ({ slide, setQualify }: Props) => {
                 />
                 <View>
                     <Text style={ stylesInstructions.disclaimerTitle }>¿ALGUNA DUDA ADICIONAL?</Text>
-                    <Text style={ stylesInstructions.disclaimerDescription }>
-                        Resuélvelas a través de{ ' ' }
-                        <Text
-                            style={{ fontFamily: 'WhitneyHTF-Bold', color: '#3817FF', textDecorationColor: '#3817FF', textDecorationLine: 'underline' }}
-                        >Contacto Web.</Text>
-                    </Text>
+                    <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        <Text style={ stylesInstructions.disclaimerDescription }>
+                            Resuélvelas a través de{ ' ' }
+                        </Text>
+                        <TouchableOpacity
+                            style={{ margin: 0, padding: 0 }}
+                            activeOpacity={ 1 }
+                            onPress={ () => {
+                                Linking.openURL('https://contactoweb.upc.edu.pe')
+                            }}
+                        >
+                            <Text
+                                style={{ fontFamily: 'WhitneyHTF-Bold', color: '#3817FF', textDecorationColor: '#3817FF', textDecorationLine: 'underline' }}
+                            >Contacto Web.</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
             <TouchableOpacity
@@ -221,6 +235,7 @@ const stylesInstructions = StyleSheet.create({
     disclaimerDescription: {
         color: '#42526A',
         fontFamily: 'WhitneyHTF-Medium',
+        lineHeight: 20,
     },
     buttonCompleteMission: {
         backgroundColor: '#E50A17',

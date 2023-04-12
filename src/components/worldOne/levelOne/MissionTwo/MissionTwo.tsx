@@ -43,7 +43,7 @@ export const MissionTwoLevelOne = ({ setQualify, setShowQuestion }: Props) => {
     return (
         <>
             <Text style={ stylesMissionTwo.question }>
-                Completa esta misión subiendo una foto en tu primer día de clases.
+                Completa esta misión al subir una foto en una de tus clases
             </Text>
 
             {

@@ -96,7 +96,7 @@ export const MissionTwoLevelFour = ({ setQualify, setShowQuestion }: Props) => {
     return (
         <>
             <Text style={ stylesMissionOne.question }>
-                ¿Cómo te has sentido anímicamente en las últimas semanas?
+                ¿Cómo te has sentido en las últimas semanas?
             </Text>
             <View style={ stylesMissionOne.response }>
                 <BouncyCheckboxGroup
