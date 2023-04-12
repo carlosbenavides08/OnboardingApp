@@ -75,7 +75,7 @@ export const InstructionsLevel2Mission1 = ({ slide }: Props) => {
                 <TouchableOpacity
                     activeOpacity={ 1 }
                     onPress={ () => {
-                        Linking.openURL('https://micuenta.upc.edu.pe/home')
+                        Linking.openURL('https://appape.isotools.org/wip/wip2015/descargarDocumento.cfm?token=MEMwRUM3RkZDNjU2QjNGOEZFMEFFREJGODFEQjAxMkUxNUM1OEQ4MEI4OTI0NjkwQ0ZCMzhF')
                         setViewRules(true)
                     }}
                 >
