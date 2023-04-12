@@ -277,7 +277,7 @@ export const MissionScreen = ({ route, navigation }: Props) => {
                                             <View></View>
                                         )
                                     }
-                                    <TouchableOpacity
+                                    {/* <TouchableOpacity
                                         activeOpacity={ 1 }
                                         onPress={ () => {
                                             setActiveBottomSheet(false)
@@ -289,7 +289,7 @@ export const MissionScreen = ({ route, navigation }: Props) => {
                                             source={ require('../assets/ic-sm-error.png') }
                                             style={{ width: 24, height: 24 }}
                                         />
-                                    </TouchableOpacity>
+                                    </TouchableOpacity> */}
                                 </View>
                             )
                         }
