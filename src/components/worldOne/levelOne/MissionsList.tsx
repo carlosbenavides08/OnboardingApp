@@ -201,7 +201,7 @@ export const MissionsListLevel1 = ({ navigation }: Props) => {
                             }
                         </Text>
                     </View>
-                    <Text style={ stylesMissionsList.missionTitle }>ASISTE A TU PRIMER DÍA DE CLASES</Text>
+                    <Text style={ stylesMissionsList.missionTitle }>ENTÉRATE DE LAS FECHAS IMPORTANTES DE TU 1° CICLO</Text>
                     <Text style={ stylesMissionsList.missionNumberText }>Misión 3</Text>
                 </View>
             </TouchableOpacity>
