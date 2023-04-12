@@ -27,9 +27,10 @@ export const InstructionsLevel1Mission2 = ({ slide }: Props) => {
                     <View style={ stylesInstructions.missionPointsWrapper }>
                         <Text style={ stylesInstructions.missionPoints }>1.</Text>
                         <Text style={ stylesInstructions.missionPoints }>
-                            Ingresa a tu
-                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> Correo UPC </Text>
-                            y mantente siempre informado
+                            Ingresa a
+                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> Mi UPC </Text>
+                            y revisa el horario de tu primera clase en
+                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> "Mis Horarios"</Text>
                         </Text>
                     </View>
                     <View style={ stylesInstructions.missionPointsWrapper }>
