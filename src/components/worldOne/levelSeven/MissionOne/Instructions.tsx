@@ -27,8 +27,9 @@ export const InstructionsLevel7Mission1 = ({ slide }: Props) => {
                     <View style={ stylesInstructions.missionPointsWrapper }>
                         <Text style={ stylesInstructions.missionPoints }>1.</Text>
                         <Text style={ stylesInstructions.missionPoints }>
-                            Ingresa a
-                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> UPC Cultural </Text>
+                            Suscríbete al
+                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> Boletín de UPC Cultural </Text>
+                            que aparecerá al ingresar a la web
                         </Text>
                     </View>
                     <View style={ stylesInstructions.missionPointsWrapper }>
@@ -36,22 +37,14 @@ export const InstructionsLevel7Mission1 = ({ slide }: Props) => {
                         <Text style={ stylesInstructions.missionPoints }>
                             Explora a través de la
                             <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> Galería, Programas, Podcasts y Eventos </Text>
-                            que el espacio virtual tiene para ti
+                            lo que el espacio virtual tiene para ti
                         </Text>
                     </View>
                     <View style={ stylesInstructions.missionPointsWrapper }>
                         <Text style={ stylesInstructions.missionPoints }>3.</Text>
                         <Text style={ stylesInstructions.missionPoints }>
-                            Suscríbete al
-                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> Boletín de UPC Cultural </Text>
-                            que aparecerá al ingresar a la web
-                        </Text>
-                    </View>
-                    <View style={ stylesInstructions.missionPointsWrapper }>
-                        <Text style={ stylesInstructions.missionPoints }>4.</Text>
-                        <Text style={ stylesInstructions.missionPoints }>
-                            Finalmente, toma una captura de pantalla a la confirmación de suscripción y súbela al
-                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> ir completar la misión</Text>
+                            Finalmente, toma una captura de pantalla de la exhibición o programa que más te gustó y súbela al
+                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> ir a completar la misión</Text>
                         </Text>
                     </View>
                 </View>

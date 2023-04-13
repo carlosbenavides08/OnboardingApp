@@ -277,19 +277,23 @@ export const MissionScreen = ({ route, navigation }: Props) => {
                                             <View></View>
                                         )
                                     }
-                                    {/* <TouchableOpacity
-                                        activeOpacity={ 1 }
-                                        onPress={ () => {
-                                            setActiveBottomSheet(false)
-                                            setShowQuestion(true)
-                                            setQualify(false)
-                                        }}
-                                    >
-                                        <Image
-                                            source={ require('../assets/ic-sm-error.png') }
-                                            style={{ width: 24, height: 24 }}
-                                        />
-                                    </TouchableOpacity> */}
+                                    {
+                                        !qualify && (
+                                            <TouchableOpacity
+                                                activeOpacity={ 1 }
+                                                onPress={ () => {
+                                                    setActiveBottomSheet(false)
+                                                    setShowQuestion(true)
+                                                    setQualify(false)
+                                                }}
+                                            >
+                                                <Image
+                                                    source={ require('../assets/ic-sm-error.png') }
+                                                    style={{ width: 24, height: 24 }}
+                                                />
+                                            </TouchableOpacity>
+                                        )
+                                    }
                                 </View>
                             )
                         }
