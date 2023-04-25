@@ -209,26 +209,27 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             medal='Cultura y deporte'
                             completedMissions={ levels.find(level => level.numberLevel! === 7)?.completedMissions!.toString() }
                             totalMissions={ levels.find(level => level.numberLevel! === 7)?.totalMissions }
-                            enable
-                            // enable={ levels.find(level => level.numberLevel! === 6)?.completedMissions! === levels.find(level => level.numberLevel! === 6)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 7)?.startDate!) <= new Date(date) }
+                            enable={ levels.find(level => level.numberLevel! === 6)?.completedMissions! === levels.find(level => level.numberLevel! === 6)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 7)?.startDate!) <= new Date(date) }
                             setActiveMessage={ setActiveMessage }
-                            // navigation={ levels.find(level => level.numberLevel! === 6)?.completedMissions! === levels.find(level => level.numberLevel! === 6)?.totalMissions! ? navigation : undefined }
-                            navigation={ navigation }
+                            navigation={ levels.find(level => level.numberLevel! === 6)?.completedMissions! === levels.find(level => level.numberLevel! === 6)?.totalMissions! ? navigation : undefined }
                         />
                         <Level
                             levelStyle={ stylesLevels.level8 }
                             number={ 8 }
                             levelTitle='Nivel 8'
-                            levelDescription='REFUERZA Y POTENCIA TUS CONOCIMIENTOS'
-                            enable={ false }
-                            subsequent
+                            levelDescription='REFUERZO MI CUIDADO ACADÉMICO Y PERSONAL'
+                            medal='Me cuido y aprendo'
+                            completedMissions={ levels.find(level => level.numberLevel! === 8)?.completedMissions!.toString() }
+                            totalMissions={ levels.find(level => level.numberLevel! === 8)?.totalMissions }
+                            enable={ levels.find(level => level.numberLevel! === 7)?.completedMissions! === levels.find(level => level.numberLevel! === 7)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 8)?.startDate!) <= new Date(date) }
                             setActiveMessage={ setActiveMessage }
+                            navigation={ levels.find(level => level.numberLevel! === 7)?.completedMissions! === levels.find(level => level.numberLevel! === 7)?.totalMissions! ? navigation : undefined }
                         />
                         <Level
                             levelStyle={ stylesLevels.level9 }
                             number={ 9 }
                             levelTitle='Nivel 9'
-                            levelDescription='PREPÁRATE PARA CULMINAR TU 1° CICLO'
+                            levelDescription='MOTÍVATE A ESTUDIAR EN EL EXTRANJERO'
                             enable={ false }
                             subsequent
                             setActiveMessage={ setActiveMessage }
@@ -237,7 +238,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             levelStyle={ stylesLevels.level10 }
                             number={ 10 }
                             levelTitle='Nivel 10'
-                            levelDescription='REALIZA TUS EVALUACIONES FINALES'
+                            levelDescription='PREPÁRATE PARA CULMINAR TU 1° CICLO'
                             enable={ false }
                             subsequent
                             setActiveMessage={ setActiveMessage }

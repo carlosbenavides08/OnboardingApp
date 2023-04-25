@@ -14,10 +14,9 @@ interface Props {
 }
 
 export const QualifyMission = ({ setMissionCompleted, setQualify }: Props) => {
-
     const dispatch = useAppDispatch()
     const [stars, setStars] = useState(0)
-    const { level, mission } = useContext(LevelContext)
+    const { level, mission, saveMissionResponse, missionResponse } = useContext(LevelContext)
 
     const handleQualify = (score: number) => {
         setStars(score)
@@ -30,7 +29,7 @@ export const QualifyMission = ({ setMissionCompleted, setQualify }: Props) => {
                 studentCode,
                 numberLevel: level,
                 numberMission: mission,
-                response: 'respuesta completa',
+                response: missionResponse ? missionResponse : 'respuesta completa',
                 score: stars,
             }
 
@@ -39,6 +38,7 @@ export const QualifyMission = ({ setMissionCompleted, setQualify }: Props) => {
             
             setMissionCompleted(true)
             setQualify(false)
+            saveMissionResponse(null)
         } catch (error: any) {
             console.log('QUALIFY: ', error)
         }

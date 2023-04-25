@@ -6,6 +6,7 @@ export interface LevelState {
     mission: number | null
     totalMissions: number | null
     missions: { title: string, description: string }[]
+    missionResponse: string | null
 }
 
 type LevelAction =
@@ -15,6 +16,7 @@ type LevelAction =
     | { type: 'saveLevel', payload: { level: number | null, totalMissions: number | null } }
     | { type: 'saveMission', payload: number | null }
     | { type: 'saveMissions', payload: { title: string, description: string }[] }
+    | { type: 'saveMissionResponse', payload: string | null }
 
 export const levelReducer = (state: LevelState, action: LevelAction): LevelState => {
     switch (action.type) {
@@ -48,6 +50,11 @@ export const levelReducer = (state: LevelState, action: LevelAction): LevelState
             return {
                 ...state,
                 missions: [...action.payload],
+            }
+        case 'saveMissionResponse':
+            return {
+                ...state,
+                missionResponse: action.payload,
             }
     }
 }

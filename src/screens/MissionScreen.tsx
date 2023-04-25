@@ -18,6 +18,19 @@ import { InstructionsLevel3Mission2 } from '../components/worldOne/levelThree/Mi
 import { InstructionsLevel4Mission1 } from '../components/worldOne/levelFour/MissionOne/Instructions'
 import { InstructionsLevel4Mission2 } from '../components/worldOne/levelFour/MissionTwo/Instructions'
 import { InstructionsLevel4Mission3 } from '../components/worldOne/levelFour/MissionThree/Instructions'
+import { InstructionsLevel5Mission1 } from '../components/worldOne/levelFive/MissionOne/Instructions'
+import { InstructionsLevel5Mission2 } from '../components/worldOne/levelFive/MissionTwo/Instructions'
+import { InstructionsLevel5Mission3 } from '../components/worldOne/levelFive/MissionThree/Instructions'
+import { InstructionsLevel5Mission4 } from '../components/worldOne/levelFive/MissionFour/Instructions'
+import { InstructionsLevel6Mission1 } from '../components/worldOne/LevelSix/MissionOne/Instructions'
+import { InstructionsLevel6Mission2 } from '../components/worldOne/LevelSix/MissionTwo/Instructions'
+import { InstructionsLevel7Mission2 } from '../components/worldOne/levelSeven/MissionTwo/Instructions'
+import { InstructionsLevel7Mission3 } from '../components/worldOne/levelSeven/MissionThree/Instructions'
+import { InstructionsLevel6Mission3 } from '../components/worldOne/LevelSix/MissionThree/Instructions'
+import { InstructionsLevel7Mission1 } from '../components/worldOne/levelSeven/MissionOne/Instructions'
+import { InstructionsLevel8Mission1 } from '../components/worldOne/levelEight/MissionOne/Instructions'
+import { InstructionsLevel8Mission2 } from '../components/worldOne/levelEight/MissionTwo/Instructions'
+
 import { MissionOneLevelOne } from '../components/worldOne/levelOne/MissionOne/MissionOne'
 import { MissionTwoLevelOne } from '../components/worldOne/levelOne/MissionTwo/MissionTwo'
 import { MissionThreeLevelOne } from '../components/worldOne/levelOne/MissionThree/MissionThree'
@@ -28,28 +41,21 @@ import { MissionTwoLevelThree } from '../components/worldOne/levelThree/MissionT
 import { MissionOneLevelFour } from '../components/worldOne/levelFour/MissionOne/MissionOne'
 import { MissionTwoLevelFour } from '../components/worldOne/levelFour/MissionTwo/MissionTwo'
 import { MissionThreeLevelFour } from '../components/worldOne/levelFour/MissionThree/MissionThree'
+import { MissionTwoLevelFive } from '../components/worldOne/levelFive/MissionTwo/MissionTwo'
+import { MissionThreeLevelFive } from '../components/worldOne/levelFive/MissionThree/MissionThree'
+import { MissionFourLevelFive } from '../components/worldOne/levelFive/MissionFour/MissionFour'
+import { MissionOneLevelSix } from '../components/worldOne/LevelSix/MissionOne/MissionOne'
+import { MissionTwoLevelSix } from '../components/worldOne/LevelSix/MissionTwo/MissionTwo'
+import { MissionOneLevelSeven } from '../components/worldOne/levelSeven/MissionOne/MissionOne'
+import { MissionThreeLevelSeven } from '../components/worldOne/levelSeven/MissionThree/MissionThree'
+import { MissionOneLevelEight } from '../components/worldOne/levelEight/MissionOne/MissionOne'
+import { MissionTwoLevelEight } from '../components/worldOne/levelEight/MissionTwo/MissionTwo'
+
 import { BottomSheetCongrats } from '../components/BottomSheetCongrats'
 import { FinishedMission } from '../components/FinishedMission'
 import { LevelContext } from '../context/LevelContext'
 
 import { stylesMission, stylesBottomSheet } from '../styles'
-import { InstructionsLevel5Mission1 } from '../components/worldOne/levelFive/MissionOne/Instructions'
-import { InstructionsLevel5Mission2 } from '../components/worldOne/levelFive/MissionTwo/Instructions'
-import { MissionTwoLevelFive } from '../components/worldOne/levelFive/MissionTwo/MissionTwo'
-import { InstructionsLevel5Mission3 } from '../components/worldOne/levelFive/MissionThree/Instructions'
-import { MissionThreeLevelFive } from '../components/worldOne/levelFive/MissionThree/MissionThree'
-import { InstructionsLevel5Mission4 } from '../components/worldOne/levelFive/MissionFour/Instructions'
-import { MissionFourLevelFive } from '../components/worldOne/levelFive/MissionFour/MissionFour'
-import { InstructionsLevel6Mission1 } from '../components/worldOne/LevelSix/MissionOne/Instructions'
-import { MissionOneLevelSix } from '../components/worldOne/LevelSix/MissionOne/MissionOne'
-import { MissionTwoLevelSix } from '../components/worldOne/LevelSix/MissionTwo/MissionTwo'
-import { InstructionsLevel6Mission2 } from '../components/worldOne/LevelSix/MissionTwo/Instructions'
-import { InstructionsLevel6Mission3 } from '../components/worldOne/LevelSix/MissionThree/Instructions'
-import { InstructionsLevel7Mission1 } from '../components/worldOne/levelSeven/MissionOne/Instructions'
-import { MissionOneLevelSeven } from '../components/worldOne/levelSeven/MissionOne/MissionOne'
-import { InstructionsLevel7Mission2 } from '../components/worldOne/levelSeven/MissionTwo/Instructions'
-import { MissionThreeLevelSeven } from '../components/worldOne/levelSeven/MissionThree/MissionThree'
-import { InstructionsLevel7Mission3 } from '../components/worldOne/levelSeven/MissionThree/Instructions'
 
 interface Props extends StackScreenProps<RootStackParams, 'MissionScreen'>{}
 
@@ -253,6 +259,20 @@ export const MissionScreen = ({ route, navigation }: Props) => {
                                 />
                             )
                         }
+                        {
+                            (level === 8 && mission === 1) && (
+                                <InstructionsLevel8Mission1
+                                    slide={ slide }
+                                />
+                            )
+                        }
+                        {
+                            (level === 8 && mission === 2) && (
+                                <InstructionsLevel8Mission2
+                                    slide={ slide }
+                                />
+                            )
+                        }
                     </View>
                 </ScrollView>
                 <BottomSheet
@@ -262,7 +282,9 @@ export const MissionScreen = ({ route, navigation }: Props) => {
                         : ((level === 4 && mission === 1 && !qualify && !missionCompleted) ||
                            (level === 5 && mission === 2 && !qualify && !missionCompleted) ||
                            (level === 5 && mission === 3 && !qualify && !missionCompleted) ||
-                           (level === 5 && mission === 4 && !qualify && !missionCompleted)) ? 400
+                           (level === 5 && mission === 4 && !qualify && !missionCompleted) ||
+                           (level === 8 && mission === 1 && !qualify && !missionCompleted) ||
+                           (level === 8 && mission === 2 && !qualify && !missionCompleted)) ? 400
                         : 330
                     }
                 >
@@ -429,6 +451,22 @@ export const MissionScreen = ({ route, navigation }: Props) => {
                             {
                                 (showQuestion && level === 7 && mission === 3) && (
                                     <MissionThreeLevelSeven
+                                        setQualify={ setQualify }
+                                        setShowQuestion={ setShowQuestion }
+                                    />
+                                )
+                            }
+                            {
+                                (showQuestion && level === 8 && mission === 1) && (
+                                    <MissionOneLevelEight
+                                        setQualify={ setQualify }
+                                        setShowQuestion={ setShowQuestion }
+                                    />
+                                )
+                            }
+                            {
+                                (showQuestion && level === 8 && mission === 2) && (
+                                    <MissionTwoLevelEight
                                         setQualify={ setQualify }
                                         setShowQuestion={ setShowQuestion }
                                     />

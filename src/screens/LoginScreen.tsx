@@ -73,6 +73,37 @@ export const LoginScreen = ({ navigation }: Props) => {
         }
     }
 
+    const sendReport = async(error: string | null) => {
+        const date = new Date()
+        const year = date.getFullYear()
+        const month = date.getMonth() < 10 ? `0${ date.getMonth() + 1 }` : date.getMonth()
+        const day = date.getDate() < 10 ? `0${ date.getDate() }` : date.getDate()
+        const hour = date.getHours() < 10 ? `0${ date.getHours() }` : date.getHours()
+        const minutes = date.getMinutes() < 10 ? `0${ date.getMinutes() }` : date.getMinutes()
+        const seconds = date.getSeconds() < 10 ? `0${ date.getSeconds() }` : date.getSeconds()
+        const dateFormat = `${ year }-${ month }-${ day } ${ hour }:${ minutes }:${ seconds }`
+
+        let data = {}
+        if(!error) {
+            data = {
+                studentCode: user,
+                success: true,
+                date: dateFormat,
+                platform: Platform.OS === 'android' ? 'Android' : 'iOS'
+            }
+        } else {
+            data = {
+                studentCode: user,
+                success: false,
+                responseError: error,
+                date: dateFormat,
+                platform: Platform.OS === 'android' ? 'Android' : 'ios'
+            }
+        }
+
+        await mundoApi.post('/auth/report', data)
+    }
+
     const handleLogin = async() => {
         try {
             const { data } = await mundoApi.post<User>('/auth/login', { studentCode: user })
@@ -91,6 +122,8 @@ export const LoginScreen = ({ navigation }: Props) => {
                 } else {
                     await AsyncStorage.removeItem('studentCode')
                 }
+
+                sendReport(null)
             } else {
                 setError(true)
             }
@@ -141,6 +174,7 @@ export const LoginScreen = ({ navigation }: Props) => {
                                 onChangeText={ value => validateText(value) }
                                 value={ user }
                                 autoCorrect={ false }
+                                cursorColor='black'
                             />
                             <View style={{ marginTop: 8, flexDirection: 'row', justifyContent: 'space-between' }}>
                                 <Text></Text>

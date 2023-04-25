@@ -8,15 +8,16 @@ import { LevelContext } from '../context/LevelContext';
 import { MissionsListLevel1 } from '../components/worldOne/levelOne/MissionsList';
 
 import { stylesMissionsList } from '../styles'
-import { MissionsListLevel2 } from '../components/worldOne/levelTwo/MissionsList'
 import { setLevels, setMissions } from '../redux/slices/user'
 import { useAppDispatch, useAppSelector } from '../redux/hooks'
 import { loadLevelsBack, loadMissionsBack } from '../hooks/loadData'
+import { MissionsListLevel2 } from '../components/worldOne/levelTwo/MissionsList'
 import { MissionsListLevel3 } from '../components/worldOne/levelThree/MissionsList'
 import { MissionsListLevel4 } from '../components/worldOne/levelFour/MissionsList'
 import { MissionsListLevel5 } from '../components/worldOne/levelFive/MissionsList'
 import { MissionsListLevel6 } from '../components/worldOne/LevelSix/MissionsList'
 import { MissionsListLevel7 } from '../components/worldOne/levelSeven/MissionsList'
+import { MissionsListLevel8 } from '../components/worldOne/levelEight/MissionsList'
 
 interface Props extends StackScreenProps<RootStackParams, 'MissionsListScreen'>{}
 
@@ -136,6 +137,13 @@ export const MissionsListScreen = ({ navigation }: Props) => {
                         {
                             level === 7 && (
                                 <MissionsListLevel7
+                                    navigation={ navigation }
+                                />
+                            )
+                        }
+                        {
+                            level === 8 && (
+                                <MissionsListLevel8
                                     navigation={ navigation }
                                 />
                             )

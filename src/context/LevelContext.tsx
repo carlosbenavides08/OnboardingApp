@@ -9,12 +9,14 @@ type LevelContextProps = {
     mission: number | null
     totalMissions: number | null
     missions: { title: string, description: string }[]
+    missionResponse: string | null
     saveWorldTitle: (worldTitle: string) => void
     saveLevelTitle: (levelTitle: string) => void
     saveMedal: (levelTitle: string) => void
     saveLevel: (level: number | null, totalMissions: number | null) => void
     saveMission: (mission: number | null) => void
     saveMissions: (missions: { title: string, description: string }[]) => void
+    saveMissionResponse: (mission: string | null) => void
 }
 
 const loginInitialState: LevelState = {
@@ -25,6 +27,7 @@ const loginInitialState: LevelState = {
     mission: null,
     totalMissions: null,
     missions: [],
+    missionResponse: null,
 }
 
 export const LevelContext = createContext({} as LevelContextProps)
@@ -57,6 +60,10 @@ export const LevelProvider = ({ children }: any) =>  {
         dispatch({ type: 'saveMissions', payload: missions })
     }
 
+    const saveMissionResponse = (response: string | null) => {
+        dispatch({ type: 'saveMissionResponse', payload: response })
+    }
+
     return (
         <LevelContext.Provider value={{
             ...state,
@@ -65,7 +72,8 @@ export const LevelProvider = ({ children }: any) =>  {
             saveMedal,
             saveLevel,
             saveMission,
-            saveMissions
+            saveMissions,
+            saveMissionResponse
         }}>
             { children }
         </LevelContext.Provider>
