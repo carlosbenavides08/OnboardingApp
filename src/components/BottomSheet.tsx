@@ -28,7 +28,7 @@ export const BottomSheet = ({ height, activeBottomSheet = false, children }: Pro
             slideBottomSheet,
             {
                 toValue: height,
-                duration: 400,
+                duration: 200,
                 useNativeDriver: true
             }
         ).start()

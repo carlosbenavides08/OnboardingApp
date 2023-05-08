@@ -3,14 +3,14 @@ import { Text, View, Image, ScrollView, SafeAreaView } from 'react-native'
 import { StackScreenProps } from '@react-navigation/stack'
 import { RootStackParams } from '../navigator/Navigator'
 
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useAppDispatch, useAppSelector } from '../redux/hooks'
+import { setLevels } from '../redux/slices/user'
+import { loadLevelsBack } from '../hooks/loadData'
+
 import { World } from '../components/World'
 
 import { stylesHome } from '../styles'
-import { useAppDispatch, useAppSelector } from '../redux/hooks'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-
-import { setLevels } from '../redux/slices/user'
-import { loadLevelsBack } from '../hooks/loadData'
 
 interface Props extends StackScreenProps<RootStackParams, 'HomeScreen'>{}
 
@@ -49,6 +49,12 @@ export const HomeScreen = ({ navigation }: Props) => {
         })
         setMedals(count)
     }, [levels])
+
+    const [updateApp, setUpdateApp] = useState(false)
+
+    useEffect(() => {
+        
+    }, [])
 
     return (
         <SafeAreaView style={ stylesHome.homeContainer }>

@@ -30,6 +30,11 @@ import { InstructionsLevel6Mission3 } from '../components/worldOne/LevelSix/Miss
 import { InstructionsLevel7Mission1 } from '../components/worldOne/levelSeven/MissionOne/Instructions'
 import { InstructionsLevel8Mission1 } from '../components/worldOne/levelEight/MissionOne/Instructions'
 import { InstructionsLevel8Mission2 } from '../components/worldOne/levelEight/MissionTwo/Instructions'
+import { InstructionsLevel9Mission1 } from '../components/worldOne/levelNine/MissionOne/Instructions'
+import { InstructionsLevel9Mission2 } from '../components/worldOne/levelNine/MissionTwo/Instructions'
+import { InstructionsLevel10Mission1 } from '../components/worldOne/levelTen/MissionOne/Instructions'
+import { InstructionsLevel10Mission2 } from '../components/worldOne/levelTen/MissionTwo/Instructions'
+import { InstructionsLevel10Mission3 } from '../components/worldOne/levelTen/MissionThree/Instructions'
 
 import { MissionOneLevelOne } from '../components/worldOne/levelOne/MissionOne/MissionOne'
 import { MissionTwoLevelOne } from '../components/worldOne/levelOne/MissionTwo/MissionTwo'
@@ -50,6 +55,11 @@ import { MissionOneLevelSeven } from '../components/worldOne/levelSeven/MissionO
 import { MissionThreeLevelSeven } from '../components/worldOne/levelSeven/MissionThree/MissionThree'
 import { MissionOneLevelEight } from '../components/worldOne/levelEight/MissionOne/MissionOne'
 import { MissionTwoLevelEight } from '../components/worldOne/levelEight/MissionTwo/MissionTwo'
+import { MissionOneLevelNine } from '../components/worldOne/levelNine/MissionOne/MissionOne'
+import { MissionTwoLevelNine } from '../components/worldOne/levelNine/MissionTwo/MissionTwo'
+import { MissionOneLevelTen } from '../components/worldOne/levelTen/MissionOne/MissionOne'
+import { MissionTwoLevelTen } from '../components/worldOne/levelTen/MissionTwo/MissionTwo'
+import { MissionThreeLevelTen } from '../components/worldOne/levelTen/MissionThree/MissionThree'
 
 import { BottomSheetCongrats } from '../components/BottomSheetCongrats'
 import { FinishedMission } from '../components/FinishedMission'
@@ -273,6 +283,41 @@ export const MissionScreen = ({ route, navigation }: Props) => {
                                 />
                             )
                         }
+                        {
+                            (level === 9 && mission === 1) && (
+                                <InstructionsLevel9Mission1
+                                    slide={ slide }
+                                />
+                            )
+                        }
+                        {
+                            (level === 9 && mission === 2) && (
+                                <InstructionsLevel9Mission2
+                                    slide={ slide }
+                                />
+                            )
+                        }
+                        {
+                            (level === 10 && mission === 1) && (
+                                <InstructionsLevel10Mission1
+                                    slide={ slide }
+                                />
+                            )
+                        }
+                        {
+                            (level === 10 && mission === 2) && (
+                                <InstructionsLevel10Mission2
+                                    slide={ slide }
+                                />
+                            )
+                        }
+                        {
+                            (level === 10 && mission === 3) && (
+                                <InstructionsLevel10Mission3
+                                    slide={ slide }
+                                />
+                            )
+                        }
                     </View>
                 </ScrollView>
                 <BottomSheet
@@ -284,7 +329,10 @@ export const MissionScreen = ({ route, navigation }: Props) => {
                            (level === 5 && mission === 3 && !qualify && !missionCompleted) ||
                            (level === 5 && mission === 4 && !qualify && !missionCompleted) ||
                            (level === 8 && mission === 1 && !qualify && !missionCompleted) ||
-                           (level === 8 && mission === 2 && !qualify && !missionCompleted)) ? 400
+                           (level === 8 && mission === 2 && !qualify && !missionCompleted) ||
+                           (level === 9 && mission === 1 && !qualify && !missionCompleted) ||
+                           (level === 10 && mission === 1 && !qualify && !missionCompleted)) ? 400
+                        : (level === 7 && mission === 3 && !qualify && !missionCompleted) ? 360
                         : 330
                     }
                 >
@@ -467,6 +515,46 @@ export const MissionScreen = ({ route, navigation }: Props) => {
                             {
                                 (showQuestion && level === 8 && mission === 2) && (
                                     <MissionTwoLevelEight
+                                        setQualify={ setQualify }
+                                        setShowQuestion={ setShowQuestion }
+                                    />
+                                )
+                            }
+                            {
+                                (showQuestion && level === 9 && mission === 1) && (
+                                    <MissionOneLevelNine
+                                        setQualify={ setQualify }
+                                        setShowQuestion={ setShowQuestion }
+                                    />
+                                )
+                            }
+                            {
+                                (showQuestion && level === 9 && mission === 2) && (
+                                    <MissionTwoLevelNine
+                                        setQualify={ setQualify }
+                                        setShowQuestion={ setShowQuestion }
+                                    />
+                                )
+                            }
+                            {
+                                (showQuestion && level === 10 && mission === 1) && (
+                                    <MissionOneLevelTen
+                                        setQualify={ setQualify }
+                                        setShowQuestion={ setShowQuestion }
+                                    />
+                                )
+                            }
+                            {
+                                (showQuestion && level === 10 && mission === 2) && (
+                                    <MissionTwoLevelTen
+                                        setQualify={ setQualify }
+                                        setShowQuestion={ setShowQuestion }
+                                    />
+                                )
+                            }
+                            {
+                                (showQuestion && level === 10 && mission === 3) && (
+                                    <MissionThreeLevelTen
                                         setQualify={ setQualify }
                                         setShowQuestion={ setShowQuestion }
                                     />

@@ -13,7 +13,7 @@ interface ImageGallery {
     filename: string
 }
 
-export const MissionThreeLevelSeven = ({ setQualify, setShowQuestion }: Props) => {
+export const MissionTwoLevelNine = ({ setQualify, setShowQuestion }: Props) => {
 
     const [tempUri, setTempUri] = useState<ImageGallery>()
 
@@ -43,7 +43,7 @@ export const MissionThreeLevelSeven = ({ setQualify, setShowQuestion }: Props) =
     return (
         <>
             <Text style={ stylesMissionTwo.question }>
-                Completa esta misión subiendo una captura de pantalla de la interacción que realizaste en el instagram @deportesupc.
+                Completa esta misión subiendo una foto con el representante de la Oficina Internacional de tu campus
             </Text>
 
             {

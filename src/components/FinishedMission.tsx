@@ -16,7 +16,11 @@ export const FinishedMission = ({ navigation }: Props) => {
     const { level, mission, totalMissions, saveLevel, saveMission } = useContext(LevelContext)
 
     const handleNavigation = () => {
-        if (mission! < totalMissions!) {
+        if (mission === totalMissions && level === 10) {
+            saveLevel(null, null)
+            saveMission(null)
+            navigation.replace('TabsHome')
+        } else if (mission! < totalMissions!) {
             saveMission(mission! + 1)
             navigation.replace('MissionScreen', { nextMissionTitleBoolean: true })
         } else {
@@ -31,7 +35,9 @@ export const FinishedMission = ({ navigation }: Props) => {
             <View style={ stylesFinishedMission.contaner }>
                 <Text style={ stylesFinishedMission.title }>
                     {
-                        mission === totalMissions
+                        (mission === totalMissions && level === 10)
+                        ? '¡MUNDO COMPLETADO!'
+                        : mission === totalMissions
                         ? '¡NIVEL COMPLETADO!'
                         : '¡MISIÓN COMPLETADA!'
                     }
@@ -58,7 +64,9 @@ export const FinishedMission = ({ navigation }: Props) => {
             >
                 <Text style={ stylesFinishedMission.buttonText }>
                     {
-                        mission === totalMissions
+                        (mission === totalMissions && level === 10)
+                        ? 'Ir a Mundo Crece'
+                        : mission === totalMissions
                         ? `Ir al nivel ${ level! + 1 }`
                         : 'Completar nueva misión'
                     }

@@ -6,11 +6,6 @@ import { RootStackParams } from '../navigator/Navigator'
 import { Header } from '../components/Header'
 import { LevelContext } from '../context/LevelContext';
 import { MissionsListLevel1 } from '../components/worldOne/levelOne/MissionsList';
-
-import { stylesMissionsList } from '../styles'
-import { setLevels, setMissions } from '../redux/slices/user'
-import { useAppDispatch, useAppSelector } from '../redux/hooks'
-import { loadLevelsBack, loadMissionsBack } from '../hooks/loadData'
 import { MissionsListLevel2 } from '../components/worldOne/levelTwo/MissionsList'
 import { MissionsListLevel3 } from '../components/worldOne/levelThree/MissionsList'
 import { MissionsListLevel4 } from '../components/worldOne/levelFour/MissionsList'
@@ -18,6 +13,13 @@ import { MissionsListLevel5 } from '../components/worldOne/levelFive/MissionsLis
 import { MissionsListLevel6 } from '../components/worldOne/LevelSix/MissionsList'
 import { MissionsListLevel7 } from '../components/worldOne/levelSeven/MissionsList'
 import { MissionsListLevel8 } from '../components/worldOne/levelEight/MissionsList'
+import { MissionsListLevel9 } from '../components/worldOne/levelNine/MissionsList'
+import { MissionsListLevel10 } from '../components/worldOne/levelTen/MissionsList'
+
+import { stylesMissionsList } from '../styles'
+import { setLevels, setMissions } from '../redux/slices/user'
+import { useAppDispatch, useAppSelector } from '../redux/hooks'
+import { loadLevelsBack, loadMissionsBack } from '../hooks/loadData'
 
 interface Props extends StackScreenProps<RootStackParams, 'MissionsListScreen'>{}
 
@@ -144,6 +146,20 @@ export const MissionsListScreen = ({ navigation }: Props) => {
                         {
                             level === 8 && (
                                 <MissionsListLevel8
+                                    navigation={ navigation }
+                                />
+                            )
+                        }
+                        {
+                            level === 9 && (
+                                <MissionsListLevel9
+                                    navigation={ navigation }
+                                />
+                            )
+                        }
+                        {
+                            level === 10 && (
+                                <MissionsListLevel10
                                     navigation={ navigation }
                                 />
                             )

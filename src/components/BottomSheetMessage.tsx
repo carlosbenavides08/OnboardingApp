@@ -28,7 +28,7 @@ export const BottomSheetMessage = ({ children, activeMessage = false, setActiveM
             slideBottomSheet,
             {
                 toValue: 1000,
-                duration: 400,
+                duration: 200,
                 useNativeDriver: true
             }
         ).start()

@@ -32,7 +32,7 @@ export const BottomSheetCongrats = ({ missionCompleted, setMissionCompleted, set
             slideBottomSheet,
             {
                 toValue: 350,
-                duration: 400,
+                duration: 200,
                 useNativeDriver: true
             }
         ).start()
