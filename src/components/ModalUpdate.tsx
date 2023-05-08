@@ -22,8 +22,6 @@ export const ModalUpdate = () => {
         }
     }
 
-    console.log(version)
-
     return (
         <View
             style={[

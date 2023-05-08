@@ -50,12 +50,6 @@ export const HomeScreen = ({ navigation }: Props) => {
         setMedals(count)
     }, [levels])
 
-    const [updateApp, setUpdateApp] = useState(false)
-
-    useEffect(() => {
-        
-    }, [])
-
     return (
         <SafeAreaView style={ stylesHome.homeContainer }>
             <ScrollView>
