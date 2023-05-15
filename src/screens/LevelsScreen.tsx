@@ -49,9 +49,6 @@ export const LevelsScreen = ({ navigation }: Props) => {
             months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre'],
 
         })
-        // moment.tz('America/Lima').format()
-        console.log(moment.locale())
-        console.log(moment(levels.find(level => level.numberLevel! === 10)?.startDate!).format('DD'))
     }, [])
 
     useEffect(() => {
