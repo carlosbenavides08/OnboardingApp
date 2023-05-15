@@ -3,10 +3,11 @@ import { Image, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'r
 import { StackScreenProps } from '@react-navigation/stack'
 import { RootStackParams } from '../navigator/Navigator'
 
+import moment from 'moment'
+import 'moment-timezone'
+
 import { Level } from '../components/Level'
 import { Header } from '../components/Header'
-
-import { stylesLevels } from '../styles'
 
 import { useAppDispatch, useAppSelector } from '../redux/hooks'
 import { setLevels } from '../redux/slices/user'
@@ -14,6 +15,8 @@ import { loadLevelsBack } from '../hooks/loadData'
 import { BottomSheetMessage } from '../components/BottomSheetMessage'
 import { stylesBottomSheetMessage } from '../styles/bottomSheetMessage'
 import { LevelContext } from '../context/LevelContext'
+
+import { stylesLevels } from '../styles'
 
 interface Props extends StackScreenProps<RootStackParams, 'LevelsScreen'>{}
 
@@ -25,6 +28,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
     
     const [medals, setMedals] = useState(0)
     const [date, setDate] = useState('')
+    const [formatDate, setFormatDate] = useState('')
     const [activeMessage, setActiveMessage] = useState(false)
 
     useEffect(() => {
@@ -38,6 +42,16 @@ export const LevelsScreen = ({ navigation }: Props) => {
         const day = date.getDate() < 10 ? `0${ date.getDate() }` : date.getDate()
 
         setDate(`${ year }-${ month }-${ day }`)
+    }, [])
+
+    useEffect(() => {
+        moment.locale('es', {
+            months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+
+        })
+        // moment.tz('America/Lima').format()
+        console.log(moment.locale())
+        console.log(moment(levels.find(level => level.numberLevel! === 10)?.startDate!).format('DD'))
     }, [])
 
     useEffect(() => {
@@ -140,6 +154,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             totalMissions={ levels.find(level => level.numberLevel! === 1)?.totalMissions }
                             setActiveMessage={ setActiveMessage }
                             navigation={ navigation }
+                            date={ formatDate }
                         />
                         <Level
                             levelStyle={ stylesLevels.level2 }
@@ -149,9 +164,10 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             medal='No lo pierdas de vista'
                             completedMissions={ levels.find(level => level.numberLevel! === 2)?.completedMissions!.toString() }
                             totalMissions={ levels.find(level => level.numberLevel! === 2)?.totalMissions }
-                            enable={ levels.find(level => level.numberLevel! === 1)?.completedMissions! === levels.find(level => level.numberLevel! === 1)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 2)?.startDate!) <= new Date(date) }
+                            enable={ new Date(levels.find(level => level.numberLevel! === 2)?.startDate!) <= new Date(date) }
                             setActiveMessage={ setActiveMessage }
-                            navigation={ levels.find(level => level.numberLevel! === 1)?.completedMissions! === levels.find(level => level.numberLevel! === 1)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 2)?.startDate!) <= new Date(date) ? navigation : undefined }
+                            navigation={ new Date(levels.find(level => level.numberLevel! === 2)?.startDate!) <= new Date(date) ? navigation : undefined }
+                            date={ formatDate }
                         />
                         <Level
                             levelStyle={ stylesLevels.level3 }
@@ -161,9 +177,10 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             medal='Me divierto en UPC I'
                             completedMissions={ levels.find(level => level.numberLevel! === 3)?.completedMissions!.toString() }
                             totalMissions={ levels.find(level => level.numberLevel! === 3)?.totalMissions }
-                            enable={ levels.find(level => level.numberLevel! === 2)?.completedMissions! === levels.find(level => level.numberLevel! === 2)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 3)?.startDate!) <= new Date(date) }
+                            enable={ new Date(levels.find(level => level.numberLevel! === 3)?.startDate!) <= new Date(date) }
                             setActiveMessage={ setActiveMessage }
-                            navigation={ levels.find(level => level.numberLevel! === 2)?.completedMissions! === levels.find(level => level.numberLevel! === 2)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 3)?.startDate!) <= new Date(date) ? navigation : undefined }
+                            navigation={ new Date(levels.find(level => level.numberLevel! === 3)?.startDate!) <= new Date(date) ? navigation : undefined }
+                            date={ formatDate }
                         />
                         <Level
                             levelStyle={ stylesLevels.level4 }
@@ -173,9 +190,10 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             medal='Creciendo con UPC'
                             completedMissions={ levels.find(level => level.numberLevel! === 4)?.completedMissions!.toString() }
                             totalMissions={ levels.find(level => level.numberLevel! === 4)?.totalMissions }
-                            enable={ levels.find(level => level.numberLevel! === 3)?.completedMissions! === levels.find(level => level.numberLevel! === 3)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 4)?.startDate!) <= new Date(date) }
+                            enable={ new Date(levels.find(level => level.numberLevel! === 4)?.startDate!) <= new Date(date) }
                             setActiveMessage={ setActiveMessage }
-                            navigation={ levels.find(level => level.numberLevel! === 3)?.completedMissions! === levels.find(level => level.numberLevel! === 3)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 4)?.startDate!) <= new Date(date) ? navigation : undefined }
+                            navigation={ new Date(levels.find(level => level.numberLevel! === 4)?.startDate!) <= new Date(date) ? navigation : undefined }
+                            date={ formatDate }
                         />
                         <Level
                             levelStyle={ stylesLevels.level5 }
@@ -185,9 +203,10 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             medal='Aprovecho mis recursos'
                             completedMissions={ levels.find(level => level.numberLevel! === 5)?.completedMissions!.toString() }
                             totalMissions={ levels.find(level => level.numberLevel! === 5)?.totalMissions }
-                            enable={ levels.find(level => level.numberLevel! === 4)?.completedMissions! === levels.find(level => level.numberLevel! === 4)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 5)?.startDate!) <= new Date(date) }
+                            enable={ new Date(levels.find(level => level.numberLevel! === 5)?.startDate!) <= new Date(date) }
                             setActiveMessage={ setActiveMessage }
-                            navigation={ levels.find(level => level.numberLevel! === 4)?.completedMissions! === levels.find(level => level.numberLevel! === 4)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 5)?.startDate!) <= new Date(date) ? navigation : undefined }
+                            navigation={ new Date(levels.find(level => level.numberLevel! === 5)?.startDate!) <= new Date(date) ? navigation : undefined }
+                            date={ formatDate }
                         />
                         <Level
                             levelStyle={ stylesLevels.level6 }
@@ -200,6 +219,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             enable={ new Date(levels.find(level => level.numberLevel! === 5)?.startDate!) <= new Date(date) }
                             setActiveMessage={ setActiveMessage }
                             navigation={ new Date(levels.find(level => level.numberLevel! === 5)?.startDate!) <= new Date(date) ? navigation : undefined }
+                            date={ `${ moment(levels.find(level => level.numberLevel! === 6)?.startDate!).format('DD') } de ${ moment(levels.find(level => level.numberLevel! === 6)?.startDate!).format('MMMM') }` }
                         />
                         <Level
                             levelStyle={ stylesLevels.level7 }
@@ -209,9 +229,10 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             medal='Cultura y deporte'
                             completedMissions={ levels.find(level => level.numberLevel! === 7)?.completedMissions!.toString() }
                             totalMissions={ levels.find(level => level.numberLevel! === 7)?.totalMissions }
-                            enable={ levels.find(level => level.numberLevel! === 6)?.completedMissions! === levels.find(level => level.numberLevel! === 6)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 7)?.startDate!) <= new Date(date) }
+                            enable={ new Date(levels.find(level => level.numberLevel! === 7)?.startDate!) <= new Date(date) }
                             setActiveMessage={ setActiveMessage }
-                            navigation={ levels.find(level => level.numberLevel! === 6)?.completedMissions! === levels.find(level => level.numberLevel! === 6)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 7)?.startDate!) <= new Date(date) ? navigation : undefined }
+                            navigation={ new Date(levels.find(level => level.numberLevel! === 7)?.startDate!) <= new Date(date) ? navigation : undefined }
+                            date={ `${ moment(levels.find(level => level.numberLevel! === 7)?.startDate!).format('DD') } de ${ moment(levels.find(level => level.numberLevel! === 7)?.startDate!).format('MMMM') }` }
                         />
                         <Level
                             levelStyle={ stylesLevels.level8 }
@@ -221,9 +242,10 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             medal='Me cuido y aprendo'
                             completedMissions={ levels.find(level => level.numberLevel! === 8)?.completedMissions!.toString() }
                             totalMissions={ levels.find(level => level.numberLevel! === 8)?.totalMissions }
-                            enable={ levels.find(level => level.numberLevel! === 7)?.completedMissions! === levels.find(level => level.numberLevel! === 7)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 8)?.startDate!) <= new Date(date) }
+                            enable={ new Date(levels.find(level => level.numberLevel! === 8)?.startDate!) <= new Date(date) }
                             setActiveMessage={ setActiveMessage }
-                            navigation={ levels.find(level => level.numberLevel! === 7)?.completedMissions! === levels.find(level => level.numberLevel! === 7)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 8)?.startDate!) <= new Date(date) ? navigation : undefined }
+                            navigation={ new Date(levels.find(level => level.numberLevel! === 8)?.startDate!) <= new Date(date) ? navigation : undefined }
+                            date={ `${ moment(levels.find(level => level.numberLevel! === 8)?.startDate!).format('DD') } de ${ moment(levels.find(level => level.numberLevel! === 8)?.startDate!).format('MMMM') }` }
                         />
                         <Level
                             levelStyle={ stylesLevels.level9 }
@@ -233,9 +255,10 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             medal='Más allá de la UPC'
                             completedMissions={ levels.find(level => level.numberLevel! === 9)?.completedMissions!.toString() }
                             totalMissions={ levels.find(level => level.numberLevel! === 9)?.totalMissions }
-                            enable={ levels.find(level => level.numberLevel! === 8)?.completedMissions! === levels.find(level => level.numberLevel! === 8)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 9)?.startDate!) <= new Date(date) }
+                            enable={ new Date(levels.find(level => level.numberLevel! === 9)?.startDate!) <= new Date(date) }
                             setActiveMessage={ setActiveMessage }
-                            navigation={ levels.find(level => level.numberLevel! === 8)?.completedMissions! === levels.find(level => level.numberLevel! === 8)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 9)?.startDate!) <= new Date(date) ? navigation : undefined }
+                            navigation={ new Date(levels.find(level => level.numberLevel! === 9)?.startDate!) <= new Date(date) ? navigation : undefined }
+                            date={ `${ moment(levels.find(level => level.numberLevel! === 9)?.startDate!).format('DD') } de ${ moment(levels.find(level => level.numberLevel! === 9)?.startDate!).format('MMMM') }` }
                         />
                         <Level
                             levelStyle={ stylesLevels.level10 }
@@ -245,9 +268,10 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             medal='Fin del 1° ciclo'
                             completedMissions={ levels.find(level => level.numberLevel! === 10)?.completedMissions!.toString() }
                             totalMissions={ levels.find(level => level.numberLevel! === 10)?.totalMissions }
-                            enable={ levels.find(level => level.numberLevel! === 9)?.completedMissions! === levels.find(level => level.numberLevel! === 9)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 10)?.startDate!) <= new Date(date) }
+                            enable={ new Date(levels.find(level => level.numberLevel! === 10)?.startDate!) <= new Date(date) }
                             setActiveMessage={ setActiveMessage }
-                            navigation={ levels.find(level => level.numberLevel! === 9)?.completedMissions! === levels.find(level => level.numberLevel! === 9)?.totalMissions! && new Date(levels.find(level => level.numberLevel! === 10)?.startDate!) <= new Date(date) ? navigation : undefined }
+                            navigation={ new Date(levels.find(level => level.numberLevel! === 10)?.startDate!) <= new Date(date) ? navigation : undefined }
+                            date={ `${ moment(levels.find(level => level.numberLevel! === 10)?.startDate!).format('DD') } de ${ moment(levels.find(level => level.numberLevel! === 10)?.startDate!).format('MMMM') }` }
                         />
                     </View>
                     <View style={ stylesLevels.goalWrapper }>
@@ -285,8 +309,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                         lineHeight: 20,
                         marginTop: 16
                     }}>
-                        Asegúrate de completar todas las misiones del nivel anterior para desbloquear este nivel o espera a que en las siguientes semanas
-                        activemos nuevos niveles del Mundo Inicia.
+                        Este nivel estará disponible en la fecha indicada para que puedas completarlo.
                     </Text>
                     <TouchableOpacity
                         activeOpacity={ 1 }
