@@ -109,14 +109,14 @@ export const InstructionsLevel1Mission3 = ({ slide }: Props) => {
                 activeOpacity={ 1 }
                 style={[
                     stylesInstructions.buttonCompleteMission,
-                    (!viewDates || !viewCalendar) ? stylesInstructions.buttonCompleteMissionDisabled : null
+                    // (!viewDates || !viewCalendar) ? stylesInstructions.buttonCompleteMissionDisabled : null
                 ]}
                 onPress={ slide }
-                disabled={ !viewDates || !viewCalendar }
+                // disabled={ !viewDates || !viewCalendar }
             >
                 <Text style={[
                     stylesInstructions.buttonCompleteText,
-                    (!viewDates || !viewCalendar) ? stylesInstructions.buttonTextDisabled : null
+                    // (!viewDates || !viewCalendar) ? stylesInstructions.buttonTextDisabled : null
                 ]}>Ir a completar misión</Text>
             </TouchableOpacity>
         </>

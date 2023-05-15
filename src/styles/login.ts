@@ -99,6 +99,20 @@ const stylesLogin = StyleSheet.create({
     buttonTextLoginDisabled: {
         color: '#A3B4CC',
     },
+    termsContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        position: 'absolute',
+        bottom: 100,
+        left: 20,
+        right: 20,
+        flexWrap: 'wrap'
+    },
+    termsText: {
+        color: '#42526A',
+        fontFamily: 'WhitneyHTF-medium',
+    },
 })
 
 export {

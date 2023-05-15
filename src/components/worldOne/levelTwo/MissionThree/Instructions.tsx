@@ -114,14 +114,14 @@ export const InstructionsLevel2Mission3 = ({ slide, setQualify }: Props) => {
                 activeOpacity={ 1 }
                 style={[
                     stylesInstructions.buttonCompleteMission,
-                    (!viewUpc || !viewVideo) ? stylesInstructions.buttonCompleteMissionDisabled : null
+                    // (!viewUpc || !viewVideo) ? stylesInstructions.buttonCompleteMissionDisabled : null
                 ]}
                 onPress={ handleCompleteMission }
-                disabled={ (!viewUpc || !viewVideo) }
+                // disabled={ (!viewUpc || !viewVideo) }
             >
                 <Text style={[
                     stylesInstructions.buttonCompleteText,
-                    (!viewUpc || !viewVideo) ? stylesInstructions.buttonTextDisabled : null
+                    // (!viewUpc || !viewVideo) ? stylesInstructions.buttonTextDisabled : null
                 ]}>Ir a completar misión</Text>
             </TouchableOpacity>
         </>

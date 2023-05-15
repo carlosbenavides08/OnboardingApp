@@ -9,6 +9,7 @@ import {
     KeyboardAvoidingView,
     TouchableOpacity,
     Platform,
+    ActivityIndicator,
 } from 'react-native'
 
 import BouncyCheckbox from 'react-native-bouncy-checkbox'
@@ -35,6 +36,7 @@ export const LoginScreen = ({ navigation }: Props) => {
     const [buttonTextDisabled, setButtonTextDisabled] = useState(true)
     const [user, setUser] = useState('')
     const [error, setError] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         checkStudentCode()
@@ -105,10 +107,11 @@ export const LoginScreen = ({ navigation }: Props) => {
     }
 
     const handleLogin = async() => {
+        setLoading(true)
         try {
             const { data } = await mundoApi.post<User>('/auth/login', { studentCode: user })
 
-            if (data.data.length > 0) {
+            if (data.data && data.data.length > 0) {
                 setError(false)
                 const userData = data.data.find(user => user.id === user.levelId)
                 await AsyncStorage.setItem('user', userData?.data.studentCode!)
@@ -127,7 +130,10 @@ export const LoginScreen = ({ navigation }: Props) => {
             } else {
                 setError(true)
             }
+            setLoading(false)
         } catch (error) {
+            setError(true)
+            setLoading(false)
             console.log(error)
         }
     }
@@ -175,6 +181,7 @@ export const LoginScreen = ({ navigation }: Props) => {
                                 value={ user }
                                 autoCorrect={ false }
                                 cursorColor='black'
+                                placeholder='U202312980 / 202312980'
                             />
                             <View style={{ marginTop: 8, flexDirection: 'row', justifyContent: 'space-between' }}>
                                 <Text></Text>
@@ -201,8 +208,33 @@ export const LoginScreen = ({ navigation }: Props) => {
                             onPress={ changeColorCheckbox }
                             disableBuiltInState
                         />
+                        <View style={ stylesLogin.termsContainer }>
+                            <Text style={ stylesLogin.termsText }>
+                                Al continuar acepto los {''}
+                            </Text>
+                            <TouchableOpacity
+                                activeOpacity={ 1 }
+                                style={{ margin: 0, padding: 0 }}
+                                onPress={ () => navigation.replace('TermsScreen') }
+                            >
+                                <Text style={{ color: '#3817FF', textDecorationLine: 'underline' }}>Términos y condiciones</Text>
+                            </TouchableOpacity>
+                            <Text style={ stylesLogin.termsText }>
+                                {''} y la {''}
+                            </Text>
+                            <TouchableOpacity
+                                activeOpacity={ 1 }
+                                style={{ margin: 0, padding: 0 }}
+                                onPress={ () => navigation.replace('PrivacyScreen') }
+                            >
+                                <Text style={{ color: '#3817FF', textDecorationLine: 'underline' }}>Política de privacidad</Text>
+                            </TouchableOpacity>
+                            <Text style={ stylesLogin.termsText }>
+                                {''} de la aplicación.
+                            </Text>
+                        </View>
                         <TouchableOpacity
-                            activeOpacity={ 1 }
+                            activeOpacity={ 0.7 }
                             style={[
                                 stylesLogin.buttonLogin,
                                 buttonDisabled ? stylesLogin.buttonDisabled : null
@@ -210,13 +242,22 @@ export const LoginScreen = ({ navigation }: Props) => {
                             disabled={ buttonDisabled }
                             onPress={ handleLogin }
                         >
-                            <View>
-                                <Text style={[
-                                    stylesLogin.buttonLoginText,
-                                    buttonTextDisabled ? stylesLogin.buttonTextLoginDisabled : null
-                                ]}>
-                                    Ingresar
-                                </Text>
+                            <View style={{ display: 'flex', flexDirection: 'row' }}>
+                                {
+                                    !loading ? (
+                                        <Text style={[
+                                            stylesLogin.buttonLoginText,
+                                            buttonTextDisabled ? stylesLogin.buttonTextLoginDisabled : null
+                                        ]}>
+                                            Ingresar
+                                        </Text>
+                                    ) : (
+                                        <ActivityIndicator
+                                            size='small'
+                                            color='white'
+                                        />
+                                    )
+                                }
                             </View>
                         </TouchableOpacity>
                     </View>

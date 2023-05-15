@@ -11,6 +11,8 @@ import { TabsHome } from './TabsHome'
 import { LevelsScreen } from '../screens/LevelsScreen'
 import { MissionsListScreen } from '../screens/MissionsListScreen'
 import { MissionScreen } from '../screens/MissionScreen'
+import { TermsScreen } from '../screens/TermsScreen'
+import { PrivacyScreen } from '../screens/PrivacyScreen'
 import { notAuth, auth } from '../redux/slices/user'
 
 export type RootStackParams = {
@@ -20,7 +22,9 @@ export type RootStackParams = {
     TabsHome: undefined,
     LevelsScreen: undefined,
     MissionsListScreen: undefined,
-    MissionScreen: { nextMissionTitleBoolean: boolean }
+    MissionScreen: { nextMissionTitleBoolean: boolean },
+    TermsScreen: undefined,
+    PrivacyScreen: undefined,
 }
 
 const Stack = createNativeStackNavigator<RootStackParams>()
@@ -68,6 +72,8 @@ export const Navigator = () => {
                     <>
                         <Stack.Screen name="LoginScreen" component={ LoginScreen }></Stack.Screen>
                         <Stack.Screen name="TabsHome" component={ TabsHome }></Stack.Screen>
+                        <Stack.Screen name="TermsScreen" component={ TermsScreen }></Stack.Screen>
+                        <Stack.Screen name="PrivacyScreen" component={ PrivacyScreen }></Stack.Screen>
                     </>
                 )
             }
