@@ -175,13 +175,15 @@ export const LoginScreen = ({ navigation }: Props) => {
                                 multiline={ false }
                                 containerStyles={ !error ? stylesLogin.userTextInput : stylesLogin.userTextInputError }
                                 customLabelStyles={ error ? { topFocused: -15, colorFocused: '#FF2F48' } : { topFocused: -15 }}
-                                labelStyles={{ paddingHorizontal: 16  }}
+                                labelStyles={{ paddingLeft: 0, paddingTop: 10 }}
                                 inputStyles={ stylesLogin.inputStyles }
                                 onChangeText={ value => validateText(value) }
                                 value={ user }
                                 autoCorrect={ false }
                                 cursorColor='black'
-                                placeholder='U202312980 / 202312980'
+                                hint='U202312980 / 202312980'
+                                hintTextColor='#67778F'
+                                staticLabel
                             />
                             <View style={{ marginTop: 8, flexDirection: 'row', justifyContent: 'space-between' }}>
                                 <Text></Text>

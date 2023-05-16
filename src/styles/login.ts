@@ -63,8 +63,8 @@ const stylesLogin = StyleSheet.create({
         fontSize: 16,
         fontWeight: '500',
         color: 'black',
-        marginTop: 10,
-        paddingHorizontal: 16,
+        marginTop: 16,
+        paddingHorizontal: 20,
     },
     checkboxIcon: {
         borderRadius: 4,

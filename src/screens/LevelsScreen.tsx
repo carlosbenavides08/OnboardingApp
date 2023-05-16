@@ -15,6 +15,7 @@ import { loadLevelsBack } from '../hooks/loadData'
 import { BottomSheetMessage } from '../components/BottomSheetMessage'
 import { stylesBottomSheetMessage } from '../styles/bottomSheetMessage'
 import { LevelContext } from '../context/LevelContext'
+import { Mission1 } from '../components/worldOne/secretMissions/MissionOne/MissionCard1'
 
 import { stylesLevels } from '../styles'
 
@@ -46,8 +47,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
 
     useEffect(() => {
         moment.locale('es', {
-            months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-
+            months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre']
         })
     }, [])
 
@@ -90,6 +90,10 @@ export const LevelsScreen = ({ navigation }: Props) => {
                     </View>
                 </View>
                 <View style={ stylesLevels.bodyContainer }>
+                    <Mission1
+                        missionDescription='CONOCE CÓMO CERTIFICAR EL INGLÉS'
+                        navigation={ navigation }
+                    />
                     <View style={ stylesLevels.roadMap }>
                         <Image
                             source={ require('../assets/roadmap.png') }
@@ -151,7 +155,6 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             totalMissions={ levels.find(level => level.numberLevel! === 1)?.totalMissions }
                             setActiveMessage={ setActiveMessage }
                             navigation={ navigation }
-                            date={ formatDate }
                         />
                         <Level
                             levelStyle={ stylesLevels.level2 }
@@ -164,7 +167,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             enable={ new Date(levels.find(level => level.numberLevel! === 2)?.startDate!) <= new Date(date) }
                             setActiveMessage={ setActiveMessage }
                             navigation={ new Date(levels.find(level => level.numberLevel! === 2)?.startDate!) <= new Date(date) ? navigation : undefined }
-                            date={ formatDate }
+                            date={ `${ moment(levels.find(level => level.numberLevel! === 2)?.startDate!).format('DD') } de ${ moment(levels.find(level => level.numberLevel! === 2)?.startDate!).format('MMMM') }` }
                         />
                         <Level
                             levelStyle={ stylesLevels.level3 }
@@ -177,7 +180,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             enable={ new Date(levels.find(level => level.numberLevel! === 3)?.startDate!) <= new Date(date) }
                             setActiveMessage={ setActiveMessage }
                             navigation={ new Date(levels.find(level => level.numberLevel! === 3)?.startDate!) <= new Date(date) ? navigation : undefined }
-                            date={ formatDate }
+                            date={ `${ moment(levels.find(level => level.numberLevel! === 3)?.startDate!).format('DD') } de ${ moment(levels.find(level => level.numberLevel! === 3)?.startDate!).format('MMMM') }` }
                         />
                         <Level
                             levelStyle={ stylesLevels.level4 }
@@ -190,7 +193,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             enable={ new Date(levels.find(level => level.numberLevel! === 4)?.startDate!) <= new Date(date) }
                             setActiveMessage={ setActiveMessage }
                             navigation={ new Date(levels.find(level => level.numberLevel! === 4)?.startDate!) <= new Date(date) ? navigation : undefined }
-                            date={ formatDate }
+                            date={ `${ moment(levels.find(level => level.numberLevel! === 4)?.startDate!).format('DD') } de ${ moment(levels.find(level => level.numberLevel! === 4)?.startDate!).format('MMMM') }` }
                         />
                         <Level
                             levelStyle={ stylesLevels.level5 }
@@ -203,7 +206,7 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             enable={ new Date(levels.find(level => level.numberLevel! === 5)?.startDate!) <= new Date(date) }
                             setActiveMessage={ setActiveMessage }
                             navigation={ new Date(levels.find(level => level.numberLevel! === 5)?.startDate!) <= new Date(date) ? navigation : undefined }
-                            date={ formatDate }
+                            date={ `${ moment(levels.find(level => level.numberLevel! === 5)?.startDate!).format('DD') } de ${ moment(levels.find(level => level.numberLevel! === 5)?.startDate!).format('MMMM') }` }
                         />
                         <Level
                             levelStyle={ stylesLevels.level6 }
@@ -213,9 +216,9 @@ export const LevelsScreen = ({ navigation }: Props) => {
                             medal='Fin de parciales'
                             completedMissions={ levels.find(level => level.numberLevel! === 6)?.completedMissions!.toString() }
                             totalMissions={ levels.find(level => level.numberLevel! === 6)?.totalMissions }
-                            enable={ new Date(levels.find(level => level.numberLevel! === 5)?.startDate!) <= new Date(date) }
+                            enable={ new Date(levels.find(level => level.numberLevel! === 6)?.startDate!) <= new Date(date) }
                             setActiveMessage={ setActiveMessage }
-                            navigation={ new Date(levels.find(level => level.numberLevel! === 5)?.startDate!) <= new Date(date) ? navigation : undefined }
+                            navigation={ new Date(levels.find(level => level.numberLevel! === 6)?.startDate!) <= new Date(date) ? navigation : undefined }
                             date={ `${ moment(levels.find(level => level.numberLevel! === 6)?.startDate!).format('DD') } de ${ moment(levels.find(level => level.numberLevel! === 6)?.startDate!).format('MMMM') }` }
                         />
                         <Level

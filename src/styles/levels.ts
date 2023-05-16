@@ -45,6 +45,7 @@ const stylesLevels = StyleSheet.create({
     },
     bodyContainer: {
         alignItems: 'center',
+        backgroundColor: '#F8FAFD',
     },
     roadMap: {
         width: 320,
