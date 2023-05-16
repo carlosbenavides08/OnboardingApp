@@ -16,6 +16,11 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		57A91B9029C8FB04000AA05A /* logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 57A91B8F29C8FB04000AA05A /* logo_white.png */; };
 		624DA0CBE3C848878A413EB5 /* Solano-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BFF3CD79DAA34214BC4E235F /* Solano-Bold.otf */; };
+		6F237A7F29FAC9D100FE8A3A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6F237A7E29FAC9D100FE8A3A /* FirebaseAnalytics */; };
+		6F237A8129FAC9D100FE8A3A /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 6F237A8029FAC9D100FE8A3A /* FirebaseAnalyticsOnDeviceConversion */; };
+		6F237A8329FAC9D100FE8A3A /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6F237A8229FAC9D100FE8A3A /* FirebaseAnalyticsSwift */; };
+		6F237A8529FAC9D100FE8A3A /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 6F237A8429FAC9D100FE8A3A /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		6F237A8B29FAD43D00FE8A3A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F237A8A29FAD43D00FE8A3A /* GoogleService-Info.plist */; };
 		7699B88040F8A987B510C191 /* libPods-OnboardingApp-OnboardingAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-OnboardingApp-OnboardingAppTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		886CB19438E04B09AFADBD26 /* WhitneyHTF-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6530C164822847B59140CCB0 /* WhitneyHTF-BoldItalic.otf */; };
@@ -59,6 +64,7 @@
 		5B7EB9410499542E8C5724F5 /* Pods-OnboardingApp-OnboardingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnboardingApp-OnboardingAppTests.debug.xcconfig"; path = "Target Support Files/Pods-OnboardingApp-OnboardingAppTests/Pods-OnboardingApp-OnboardingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-OnboardingApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OnboardingApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6530C164822847B59140CCB0 /* WhitneyHTF-BoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WhitneyHTF-BoldItalic.otf"; path = "../assets/fonts/WhitneyHTF-BoldItalic.otf"; sourceTree = "<group>"; };
+		6F237A8A29FAD43D00FE8A3A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		70487CF54F4E4A59A70A355A /* SolanoGothicMVBStdBd.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SolanoGothicMVBStdBd.otf; path = ../assets/fonts/SolanoGothicMVBStdBd.otf; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = OnboardingApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-OnboardingApp-OnboardingAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnboardingApp-OnboardingAppTests.release.xcconfig"; path = "Target Support Files/Pods-OnboardingApp-OnboardingAppTests/Pods-OnboardingApp-OnboardingAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -79,6 +85,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F237A8329FAC9D100FE8A3A /* FirebaseAnalyticsSwift in Frameworks */,
+				6F237A8529FAC9D100FE8A3A /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				6F237A7F29FAC9D100FE8A3A /* FirebaseAnalytics in Frameworks */,
+				6F237A8129FAC9D100FE8A3A /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				0C80B921A6F3F58F76C31292 /* libPods-OnboardingApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,6 +116,7 @@
 		13B07FAE1A68108700A75B9A /* OnboardingApp */ = {
 			isa = PBXGroup;
 			children = (
+				6F237A8A29FAD43D00FE8A3A /* GoogleService-Info.plist */,
 				57A91B8F29C8FB04000AA05A /* logo_white.png */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
@@ -228,6 +239,12 @@
 			dependencies = (
 			);
 			name = OnboardingApp;
+			packageProductDependencies = (
+				6F237A7E29FAC9D100FE8A3A /* FirebaseAnalytics */,
+				6F237A8029FAC9D100FE8A3A /* FirebaseAnalyticsOnDeviceConversion */,
+				6F237A8229FAC9D100FE8A3A /* FirebaseAnalyticsSwift */,
+				6F237A8429FAC9D100FE8A3A /* FirebaseAnalyticsWithoutAdIdSupport */,
+			);
 			productName = OnboardingApp;
 			productReference = 13B07F961A680F5B00A75B9A /* OnboardingApp.app */;
 			productType = "com.apple.product-type.application";
@@ -258,6 +275,9 @@
 				Base,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
+			packageReferences = (
+				6F237A7D29FAC9D100FE8A3A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -280,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F237A8B29FAD43D00FE8A3A /* GoogleService-Info.plist in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				A584A997DDBE4FA5943464AD /* SolanoGothicMVBStdBd.otf in Resources */,
@@ -546,7 +567,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.5;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -579,7 +600,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.5;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -761,6 +782,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6F237A7D29FAC9D100FE8A3A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6F237A7E29FAC9D100FE8A3A /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6F237A7D29FAC9D100FE8A3A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		6F237A8029FAC9D100FE8A3A /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6F237A7D29FAC9D100FE8A3A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		6F237A8229FAC9D100FE8A3A /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6F237A7D29FAC9D100FE8A3A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		6F237A8429FAC9D100FE8A3A /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6F237A7D29FAC9D100FE8A3A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
 }
