@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { RootStackParams } from '../navigator/Navigator'
 
@@ -9,7 +9,7 @@ interface Props {
 
 export const TermsScreen = ({ navigation }: Props) => {
     return (
-        <>
+        <SafeAreaView>
             <View style={ styles.header }>
                 <Text style={ styles.headerText }>TÉRMINOS Y CONDICIONES DE USO</Text>
                 <TouchableOpacity
@@ -60,7 +60,7 @@ export const TermsScreen = ({ navigation }: Props) => {
                     El usuario acepta de manera voluntaria y sin reservas todas las estipulaciones contenidas en las presentes Condiciones de Uso. Asimismo, el usuario declara conocer que estas Condiciones de Uso podrán ser eventualmente modificadas, complementadas y/o sustituidas por UPC, siendo efectivas estas modificaciones desde su publicación en la aplicación, sin necesidad de intervención, autorización previa o confirmación posterior del usuario.
                 </Text>
             </ScrollView>
-        </>
+        </SafeAreaView>
     )
 }
 

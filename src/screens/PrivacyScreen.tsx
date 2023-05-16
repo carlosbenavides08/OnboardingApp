@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { RootStackParams } from '../navigator/Navigator'
 
@@ -9,7 +9,7 @@ interface Props {
 
 export const PrivacyScreen = ({ navigation }: Props) => {
     return (
-        <>
+        <SafeAreaView>
             <View style={ styles.header }>
                 <Text style={ styles.headerText }>POLÍTICA DE PRIVACIDAD</Text>
                 <TouchableOpacity
@@ -89,7 +89,7 @@ export const PrivacyScreen = ({ navigation }: Props) => {
                     Si usted escoge interactuar con nuestra aplicación su visita y cualquier disputa sobre privacidad están sujetas a esta Declaración de Privacidad y a nuestras Condiciones generales de uso, incluyendo cualquier limitación sobre daños, arbitraje de disputas y la aplicación de las provisiones de ley. Nos reservamos el derecho de cambiar esta declaración en cualquier momento, sin aviso excepto en los casos que aquí se consignan.
                 </Text>
             </ScrollView>
-        </>
+        </SafeAreaView>
     )
 }
 
