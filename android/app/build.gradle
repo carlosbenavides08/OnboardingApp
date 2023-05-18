@@ -99,7 +99,7 @@ android {
         applicationId "com.laureate.mimundoupc"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 12
+        versionCode 13
         versionName "1.0"
     }
 
