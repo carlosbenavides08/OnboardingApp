@@ -90,10 +90,10 @@ export const LevelsScreen = ({ navigation }: Props) => {
                     </View>
                 </View>
                 <View style={ stylesLevels.bodyContainer }>
-                    <Mission1
+                    {/* <Mission1
                         missionDescription='CONOCE CÓMO CERTIFICAR EL INGLÉS'
                         navigation={ navigation }
-                    />
+                    /> */}
                     <View style={ stylesLevels.roadMap }>
                         <Image
                             source={ require('../assets/roadmap.png') }
