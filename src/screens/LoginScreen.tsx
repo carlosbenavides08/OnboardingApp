@@ -10,6 +10,7 @@ import {
     TouchableOpacity,
     Platform,
     ActivityIndicator,
+    SafeAreaView,
 } from 'react-native'
 
 import BouncyCheckbox from 'react-native-bouncy-checkbox'
@@ -143,128 +144,130 @@ export const LoginScreen = ({ navigation }: Props) => {
             style={{ flex: 1 }}
             behavior={ Platform.OS === 'ios' ? 'padding' : 'height' }
         >
-            <ScrollView style={ stylesLogin.scrollContainer }>
-                <View style={[
-                    stylesLogin.loginContainer,
-                    {
-                        // height: height
-                    }
-                ]}>
-                    <View style={ stylesLogin.headerContainer }>
-                        <Image
-                            source={ require('../assets/mundos.png') }
-                            resizeMode="contain"
-                            style={[
-                                stylesLogin.imageHeader,
-                                {
-                                    width: width,
-                                }
-                            ]}
-                        />
-                    </View>
-                    <View style={ stylesLogin.bodyContainer }>
-                        <Text style={ stylesLogin.welcomeTextOne }>BIENVENIDO A</Text>
-                        <Text style={ stylesLogin.welcomeTextTwo }>MI MUNDO UPC</Text>
-                        <Text style={ stylesLogin.enterText }>
-                            Ingresa tu código de alumno y descubre
-                            <Text style={ stylesLogin.enterTextBold }> Mi mundo UPC.</Text>
-                        </Text>
-                        <View style={{ marginTop: 24 }}>
-                            <FloatingLabelInput
-                                label='Código de alumno'
-                                multiline={ false }
-                                containerStyles={ !error ? stylesLogin.userTextInput : stylesLogin.userTextInputError }
-                                customLabelStyles={ error ? { topFocused: -15, colorFocused: '#FF2F48' } : { topFocused: -15 }}
-                                labelStyles={{ paddingLeft: 0, paddingTop: 10 }}
-                                inputStyles={ stylesLogin.inputStyles }
-                                onChangeText={ value => validateText(value) }
-                                value={ user }
-                                autoCorrect={ false }
-                                cursorColor='black'
-                                hint='U202312980 / 202312980'
-                                hintTextColor='#67778F'
-                                staticLabel
+            <SafeAreaView>
+                <ScrollView style={ stylesLogin.scrollContainer }>
+                    <View style={[
+                        stylesLogin.loginContainer,
+                        {
+                            // height: height
+                        }
+                    ]}>
+                        <View style={ stylesLogin.headerContainer }>
+                            <Image
+                                source={ require('../assets/mundos.png') }
+                                resizeMode="contain"
+                                style={[
+                                    stylesLogin.imageHeader,
+                                    {
+                                        width: width,
+                                    }
+                                ]}
                             />
-                            <View style={{ marginTop: 8, flexDirection: 'row', justifyContent: 'space-between' }}>
-                                <Text></Text>
-                                {
-                                    error && (
-                                        <Text style={{ color: 'red', fontFamily: 'WhitneyHTF-Medium' }}>*Error en el código</Text>
-                                    )
-                                }
-                            </View>
                         </View>
-                        <BouncyCheckbox
-                            size={20}
-                            fillColor="#E50A17"
-                            unfillColor="#FFFFFF"
-                            text='Recordar mi código'
-                            iconStyle={[
-                                stylesLogin.checkboxIcon,
-                                { borderColor: colorCheckbox }
-                            ]}
-                            textStyle={ stylesLogin.checkboxText }
-                            style={{ marginTop: 0, paddingBottom: 60 }}
-                            innerIconStyle={{ borderWidth: 0 }}
-                            isChecked={ checked }
-                            onPress={ changeColorCheckbox }
-                            disableBuiltInState
-                        />
-                        <View style={ stylesLogin.termsContainer }>
-                            <Text style={ stylesLogin.termsText }>
-                                Al continuar acepto los {''}
+                        <View style={ stylesLogin.bodyContainer }>
+                            <Text style={ stylesLogin.welcomeTextOne }>BIENVENIDO A</Text>
+                            <Text style={ stylesLogin.welcomeTextTwo }>MI MUNDO UPC</Text>
+                            <Text style={ stylesLogin.enterText }>
+                                Ingresa tu código de alumno y descubre
+                                <Text style={ stylesLogin.enterTextBold }> Mi mundo UPC.</Text>
                             </Text>
-                            <TouchableOpacity
-                                activeOpacity={ 1 }
-                                style={{ margin: 0, padding: 0 }}
-                                onPress={ () => navigation.replace('TermsScreen') }
-                            >
-                                <Text style={{ color: '#3817FF', textDecorationLine: 'underline' }}>Términos y condiciones</Text>
-                            </TouchableOpacity>
-                            <Text style={ stylesLogin.termsText }>
-                                {''} y la {''}
-                            </Text>
-                            <TouchableOpacity
-                                activeOpacity={ 1 }
-                                style={{ margin: 0, padding: 0 }}
-                                onPress={ () => navigation.replace('PrivacyScreen') }
-                            >
-                                <Text style={{ color: '#3817FF', textDecorationLine: 'underline' }}>Política de privacidad</Text>
-                            </TouchableOpacity>
-                            <Text style={ stylesLogin.termsText }>
-                                {''} de la aplicación.
-                            </Text>
-                        </View>
-                        <TouchableOpacity
-                            activeOpacity={ 0.7 }
-                            style={[
-                                stylesLogin.buttonLogin,
-                                buttonDisabled ? stylesLogin.buttonDisabled : null
-                            ]}
-                            disabled={ buttonDisabled }
-                            onPress={ handleLogin }
-                        >
-                            <View style={{ display: 'flex', flexDirection: 'row' }}>
-                                {
-                                    !loading ? (
-                                        <Text style={[
-                                            stylesLogin.buttonLoginText,
-                                            buttonTextDisabled ? stylesLogin.buttonTextLoginDisabled : null
-                                        ]}>
-                                            Ingresar
-                                        </Text>
-                                    ) : (
-                                        <ActivityIndicator
-                                            size='small'
-                                            color='white'
-                                        />
-                                    )
-                                }
+                            <View style={{ marginTop: 24 }}>
+                                <FloatingLabelInput
+                                    label='Código de alumno'
+                                    multiline={ false }
+                                    containerStyles={ !error ? stylesLogin.userTextInput : stylesLogin.userTextInputError }
+                                    customLabelStyles={ error ? { topFocused: -15, colorFocused: '#FF2F48' } : { topFocused: -15 }}
+                                    labelStyles={{ paddingLeft: 0, paddingTop: 10 }}
+                                    inputStyles={ stylesLogin.inputStyles }
+                                    onChangeText={ value => validateText(value) }
+                                    value={ user }
+                                    autoCorrect={ false }
+                                    cursorColor='black'
+                                    hint='U202312980 / 202312980'
+                                    hintTextColor='#67778F'
+                                    staticLabel
+                                />
+                                <View style={{ marginTop: 8, flexDirection: 'row', justifyContent: 'space-between' }}>
+                                    <Text></Text>
+                                    {
+                                        error && (
+                                            <Text style={{ color: 'red', fontFamily: 'WhitneyHTF-Medium' }}>*Error en el código</Text>
+                                        )
+                                    }
+                                </View>
                             </View>
-                        </TouchableOpacity>
+                            <BouncyCheckbox
+                                size={20}
+                                fillColor="#E50A17"
+                                unfillColor="#FFFFFF"
+                                text='Recordar mi código'
+                                iconStyle={[
+                                    stylesLogin.checkboxIcon,
+                                    { borderColor: colorCheckbox }
+                                ]}
+                                textStyle={ stylesLogin.checkboxText }
+                                style={{ marginTop: 0, paddingBottom: 60 }}
+                                innerIconStyle={{ borderWidth: 0 }}
+                                isChecked={ checked }
+                                onPress={ changeColorCheckbox }
+                                disableBuiltInState
+                            />
+                            <View style={ stylesLogin.termsContainer }>
+                                <Text style={ stylesLogin.termsText }>
+                                    Al continuar acepto los {''}
+                                </Text>
+                                <TouchableOpacity
+                                    activeOpacity={ 1 }
+                                    style={{ margin: 0, padding: 0 }}
+                                    onPress={ () => navigation.replace('TermsScreen') }
+                                >
+                                    <Text style={{ color: '#3817FF', textDecorationLine: 'underline' }}>Términos y condiciones</Text>
+                                </TouchableOpacity>
+                                <Text style={ stylesLogin.termsText }>
+                                    {''} y la {''}
+                                </Text>
+                                <TouchableOpacity
+                                    activeOpacity={ 1 }
+                                    style={{ margin: 0, padding: 0 }}
+                                    onPress={ () => navigation.replace('PrivacyScreen') }
+                                >
+                                    <Text style={{ color: '#3817FF', textDecorationLine: 'underline' }}>Política de privacidad</Text>
+                                </TouchableOpacity>
+                                <Text style={ stylesLogin.termsText }>
+                                    {''} de la aplicación.
+                                </Text>
+                            </View>
+                            <TouchableOpacity
+                                activeOpacity={ 0.7 }
+                                style={[
+                                    stylesLogin.buttonLogin,
+                                    buttonDisabled ? stylesLogin.buttonDisabled : null
+                                ]}
+                                disabled={ buttonDisabled }
+                                onPress={ handleLogin }
+                            >
+                                <View style={{ display: 'flex', flexDirection: 'row' }}>
+                                    {
+                                        !loading ? (
+                                            <Text style={[
+                                                stylesLogin.buttonLoginText,
+                                                buttonTextDisabled ? stylesLogin.buttonTextLoginDisabled : null
+                                            ]}>
+                                                Ingresar
+                                            </Text>
+                                        ) : (
+                                            <ActivityIndicator
+                                                size='small'
+                                                color='white'
+                                            />
+                                        )
+                                    }
+                                </View>
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                </View>
-            </ScrollView>
+                </ScrollView>
+            </SafeAreaView>
         </KeyboardAvoidingView>
     )
 }
