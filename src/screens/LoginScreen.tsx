@@ -147,7 +147,7 @@ export const LoginScreen = ({ navigation }: Props) => {
                 <View style={[
                     stylesLogin.loginContainer,
                     {
-                        height: height
+                        // height: height
                     }
                 ]}>
                     <View style={ stylesLogin.headerContainer }>

@@ -2,10 +2,10 @@ import { StyleSheet } from 'react-native'
 
 const stylesLogin = StyleSheet.create({
     scrollContainer: {
-        flex: 1,
+        // flex: 1,
     },
     loginContainer: {
-        flex: 1,
+        // flex: 1,
     },
     headerContainer: {
 
@@ -19,9 +19,9 @@ const stylesLogin = StyleSheet.create({
         flex: 1,
         marginTop: 42,
         paddingHorizontal: 20,
-        borderWidth: 1,
-        borderColor: 'red',
-        paddingBottom: 100,
+        // borderWidth: 1,
+        // borderColor: 'red',
+        paddingBottom: 150,
     },
     welcomeTextOne: {
         color: 'black',
