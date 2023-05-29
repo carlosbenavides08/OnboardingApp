@@ -9,6 +9,7 @@ import { stylesFinishedMission } from '../styles'
 
 interface Props {
     navigation: StackNavigationProp<RootStackParams, "MissionScreen", undefined>
+                | StackNavigationProp<RootStackParams, "SecretMissionScreen", undefined>
 }
 
 export const FinishedMission = ({ navigation }: Props) => {
@@ -16,7 +17,11 @@ export const FinishedMission = ({ navigation }: Props) => {
     const { level, mission, totalMissions, saveLevel, saveMission } = useContext(LevelContext)
 
     const handleNavigation = () => {
-        if (mission === totalMissions && level === 10) {
+        if (level === 11 || level === 12) {
+            saveLevel(null, null)
+            saveMission(null)
+            navigation.replace('LevelsScreen')
+        } else if (mission === totalMissions && level === 10) {
             saveLevel(null, null)
             saveMission(null)
             navigation.replace('TabsHome')
@@ -35,7 +40,9 @@ export const FinishedMission = ({ navigation }: Props) => {
             <View style={ stylesFinishedMission.contaner }>
                 <Text style={ stylesFinishedMission.title }>
                     {
-                        (mission === totalMissions && level === 10)
+                        (level === 11 || level === 12)
+                        ? '¡MISIÓN COMPLETADA!'
+                        : (mission === totalMissions && level === 10)
                         ? '¡MUNDO COMPLETADO!'
                         : mission === totalMissions
                         ? '¡NIVEL COMPLETADO!'
@@ -44,14 +51,25 @@ export const FinishedMission = ({ navigation }: Props) => {
                 </Text>
                 <View style={ stylesFinishedMission.missionsContainer }>
                     <Text style={ stylesFinishedMission.missionsText }>
-                        Lograste
-                        <Text style={{ color: '#E50A17' }}> { mission }/{ totalMissions } </Text>
-                        misiones
+                        {
+                            (level === 11 || level === 12)
+                            ? (
+                                'Ganaste una medalla especial 🌟'
+                            ) : (
+                                <>
+                                    Lograste
+                                    <Text style={{ color: '#E50A17' }}> { mission }/{ totalMissions } </Text>
+                                    misiones
+                                </>
+                            )
+                        }
                     </Text>
                 </View>
                 <Text style={ stylesFinishedMission.secondaryText }>
                     {
-                        mission === totalMissions
+                        (level === 11 || level === 12)
+                        ? 'Gracias por ayudarnos a seguir mejorando nuestra calidad académica.'
+                        : mission === totalMissions
                         ? '¡Felicidades! Estás logrando adaptarte a la vida universitaria.'
                         : '¡Sigue así y aprende más de la vida universitaria!'
                     }
@@ -64,7 +82,9 @@ export const FinishedMission = ({ navigation }: Props) => {
             >
                 <Text style={ stylesFinishedMission.buttonText }>
                     {
-                        (mission === totalMissions && level === 10)
+                        (level === 11 || level === 12)
+                        ? 'Completar nueva misión'
+                        : (mission === totalMissions && level === 10)
                         ? 'Ir a Mundo Crece'
                         : mission === totalMissions
                         ? `Ir al nivel ${ level! + 1 }`

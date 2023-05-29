@@ -74,9 +74,22 @@ export const BottomSheetCongrats = ({ missionCompleted, setMissionCompleted, set
                 </TouchableOpacity>
             </View>
             <View style={ stylesBottomSheetCongrats.body }>
-                <Text style={ stylesBottomSheetCongrats.levelText }>Nivel { level }</Text>
+                <Text style={ stylesBottomSheetCongrats.levelText }>
+                    {
+                        (level === 11 || level === 12)
+                        ? 'Misión secreta'
+                        : `Nivel ${ level }`
+                    }
+                </Text>
                 {
-                    mission === totalMissions
+                    (level === 11 || level === 12)
+                    ? (
+                        <Image
+                            source={ require('../assets/secret-mission-completed.png') }
+                            style={{ width: 276, height: 129, marginTop: 20 }}
+                        />
+                    )
+                    : mission === totalMissions
                     ? (
                         <Image
                             source={ require('../assets/level-completed.png') }

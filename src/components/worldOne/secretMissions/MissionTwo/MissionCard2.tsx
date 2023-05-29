@@ -9,17 +9,17 @@ interface Props {
     navigation: StackNavigationProp<RootStackParams, "LevelsScreen", undefined>
 }
 
-export const Mission1 = ({ navigation }: Props) => {
+export const Mission2 = ({ navigation }: Props) => {
 
     const { saveLevel, saveMission } = useContext(LevelContext)
 
     const handleClick = () => {
-        saveLevel(11, 1)
+        saveLevel(12, 1)
         saveMission(1)
         navigation.replace('SecretMissionScreen',
             {
-                title: 'CONOCE CÓMO CERTIFICAR EL INGLÉS',
-                description: 'Conoce las modalidades que tenemos para que puedas certificar el idioma inglés.'
+                title: 'CALIFICA TUS CURSOS Y PROFESORES',
+                description: 'Cuéntanos cómo van tus clases hasta el momento para seguir mejorándolas.'
             }
         )
     }
@@ -35,9 +35,9 @@ export const Mission1 = ({ navigation }: Props) => {
                 style={{ width: 64, height: 72 }}
             />
             <View>
-                <Text style={ styles.cardTitle }>MEDALLA ESPECIAL I</Text>
+                <Text style={ styles.cardTitle }>MEDALLA ESPECIAL II</Text>
                 <Text style={ styles.cardSubtitle }>¡Misión secreta! 🕵️‍♂️</Text>
-                <Text style={ styles.cardLimit }>Realízala hasta el 09 de Junio</Text>
+                <Text style={ styles.cardLimit }>Realízala hasta el 25 de Junio</Text>
             </View>
         </TouchableOpacity>
     )

@@ -5,7 +5,7 @@ interface Props {
     slide: () => void
 }
 
-export const InstructionsSecretMission1 = ({ slide }: Props) => {
+export const InstructionsSecretMission2 = ({ slide }: Props) => {
     return (
         <>
             <View style={[
@@ -24,58 +24,46 @@ export const InstructionsSecretMission1 = ({ slide }: Props) => {
                     <View style={ stylesInstructions.missionPointsWrapper }>
                         <Text style={ stylesInstructions.missionPoints }>1.</Text>
                         <Text style={ stylesInstructions.missionPoints }>
-                            Dirígete a
-                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> Inglés en la UPC </Text>
-                            y revisa las
-                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> condiciones generales</Text>
+                            Dirígete a tu
+                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> correo UPC</Text>
                         </Text>
                     </View>
                     <View style={ stylesInstructions.missionPointsWrapper }>
                         <Text style={ stylesInstructions.missionPoints }>2.</Text>
                         <Text style={ stylesInstructions.missionPoints }>
-                            Infórmate con detalle sobre las
-                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> modalidades </Text>
-                            con las que contamos para certificar el inglés
+                            Ubica el correo que te hemos enviado desde nuestra cuenta
+                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> encuestas@upc.edu.pe </Text>
+                            con asunto
+                            <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> UPC - Encuestas Virtuales</Text>
                         </Text>
                     </View>
                     <View style={ stylesInstructions.missionPointsWrapper }>
                         <Text style={ stylesInstructions.missionPoints }>3.</Text>
                         <Text style={ stylesInstructions.missionPoints }>
-                            Por último, responde la pregunta al
+                            Responde todas las preguntas que aparezcan con honestidad y transparencia
+                        </Text>
+                    </View>
+                    <View style={ stylesInstructions.missionPointsWrapper }>
+                        <Text style={ stylesInstructions.missionPoints }>4.</Text>
+                        <Text style={ stylesInstructions.missionPoints }>
+                            Por último, sube una captura de pantalla de la encuesta completada al
                             <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> ir a completar misión</Text>
                         </Text>
                     </View>
                 </View>
                 <Text style={ stylesInstructions.missionRemember }>
-                    Recuerda que certificar el idioma inglés es un
-                    <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> requisito de egreso </Text>
-                    de la universidad. Para mayor detalle, puedes revisar el punto 3 y 4 del
-                    <Text style={{ fontFamily: 'WhitneyHTF-Bold' }}> reglamento de inglés</Text>.
+                    Recuerda que realizar esta encuesta es muy importante porque así podemos seguir mejorando nuestro sistema educativo.
                 </Text>
             </View>
             <TouchableOpacity
                 activeOpacity={ 1 }
                 style={ stylesInstructions.buttonCode }
                 onPress={ () => {
-                    Linking.openURL('https://www.upc.edu.pe/ingles-en-la-upc/condiciones-generales/')
+                    Linking.openURL('https://www.outlook.com/upc.edu.pe')
                 }}
             >
-                <Text style={ stylesInstructions.buttonCodeText }>Ir a Inglés en la UPC</Text>
+                <Text style={ stylesInstructions.buttonCodeText }>Ir a Encuesta Académica</Text>
             </TouchableOpacity>
-            <View style={ stylesInstructions.viewRulesContainer }>
-                <TouchableOpacity
-                    activeOpacity={ 1 }
-                    onPress={ () => {
-                        Linking.openURL('https://res.cloudinary.com/upcbinary/image/upload/v1677882614/institucional/pdf/ingles-en-la-upc/sica-reg-_45_reglamento_de_ingles_en_pregrado_y_pregrado_epe_v02_tiehgq.pdf')
-                    }}
-                >
-                    <Text style={ stylesInstructions.viewRulesText }>Ir a Reglamento de Inglés</Text>
-                </TouchableOpacity>
-                <Image
-                    source={ require('../../../../assets/ic-sm-right.png') }
-                    style={{ width: 16, height: 16 }}
-                />
-            </View>
             <View style={ stylesInstructions.cardDisclaimer }>
                 <Image
                     source={ require('../../../../assets/wand.png') }

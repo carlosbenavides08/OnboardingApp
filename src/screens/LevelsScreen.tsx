@@ -16,6 +16,7 @@ import { BottomSheetMessage } from '../components/BottomSheetMessage'
 import { stylesBottomSheetMessage } from '../styles/bottomSheetMessage'
 import { LevelContext } from '../context/LevelContext'
 import { Mission1 } from '../components/worldOne/secretMissions/MissionOne/MissionCard1'
+import { Mission2 } from '../components/worldOne/secretMissions/MissionTwo/MissionCard2'
 
 import { stylesLevels } from '../styles'
 
@@ -34,6 +35,12 @@ export const LevelsScreen = ({ navigation }: Props) => {
 
     useEffect(() => {
         loadLevels()
+
+        if (new Date('2023-06-10') > new Date('2023-06-09')) {
+            console.log('Es mayor')
+        } else {
+            console.log('Es menor')
+        }
     }, [])
 
     useEffect(() => {
@@ -66,6 +73,9 @@ export const LevelsScreen = ({ navigation }: Props) => {
         dispatch(setLevels(levels!))
     }
 
+    console.log(new Date('2023-06-10'))
+    console.log(new Date('2023-06-09'))
+
     return (
         <SafeAreaView style={ stylesLevels.levelsContainer }>
             <ScrollView>
@@ -90,10 +100,26 @@ export const LevelsScreen = ({ navigation }: Props) => {
                     </View>
                 </View>
                 <View style={ stylesLevels.bodyContainer }>
-                    {/* <Mission1
-                        missionDescription='CONOCE CÓMO CERTIFICAR EL INGLÉS'
-                        navigation={ navigation }
-                    /> */}
+                    {
+                        (
+                            (new Date(levels.find(level => level.numberLevel! === 11)?.startDate!) <= new Date(date) && new Date(date) <= new Date('2023-06-09')) &&
+                            (levels.find(level => level.numberLevel! === 11)?.status !== 'COMPLETED')
+                        ) && (
+                            <Mission1
+                                navigation={ navigation }
+                            />
+                        )
+                    }
+                    {
+                        (
+                            (new Date(levels.find(level => level.numberLevel! === 12)?.startDate!) <= new Date(date) && new Date(date) <= new Date('2023-06-25')) &&
+                            (levels.find(level => level.numberLevel! === 12)?.status !== 'COMPLETED')
+                        ) && (
+                            <Mission2
+                                navigation={ navigation }
+                            />
+                        )
+                    }
                     <View style={ stylesLevels.roadMap }>
                         <Image
                             source={ require('../assets/roadmap.png') }

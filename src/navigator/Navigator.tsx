@@ -14,6 +14,7 @@ import { MissionScreen } from '../screens/MissionScreen'
 import { TermsScreen } from '../screens/TermsScreen'
 import { PrivacyScreen } from '../screens/PrivacyScreen'
 import { notAuth, auth } from '../redux/slices/user'
+import { SecretMissionScreen } from '../screens/SecretMissionScreen'
 
 export type RootStackParams = {
     LoginScreen: undefined,
@@ -23,6 +24,7 @@ export type RootStackParams = {
     LevelsScreen: undefined,
     MissionsListScreen: undefined,
     MissionScreen: { nextMissionTitleBoolean: boolean },
+    SecretMissionScreen: { title: string, description: string },
     TermsScreen: undefined,
     PrivacyScreen: undefined,
 }
@@ -67,6 +69,7 @@ export const Navigator = () => {
                         <Stack.Screen name="LevelsScreen" component={ LevelsScreen }></Stack.Screen>
                         <Stack.Screen name="MissionsListScreen" component={ MissionsListScreen }></Stack.Screen>
                         <Stack.Screen name="MissionScreen" component={ MissionScreen }></Stack.Screen>
+                        <Stack.Screen name="SecretMissionScreen" component={ SecretMissionScreen }></Stack.Screen>
                     </>
                 ) : (
                     <>
