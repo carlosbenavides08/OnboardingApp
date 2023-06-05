@@ -88,7 +88,7 @@ export const InstructionsLevel1Mission2 = ({ slide }: Props) => {
                             style={{ margin: 0, padding: 0 }}
                             activeOpacity={ 1 }
                             onPress={ () => {
-                                Linking.openURL('https://contactoweb.upc.edu.pe')
+                                Linking.openURL('https://explora.upc.edu.pe/')
                             }}
                         >
                             <Text

@@ -16,7 +16,7 @@ export const ModalUpdate = () => {
     const validateVersion = async() => {
         const { data } = await mundoApi.get('/auth/version')
 
-        if (Number(data.version) > version) {
+        if (Number(data.version) > Number(version)) {
             // setVersion(data.version)
             setShow(true)
         }
